@@ -22,25 +22,49 @@ Resources
 
 |--> Equipment
 
-|	|
+|	|--> Plumbing
 
-|	|--> WH
+|	|	|
 
-|	|
-
-|	|--> RTU
+|	|	|--> WH
 
 |	|
 
-|	|--> HP Split
+|	|--> Mechanical
 
-|	|
+|	|	|
 
-|	|--> Mini Splits
+|	|	|--> RTU
 
-|	|
+|	|	|
 
-|	|--> 
+|	|	|--> VRF
+
+|	|	|
+
+|	|	|--> HP Split
+
+|	|	|
+
+|	|	|--> Mini Splits
+
+|	|	|
+
+|	|	|--> Fans
+
+|	|	|	|
+
+|	|	|	|--> Bathroom Exhaust Fan
+
+|	|	|	|--> Roof Exhaust Fan
+
+|	|	|	|--> Kitchen Hood Fan
+
+|	|	|	|--> Fresh Air Fan
+
+|	|	|
+
+|	|	|--> ERV
 
 |
 
@@ -49,6 +73,4 @@ Resources
 
 
 ##### **Naming Convention:**
-
-
 
