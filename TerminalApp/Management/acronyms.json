@@ -33,5 +33,20 @@
     "WH": ["GH", "HP", "EH"],
     "KEH": ["UC", "WM"],
     "IU": ["WM", "CM"]
+  },
+  "RangeUnit": {
+    "AHU": "Ref. Tons",
+    "FCU": "Ref. Tons",
+    "RTU": "Ref. Tons",
+    "PU": "Ref. Tons",
+    "EF": "CFM",
+    "FAF": "CFM",
+    "KEH": "CFM",
+    "ERV": "?",
+    "CAR": "CFM",
+    "WH": "Gal",
+    "OU": "Ref. Tons",
+    "IU": "Ref. Tons",
+    "FU": "MBH"
   }
 }
