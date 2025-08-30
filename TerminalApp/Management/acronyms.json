@@ -1,0 +1,52 @@
+{
+  "ProjectType": ["Residential", "Commercial"],
+  "Equipment": {
+    "AHU": "Air Handling Unit",
+    "FCU": "Fan Coil Unit",
+    "RTU": "Rooftop Unit",
+    "PU": "Packaged Unit",
+    "EF": "Exhaust Fan",
+    "FAF": "Fresh Air Fan",
+    "KEH": "Kitchen Exhaust Hood",
+    "ERV": "Energy Recovery Ventilator",
+    "CAR": "Constant Air Regulator",
+    "WH": "Water Heater",
+    "OU": "Outdoor Unit",
+    "IU": "Indoor Unit",
+    "FU": "Furnace"
+  },
+  "Descriptors": {
+    "HP": "Heat Pump",
+    "VRF": "Variable Refrigerant Flow",
+    "VAV": "Variable Air Volume",
+    "CO": "Condensing/Cooling Only",
+    "GH": "Gas Heating",
+    "EH": "Electric Heating",
+    "UC": "Under Cabinet",
+    "WM": "Wall Mounted",
+    "CM": "Ceiling Mounted"
+  },
+  "Options": {
+    "OU": ["CO", "HP"],
+    "RTU": ["CO", "HP", "GH", "EH"],
+    "PU": ["CO", "HP", "GH", "EH"],
+    "WH": ["GH", "HP", "EH"],
+    "KEH": ["UC", "WM"],
+    "IU": ["WM", "CM"]
+  },
+  "RangeUnit": {
+    "AHU": "Ref. Tons",
+    "FCU": "Ref. Tons",
+    "RTU": "Ref. Tons",
+    "PU": "Ref. Tons",
+    "EF": "CFM",
+    "FAF": "CFM",
+    "KEH": "CFM",
+    "ERV": "?",
+    "CAR": "CFM",
+    "WH": "Gal",
+    "OU": "Ref. Tons",
+    "IU": "Ref. Tons",
+    "FU": "MBH"
+  }
+}
