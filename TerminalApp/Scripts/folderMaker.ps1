@@ -1,5 +1,8 @@
 # Get path directly from terminal
-$basePath = $PWD.Path.Trim('"')
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$projectPath
+)
 
 # Function to test and create folder
 function New-Folder{
@@ -7,9 +10,9 @@ function New-Folder{
     $fullPath = Join-Path -Path $Parent -ChildPath $Child
     if (-Not (Test-Path -Path $fullPath)) {
         New-Item -ItemType Directory -Path $fullPath | Out-Null
-        Write-Host "Created folder: $fullPath"
+        Write-Host "$Child created!"
     } else {
-        Write-Host "Folder already exists: $fullPath"
+        Write-Host "$Child already exists!"
     }
     return $fullPath
 }
