@@ -18,7 +18,7 @@ function New-Folder{
 }
 
 # Create parent folder of name Working Folder
-$workingFolderPath = New-Folder -Parent $basePath -Child "Working Folder"
+$workingFolderPath = New-Folder -Parent $projectPath -Child "Working Folder"
 
 if (-not [string]::IsNullOrEmpty($workingFolderPath)) {
     # Create child folder of name Arch inside "Working Folder"
