@@ -1,0 +1,41 @@
+{
+  "Equipment": [
+    "AHU",
+    "FCU",
+    "RTU",
+    "PU",
+    "EF",
+    "FAF",
+    "KEH",
+    "ERV",
+    "CAR",
+    "WH",
+    "OU",
+    "IU",
+    "FU"
+  ],
+  "Options": {
+    "OU": ["CO", "HP"],
+    "RTU": ["CO", "HP", "GH", "EH"],
+    "PU": ["CO", "HP", "GH", "EH"],
+    "WH": ["GH", "HP", "EH"],
+    "KEH": ["UC", "WM"],
+    "IU": ["WM", "CM", "SZ", "MZ"],
+    "FU": ["NG", "LPG"]
+  },
+  "RangeUnit": {
+    "AHU": "Ref. Tons",
+    "FCU": "Ref. Tons",
+    "RTU": "Ref. Tons",
+    "PU": "Ref. Tons",
+    "EF": "CFM",
+    "FAF": "CFM",
+    "KEH": "CFM",
+    "ERV": "?",
+    "CAR": "CFM",
+    "WH": "Gal",
+    "OU": "Ref. Tons",
+    "IU": "Ref. Tons",
+    "FU": "MBH"
+  }
+}
