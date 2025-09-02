@@ -1,0 +1,34 @@
+{
+  "ProjectTypes": ["Residential", "Commercial"],
+  "CodeTypes": ["CA", "FL", "INT", "UNI"],
+  "GeneralMenu": [
+    "Find a datasheet",
+    "Find a calculation sheet",
+    "Find a detail",
+    "Exit"
+  ],
+  "Equipment": [
+    "AHU",
+    "FCU",
+    "RTU",
+    "PU",
+    "EF",
+    "FAF",
+    "KEH",
+    "ERV",
+    "CAR",
+    "WH",
+    "OU",
+    "IU",
+    "FU"
+  ],
+  "CalculationSheets": [
+    "DESP",
+    "HPD",
+    "INT.VE",
+    "CA.VE",
+    "FL.VE",
+    "UNI.VE",
+    "HCLoads"
+  ]
+}

@@ -1,5 +1,10 @@
 {
-  "ProjectType": ["Residential", "Commercial"],
+  "CodeTypes": {
+    "CA": "California",
+    "FL": "Florida",
+    "INT": "International",
+    "UNI": "Uniform"
+  },
   "Equipment": {
     "AHU": "Air Handling Unit",
     "FCU": "Fan Coil Unit",
@@ -15,7 +20,7 @@
     "IU": "Indoor Unit",
     "FU": "Furnace"
   },
-  "Descriptors": {
+  "EquipmentOptions": {
     "HP": "Heat Pump",
     "VRF": "Variable Refrigerant Flow",
     "VAV": "Variable Air Volume",
@@ -24,29 +29,19 @@
     "EH": "Electric Heating",
     "UC": "Under Cabinet",
     "WM": "Wall Mounted",
-    "CM": "Ceiling Mounted"
+    "CM": "Ceiling Mounted",
+    "SZ": "Single Zone",
+    "MZ": "Multi Zone",
+    "NG": "Natural Gas",
+    "LPG": "Liquid Propane Gas"
   },
-  "Options": {
-    "OU": ["CO", "HP"],
-    "RTU": ["CO", "HP", "GH", "EH"],
-    "PU": ["CO", "HP", "GH", "EH"],
-    "WH": ["GH", "HP", "EH"],
-    "KEH": ["UC", "WM"],
-    "IU": ["WM", "CM"]
-  },
-  "RangeUnit": {
-    "AHU": "Ref. Tons",
-    "FCU": "Ref. Tons",
-    "RTU": "Ref. Tons",
-    "PU": "Ref. Tons",
-    "EF": "CFM",
-    "FAF": "CFM",
-    "KEH": "CFM",
-    "ERV": "?",
-    "CAR": "CFM",
-    "WH": "Gal",
-    "OU": "Ref. Tons",
-    "IU": "Ref. Tons",
-    "FU": "MBH"
+  "CalculationSheets": {
+    "DESP": "Duct External Static Pressure",
+    "HPD": "Hydraulic Pressure Drop",
+    "INT.VE": "International Ventilation & Exhaust",
+    "CA.VE": "California Ventilation & Exhaust",
+    "FL.VE": "Florida Ventilation & Exhaust",
+    "UNI.VE": "Uniform Ventilation & Exhaust",
+    "HCLoads": "Heating & Cooling Loads"
   }
 }

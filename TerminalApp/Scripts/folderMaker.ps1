@@ -1,17 +1,18 @@
 # Get path directly from terminal
 param(
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory = $true)]
     [string]$projectPath
 )
 
 # Function to test and create folder
-function New-Folder{
+function New-Folder {
     param([string]$Parent, [string]$Child)
     $fullPath = Join-Path -Path $Parent -ChildPath $Child
     if (-Not (Test-Path -Path $fullPath)) {
         New-Item -ItemType Directory -Path $fullPath | Out-Null
         Write-Host "$Child created!"
-    } else {
+    }
+    else {
         Write-Host "$Child already exists!"
     }
     return $fullPath
@@ -47,11 +48,13 @@ if (-not [string]::IsNullOrEmpty($workingFolderPath)) {
             New-Folder -Parent $selectionPath -Child "Mechanical"
             New-Folder -Parent $selectionPath -Child "Plumbing"
         }
-    } else {
+    }
+    else {
         Write-Host "MP folder path is invalid. Stopping child folder creation."
     }
 
     
-} else {
+}
+else {
     Write-Host "Working Folder path is invalid. Stopping folder creation."
 }
