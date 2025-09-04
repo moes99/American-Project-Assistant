@@ -18,9 +18,10 @@
     "WH": "Water Heater",
     "OU": "Outdoor Unit",
     "IU": "Indoor Unit",
-    "FU": "Furnace"
+    "FU": "Furnace",
+    "EVP": "Evaporator Coil"
   },
-  "EquipmentOptions": {
+  "Descriptors": {
     "HP": "Heat Pump",
     "VRF": "Variable Refrigerant Flow",
     "VAV": "Variable Air Volume",

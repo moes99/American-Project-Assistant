@@ -12,9 +12,10 @@
     "WH",
     "OU",
     "IU",
-    "FU"
+    "FU",
+    "EVP"
   ],
-  "Options": {
+  "Descriptors": {
     "OU": ["CO", "HP"],
     "RTU": ["CO", "HP", "GH", "EH"],
     "PU": ["CO", "HP", "GH", "EH"],
@@ -23,19 +24,20 @@
     "IU": ["WM", "CM", "SZ", "MZ"],
     "FU": ["NG", "LPG"]
   },
-  "RangeUnit": {
-    "AHU": "Ref. Tons",
-    "FCU": "Ref. Tons",
-    "RTU": "Ref. Tons",
-    "PU": "Ref. Tons",
-    "EF": "CFM",
-    "FAF": "CFM",
-    "KEH": "CFM",
-    "ERV": "?",
-    "CAR": "CFM",
-    "WH": "Gal",
-    "OU": "Ref. Tons",
-    "IU": "Ref. Tons",
-    "FU": "MBH"
+  "Units": {
+    "AHU": ["Ref. Tons"],
+    "FCU": ["Ref. Tons"],
+    "RTU": ["Ref. Tons"],
+    "PU": ["Ref. Tons"],
+    "EF": ["CFM"],
+    "FAF": ["CFM"],
+    "KEH": ["CFM"],
+    "ERV": ["CFM"],
+    "CAR": ["CFM"],
+    "WH": ["Gal", "MBH"],
+    "OU": ["Ref. Tons"],
+    "IU": ["Ref. Tons"],
+    "FU": ["MBH", "CFM"],
+    "EVP": ["Ref. Tons", "CFM"]
   }
 }
