@@ -1,8 +1,8 @@
+# Convert a PSCustomObject to a hashtable
 function ConvertTo-Hashtable {
     param (
         [PSCustomObject]$inputObject
     )
-
     $hashtable = @{}
     foreach ($property in $inputObject.PSObject.Properties) {
         $hashtable[$property.Name] = $property.Value
@@ -10,20 +10,35 @@ function ConvertTo-Hashtable {
     return $hashtable
 }
 
-#Project and base paths
+# Project and base paths
 $projectPath = $PWD.Path.Trim('"')
+
+# Greet user
+Write-Host "Welcome! I am your project assistant. First I need to gather some information about your project."
+
+# Create json file that contains project information if it doesn't exist
+if (-Not (Test-Path -Path "$projectPath/projectInfo.json")) {
+    $projectInfo = @{
+        ProjectName   = Read-Host "Enter the project name"
+        ClientName    = Read-Host "Enter the client name"
+        Type          = Read-Host "Is this project residential or commercial?"
+        Scope         = Read-Host "Enter the project scope (example: M, P, E, T24, or any combination)"
+        CodeType      = ""
+        EquipmentList = @()
+        CreatedDate   = (Get-Date).ToString("yyyy-MM-dd")
+    }
+    $projectInfo | ConvertTo-Json | Set-Content "$projectPath/projectInfo.json"
+}
 
 # Load path to important folders
 $resourcesFolder = Join-Path $PSScriptRoot "..\Resources"
 $scriptsFolder = Join-Path $PSScriptRoot "..\Scripts"
 $managementFolder = Join-Path $PSScriptRoot "..\Management"
 
-# Load menus & acronyms
+# Load menus, acronyms, & equipment
 $acronyms = Get-Content -Path (Join-Path -Path $managementFolder -ChildPath "acronyms.json") | ConvertFrom-Json
 $menus = Get-Content -Path (Join-Path -Path $managementFolder -ChildPath "menus.json") | ConvertFrom-Json
-
-# Greet user
-Write-Host "Welcome! I am your project assistant."
+$equipment = Get-Content -Path (Join-Path -Path $managementFolder -ChildPath "equipment.json") | ConvertFrom-Json
 
 # Check if folder structure has already been setup
 if (-Not (Test-Path -Path "$projectPath/Working Folder/MP")) {
@@ -63,9 +78,14 @@ while ($option -ne $generalMenu.Count) {
     }
 
     # User has selected a valid option
-    $option -= 1
     switch ($option) {
-        1 {  
+        1 {
+            # Select datasheet
+            $equipmentAcronyms = ConvertTo-Hashtable -inputObject $acronyms.Equipment
+            $descriptors = ConvertTo-Hashtable -inputObject $equipment.Descriptors
+            $descriptorsAcronyms = ConvertTo-Hashtable -inputObject $acronyms.Descriptors
+            $units = ConvertTo-Hashtable -inputObject $equipment.Units
+            & "$scriptsFolder/resourceManager.ps1" -projectPath $projectPath -resourcesFolder $resourcesFolder -operation "datasheet" -menu $menus.Equipment -acronyms $equipmentAcronyms -subMenu $descriptors -subAcronyms $descriptorsAcronyms -units $units
         }
         2 {  
         }
@@ -74,10 +94,7 @@ while ($option -ne $generalMenu.Count) {
         4 {
             exit 
         }
-        Default {
-        }
     }
-
 }
 
 # User decided to exit
