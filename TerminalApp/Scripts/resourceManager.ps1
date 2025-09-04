@@ -2,10 +2,16 @@
 param(
     [Parameter(Mandatory = $true)]
     [string]$projectPath,
+    [Parameter(Mandatory = $true)]
     [string]$operation,
+    [Parameter(Mandatory = $true)]
     [string]$resourcesFolder,
+    [Parameter(Mandatory = $true)]
     [array]$menu,
-    [hashtable]$acronyms
+    [Parameter(Mandatory = $true)]
+    [hashtable]$acronyms,
+    [array]$subMenu,
+    [hashtable]$subAcronyms
 )
 
 # Display a menu for user to choose an operation
@@ -61,4 +67,8 @@ if ($operation -eq "template") {
     else {
         Write-Host "DWGs folder does not exist! Cannot copy template!"
     }
+}
+
+# If operation is "datasheet", ask user for type of datasheet and copy the appropriate one
+elseif ($operation -eq "datasheet") {
 }
