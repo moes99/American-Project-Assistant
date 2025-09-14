@@ -87,7 +87,10 @@ while ($option -ne $generalMenu.Count) {
             $units = ConvertTo-Hashtable -inputObject $equipment.Units
             & "$scriptsFolder/resourceManager.ps1" -projectPath $projectPath -resourcesFolder $resourcesFolder -operation "datasheet" -menu $menus.Equipment -acronyms $equipmentAcronyms -subMenu $descriptors -subAcronyms $descriptorsAcronyms -units $units
         }
-        2 {  
+        2 { 
+            # Select calculation sheet
+            $calculationSheetsAcronyms = ConvertTo-Hashtable -inputObject $acronyms.CalculationSheets
+            & "$scriptsFolder/resourceManager.ps1" -projectPath $projectPath -resourcesFolder $resourcesFolder -operation "calculation" -menu $menus.CalculationSheets -acronyms $calculationSheetsAcronyms
         }
         3 {  
         }
