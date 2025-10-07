@@ -1,5 +1,18 @@
 {
   "ProjectTypes": ["Residential", "Commercial"],
+  "Countries": [
+    "USA",
+    "Canada",
+    "Australia",
+    "New Zealand",
+    "UAE",
+    "KSA",
+    "Europe",
+    "South America",
+    "Lebanon",
+    "Morocco",
+    "Africa"
+  ],
   "CodeTypes": ["CA", "FL", "INT", "UNI"],
   "GeneralMenu": [
     "Find a datasheet",
