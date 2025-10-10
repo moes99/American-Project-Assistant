@@ -31,7 +31,7 @@
     "PU": ["Ref. Tons"],
     "EF": ["CFM"],
     "FAF": ["CFM"],
-    "KEH": ["CFM"],
+    "KEH": ["CFM", "IN."],
     "ERV": ["CFM"],
     "CAR": ["CFM"],
     "WH": ["Gal", "MBH"],
