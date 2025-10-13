@@ -14,8 +14,8 @@ function ConvertTo-Hashtable {
 function Get-ProjectInfo {
 
     # Get project name & client name
-    $projectName   = Read-Host "Enter the project name"
-    $clientName    = Read-Host "Enter the client name"
+    $projectName = Read-Host "Enter the project name"
+    $clientName = Read-Host "Enter the client name"
 
     # Get project country
     $availableCountries = $menus.Countries
@@ -32,29 +32,29 @@ function Get-ProjectInfo {
     $country = $availableCountries[$option - 1]
 
     # Get project state, address, type, building type, scope, project director, project manager, trade developers
-    $state        = Read-Host "Enter the project's state's full name"
-    $address       = Read-Host "Enter the project's full address"
-    $type          = Read-Host "Is this project residential or commercial?"
-    $buildingType       = Read-Host "What is the building type (example: Single Family, Multi-Family, Office, Retail, Restaurant, etc.)?"
-    $scope         = Read-Host "Enter the project scope (example: M, P, E, T24, Manual J, etc., or any combination)"
+    $state = Read-Host "Enter the project's state's full name"
+    $address = Read-Host "Enter the project's full address"
+    $type = Read-Host "Is this project residential or commercial?"
+    $buildingType = Read-Host "What is the building type (example: Single Family, Multi-Family, Office, Retail, Restaurant, etc.)?"
+    $scope = Read-Host "Enter the project scope (example: M, P, E, T24, Manual J, etc., or any combination)"
     $projectDirector = Read-Host "Enter the project director's name"
-    $projectManager  = Read-Host "Enter the project manager's name"
+    $projectManager = Read-Host "Enter the project manager's name"
     $tradeDevelopers = Read-Host "Enter the trade developers' names in following format: (Trade: Name). Make sure every pair is followed by a comma except the last one. Example: (M: John Doe), (P: Jane Smith), (E: Bob Johnson)"
 
     $info = @{
-        ProjectName   = $projectName
-        ClientName    = $clientName
-        Country       = $country
-        State        = $state
-        Address       = $address
-        Type          = $type
-        BuildingType       = $buildingType
-        Scope         = $scope
+        ProjectName     = $projectName
+        ClientName      = $clientName
+        Country         = $country
+        State           = $state
+        Address         = $address
+        Type            = $type
+        BuildingType    = $buildingType
+        Scope           = $scope
         ProjectDirector = $projectDirector
         ProjectManager  = $projectManager
         TradeDevelopers = $tradeDevelopers
-        EquipmentList = @()
-        CreatedDate   = (Get-Date).ToString("yyyy-MM-dd")
+        EquipmentList   = @()
+        CreatedDate     = (Get-Date).ToString("yyyy-MM-dd")
     }
     return $info
 }
@@ -80,7 +80,7 @@ $projectInfo = @{}
 Write-Host "Welcome! I am your project assistant. My purpose is to help you while working on a project."
 
 # Check if user wants to create a new project or work on an existing one
-if ($projectLeaf -eq "1-Projects In Hand"){
+if ($projectLeaf -eq "1-Projects In Hand") {
     # Greet user for new project
     Write-Host "I see you are trying to create a new project. Let's get started!"
 
@@ -114,7 +114,7 @@ if ($projectLeaf -eq "1-Projects In Hand"){
     # Save projectInfo to json file in the new project folder
     $projectInfo | ConvertTo-Json | Set-Content "$projectPath/projectInfo.json"
 }
-else{
+else {
     # Greet user for existing project
     Write-Host "I see the master folder has been already created. Let's continue!"
 
@@ -140,32 +140,32 @@ else {
 if (-Not (Test-Path -Path "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg")) {
     # Copy the appropriate CAD template
     Write-Host "Now, let's copy the appropriate CAD template to the DWGs folder."
-    if ($projectInfo.Country -ne "USA"){
+    if ($projectInfo.Country -ne "USA") {
         Write-Host "Sorry, I don't have CAD templates for countries other than USA yet. Please copy the appropriate template manually."
     }
-    else{
-        if ($projectInfo.State -eq "California"){
+    else {
+        if ($projectInfo.State -eq "California") {
             $cadTemplatePath = Join-Path $resourcesFolder "Templates\CA-MP-DD.dwg"
             Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
             Write-Host "The California CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
         }
-        elseif ($projectInfo.State -eq "Florida"){
+        elseif ($projectInfo.State -eq "Florida") {
             $cadTemplatePath = Join-Path $resourcesFolder "Templates\FL-MP-DD.dwg"
             Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
             Write-Host "The Florida CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
         }
-        else{
+        else {
             Write-Host "Does this project use International or Uniform codes? (I/U)"
             $codeOption = Read-Host "Enter I for International or U for Uniform"
             while ($codeOption -ne "I" -and $codeOption -ne "U") {
                 $codeOption = Read-Host "Invalid option. Please enter I for International or U for Uniform"
             }
-            if ($codeOption -eq "I"){
+            if ($codeOption -eq "I") {
                 $cadTemplatePath = Join-Path $resourcesFolder "Templates\INT-MP-DD.dwg"
                 Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
                 Write-Host "The International CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
             }
-            else{
+            else {
                 $cadTemplatePath = Join-Path $resourcesFolder "Templates\UNI-MP-DD.dwg"
                 Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
                 Write-Host "The Uniform CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
@@ -211,6 +211,8 @@ while ($option -ne $generalMenu.Count) {
         3 {  
         }
         4 {
+        }
+        5 {
             exit 
         }
     }

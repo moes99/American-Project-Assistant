@@ -22,14 +22,15 @@
     "WH": ["GH", "HP", "EH"],
     "KEH": ["UC", "WM"],
     "IU": ["WM", "CM", "SZ", "MZ"],
-    "FU": ["NG", "LPG"]
+    "FU": ["NG", "LPG"],
+    "EF": ["IL", "RE", "CM", "CF"]
   },
   "Units": {
     "AHU": ["Ref. Tons"],
     "FCU": ["Ref. Tons"],
     "RTU": ["Ref. Tons"],
     "PU": ["Ref. Tons"],
-    "EF": ["CFM"],
+    "EF": ["CFM", "IN. W.C."],
     "FAF": ["CFM"],
     "KEH": ["CFM", "IN."],
     "ERV": ["CFM"],

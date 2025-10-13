@@ -34,7 +34,10 @@
     "SZ": "Single Zone",
     "MZ": "Multi Zone",
     "NG": "Natural Gas",
-    "LPG": "Liquid Propane Gas"
+    "LPG": "Liquid Propane Gas",
+    "IL": "Inline",
+    "RE": "Roof Exhaust",
+    "CF": "Centrifugal"
   },
   "CalculationSheets": {
     "DESP": "Duct External Static Pressure",
