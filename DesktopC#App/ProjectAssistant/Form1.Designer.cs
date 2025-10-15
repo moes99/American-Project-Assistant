@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // button1
@@ -41,11 +42,24 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1Click;
             // 
+            // iconButton1
+            // 
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Odysee;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.Location = new Point(200, 134);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(103, 79);
+            iconButton1.TabIndex = 1;
+            iconButton1.Text = "iconButton1";
+            iconButton1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(iconButton1);
             Controls.Add(button1);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +69,6 @@
         #endregion
 
         private Button button1;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

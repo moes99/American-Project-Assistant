@@ -1,5 +1,6 @@
 namespace ProjectAssistant
 {
+    using FontAwesome.Sharp;
     public partial class Form1 : Form
     {
 
