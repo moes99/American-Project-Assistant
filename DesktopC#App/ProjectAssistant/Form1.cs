@@ -3,7 +3,7 @@ namespace ProjectAssistant
     using FontAwesome.Sharp;
     public partial class mainForm : Form
     {
-        FlowLayoutPanel currentPane = null;
+        TableLayoutPanel currentPane = new TableLayoutPanel();
         public mainForm()
         {
             InitializeComponent();
@@ -11,7 +11,7 @@ namespace ProjectAssistant
         }
 
         // Method to change the visible panel
-        private void changePanel(FlowLayoutPanel newPane)
+        private void changePanel(TableLayoutPanel newPane)
         {
             if (currentPane != null)
             {
@@ -19,12 +19,6 @@ namespace ProjectAssistant
             }
             currentPane = newPane;
             currentPane.Visible = true;
-        }
-
-        // Event handler for size change of infoPane
-        private void infoPane_SizeChanged(object sender, EventArgs e)
-        {
-            projectStatusBox.Width = infoPane.Width;
         }
 
         private void newRButton_CheckedChanged(object sender, EventArgs e)
