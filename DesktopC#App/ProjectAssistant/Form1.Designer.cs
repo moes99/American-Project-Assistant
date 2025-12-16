@@ -31,7 +31,6 @@
             folderButton = new FontAwesome.Sharp.IconButton();
             infoButton = new FontAwesome.Sharp.IconButton();
             templateButton = new FontAwesome.Sharp.IconButton();
-            infoPane = new FlowLayoutPanel();
             projectStatusBox = new GroupBox();
             projectStatusTable = new TableLayoutPanel();
             newRButton = new RadioButton();
@@ -40,12 +39,12 @@
             projectPathTBox = new TextBox();
             controlGroup = new GroupBox();
             controlTable = new TableLayoutPanel();
-            datasheetButton = new FontAwesome.Sharp.IconButton();
-            infoPane.SuspendLayout();
+            infoPane = new TableLayoutPanel();
             projectStatusBox.SuspendLayout();
             projectStatusTable.SuspendLayout();
             controlGroup.SuspendLayout();
             controlTable.SuspendLayout();
+            infoPane.SuspendLayout();
             SuspendLayout();
             // 
             // folderButton
@@ -97,27 +96,16 @@
             templateButton.Text = "Templates";
             templateButton.UseVisualStyleBackColor = true;
             // 
-            // infoPane
-            // 
-            infoPane.Controls.Add(projectStatusBox);
-            infoPane.Dock = DockStyle.Fill;
-            infoPane.FlowDirection = FlowDirection.TopDown;
-            infoPane.Location = new Point(200, 0);
-            infoPane.Name = "infoPane";
-            infoPane.Size = new Size(1003, 664);
-            infoPane.TabIndex = 3;
-            infoPane.Visible = false;
-            infoPane.WrapContents = false;
-            infoPane.SizeChanged += infoPane_SizeChanged;
-            // 
             // projectStatusBox
             // 
+            infoPane.SetColumnSpan(projectStatusBox, 2);
             projectStatusBox.Controls.Add(projectStatusTable);
+            projectStatusBox.Dock = DockStyle.Fill;
             projectStatusBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             projectStatusBox.Location = new Point(3, 0);
             projectStatusBox.Margin = new Padding(3, 0, 3, 3);
             projectStatusBox.Name = "projectStatusBox";
-            projectStatusBox.Size = new Size(1000, 68);
+            projectStatusBox.Size = new Size(997, 67);
             projectStatusBox.TabIndex = 0;
             projectStatusBox.TabStop = false;
             projectStatusBox.Text = "Project Status";
@@ -138,7 +126,7 @@
             projectStatusTable.Name = "projectStatusTable";
             projectStatusTable.RowCount = 1;
             projectStatusTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            projectStatusTable.Size = new Size(994, 40);
+            projectStatusTable.Size = new Size(991, 39);
             projectStatusTable.TabIndex = 1;
             // 
             // newRButton
@@ -194,7 +182,7 @@
             projectPathTBox.Name = "projectPathTBox";
             projectPathTBox.PlaceholderText = "Project Path";
             projectPathTBox.ShortcutsEnabled = false;
-            projectPathTBox.Size = new Size(728, 34);
+            projectPathTBox.Size = new Size(725, 33);
             projectPathTBox.TabIndex = 4;
             // 
             // controlGroup
@@ -229,6 +217,7 @@
             controlTable.Size = new Size(194, 636);
             controlTable.TabIndex = 0;
             // 
+<<<<<<< HEAD
             // datasheetButton
             // 
             datasheetButton.Dock = DockStyle.Fill;
@@ -244,6 +233,23 @@
             datasheetButton.TabIndex = 4;
             datasheetButton.Text = "Datasheets";
             datasheetButton.UseVisualStyleBackColor = true;
+=======
+            // infoPane
+            // 
+            infoPane.ColumnCount = 2;
+            infoPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
+            infoPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.66667F));
+            infoPane.Controls.Add(projectStatusBox, 0, 0);
+            infoPane.Dock = DockStyle.Fill;
+            infoPane.Location = new Point(200, 0);
+            infoPane.Name = "infoPane";
+            infoPane.RowCount = 2;
+            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            infoPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            infoPane.Size = new Size(1003, 664);
+            infoPane.TabIndex = 1;
+            infoPane.Visible = false;
+>>>>>>> eea973151e9a526ed57c77cc7e1d8e25b319d98d
             // 
             // mainForm
             // 
@@ -255,12 +261,12 @@
             MinimumSize = new Size(1000, 700);
             Name = "mainForm";
             Text = "Project Assistant";
-            infoPane.ResumeLayout(false);
             projectStatusBox.ResumeLayout(false);
             projectStatusTable.ResumeLayout(false);
             projectStatusTable.PerformLayout();
             controlGroup.ResumeLayout(false);
             controlTable.ResumeLayout(false);
+            infoPane.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -268,7 +274,6 @@
         private FontAwesome.Sharp.IconButton folderButton;
         private FontAwesome.Sharp.IconButton templateButton;
         private FontAwesome.Sharp.IconButton infoButton;
-        private FlowLayoutPanel infoPane;
         private GroupBox projectStatusBox;
         private RadioButton existingRButton;
         private TableLayoutPanel projectStatusTable;
@@ -277,6 +282,10 @@
         private TableLayoutPanel controlTable;
         private Label folderPathLabel;
         private TextBox projectPathTBox;
+<<<<<<< HEAD
         private FontAwesome.Sharp.IconButton datasheetButton;
+=======
+        private TableLayoutPanel infoPane;
+>>>>>>> eea973151e9a526ed57c77cc7e1d8e25b319d98d
     }
 }
