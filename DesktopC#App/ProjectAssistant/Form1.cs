@@ -8,6 +8,7 @@ namespace ProjectAssistant
         {
             InitializeComponent();
             currentPane = infoPane;
+            infoButton.Focus();
         }
 
         // Method to change the visible panel
@@ -33,6 +34,7 @@ namespace ProjectAssistant
             {
                 projectPathTBox.Text = "\\\\192.168.1.224\\New8TB\\1-Projects In Hand";
                 projectPathTBox.Enabled = false;
+                folderPathLabel.Text = "Parent Path:";
             }
         }
 

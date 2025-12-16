@@ -40,6 +40,7 @@
             projectPathTBox = new TextBox();
             controlGroup = new GroupBox();
             controlTable = new TableLayoutPanel();
+            datasheetButton = new FontAwesome.Sharp.IconButton();
             infoPane.SuspendLayout();
             projectStatusBox.SuspendLayout();
             projectStatusTable.SuspendLayout();
@@ -181,7 +182,7 @@
             folderPathLabel.Name = "folderPathLabel";
             folderPathLabel.Size = new Size(94, 34);
             folderPathLabel.TabIndex = 3;
-            folderPathLabel.Text = "Current Path:";
+            folderPathLabel.Text = "Project Path:";
             folderPathLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // projectPathTBox
@@ -212,19 +213,37 @@
             // 
             controlTable.ColumnCount = 1;
             controlTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            controlTable.Controls.Add(datasheetButton, 0, 3);
             controlTable.Controls.Add(infoButton, 0, 0);
             controlTable.Controls.Add(templateButton, 0, 2);
             controlTable.Controls.Add(folderButton, 0, 1);
             controlTable.Dock = DockStyle.Fill;
             controlTable.Location = new Point(3, 25);
             controlTable.Name = "controlTable";
-            controlTable.RowCount = 4;
+            controlTable.RowCount = 5;
+            controlTable.RowStyles.Add(new RowStyle());
             controlTable.RowStyles.Add(new RowStyle());
             controlTable.RowStyles.Add(new RowStyle());
             controlTable.RowStyles.Add(new RowStyle());
             controlTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             controlTable.Size = new Size(194, 636);
             controlTable.TabIndex = 0;
+            // 
+            // datasheetButton
+            // 
+            datasheetButton.Dock = DockStyle.Fill;
+            datasheetButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            datasheetButton.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
+            datasheetButton.IconColor = Color.Black;
+            datasheetButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            datasheetButton.IconSize = 30;
+            datasheetButton.ImageAlign = ContentAlignment.MiddleLeft;
+            datasheetButton.Location = new Point(3, 141);
+            datasheetButton.Name = "datasheetButton";
+            datasheetButton.Size = new Size(188, 40);
+            datasheetButton.TabIndex = 4;
+            datasheetButton.Text = "Datasheets";
+            datasheetButton.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
@@ -258,5 +277,6 @@
         private TableLayoutPanel controlTable;
         private Label folderPathLabel;
         private TextBox projectPathTBox;
+        private FontAwesome.Sharp.IconButton datasheetButton;
     }
 }
