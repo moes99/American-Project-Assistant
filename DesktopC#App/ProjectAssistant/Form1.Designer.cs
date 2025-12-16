@@ -201,7 +201,6 @@
             // 
             controlTable.ColumnCount = 1;
             controlTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            controlTable.Controls.Add(datasheetButton, 0, 3);
             controlTable.Controls.Add(infoButton, 0, 0);
             controlTable.Controls.Add(templateButton, 0, 2);
             controlTable.Controls.Add(folderButton, 0, 1);
@@ -217,23 +216,6 @@
             controlTable.Size = new Size(194, 636);
             controlTable.TabIndex = 0;
             // 
-<<<<<<< HEAD
-            // datasheetButton
-            // 
-            datasheetButton.Dock = DockStyle.Fill;
-            datasheetButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            datasheetButton.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            datasheetButton.IconColor = Color.Black;
-            datasheetButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            datasheetButton.IconSize = 30;
-            datasheetButton.ImageAlign = ContentAlignment.MiddleLeft;
-            datasheetButton.Location = new Point(3, 141);
-            datasheetButton.Name = "datasheetButton";
-            datasheetButton.Size = new Size(188, 40);
-            datasheetButton.TabIndex = 4;
-            datasheetButton.Text = "Datasheets";
-            datasheetButton.UseVisualStyleBackColor = true;
-=======
             // infoPane
             // 
             infoPane.ColumnCount = 2;
@@ -249,7 +231,6 @@
             infoPane.Size = new Size(1003, 664);
             infoPane.TabIndex = 1;
             infoPane.Visible = false;
->>>>>>> eea973151e9a526ed57c77cc7e1d8e25b319d98d
             // 
             // mainForm
             // 
@@ -280,12 +261,9 @@
         private RadioButton newRButton;
         private GroupBox controlGroup;
         private TableLayoutPanel controlTable;
+        private TableLayoutPanel infoPane;
         private Label folderPathLabel;
         private TextBox projectPathTBox;
-<<<<<<< HEAD
         private FontAwesome.Sharp.IconButton datasheetButton;
-=======
-        private TableLayoutPanel infoPane;
->>>>>>> eea973151e9a526ed57c77cc7e1d8e25b319d98d
     }
 }
