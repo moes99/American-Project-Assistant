@@ -3,15 +3,74 @@ namespace ProjectAssistant
     using FontAwesome.Sharp;
     using System.IO;
     using System.Windows.Forms;
+    using System.Text.Json;
 
     public partial class mainForm : Form
     {
         TableLayoutPanel currentPane = new TableLayoutPanel();
+        string basePath = "C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Management/";
         public mainForm()
         {
             InitializeComponent();
             currentPane = infoPane;
             this.Shown += mainForm_Shown;
+
+            //Get the list of countries from the JSON file and populate the countryList ComboBox
+            countryList.SelectedIndex = 0;
+            JsonElement addressJsonData = readJson(basePath + "addressInfo.json");
+            JsonElement countries = addressJsonData.GetProperty("Countries");
+            foreach (JsonElement country in countries.EnumerateArray())
+            {
+                countryList.Items.Add(country.GetString());
+            }
+
+            //Get the list of states from the JSON file and populate the stateList ComboBox
+            stateList.SelectedIndex = 0;
+            stateList.Enabled = false;
+            JsonElement states = addressJsonData.GetProperty("States");
+            foreach (JsonElement state in states.EnumerateArray())
+            {
+                stateList.Items.Add(state.GetString());
+            }
+
+            //Get the list of scopes of work from the JSON file and populate the scopeList CheckedListBox
+            JsonElement scopeJsonData = readJson(basePath + "scopeOfWork.json");
+            JsonElement scopes = scopeJsonData.GetProperty("ScopesOfWork");
+            foreach (JsonElement scope in scopes.EnumerateArray())
+            {
+                scopeList.Items.Add(scope.GetString());
+            }
+
+            //Add labels and textboxes for each scope of work dynamically
+            developersTable.RowCount = scopeList.Items.Count;
+            for (int i = 0; i < scopeList.Items.Count; i++)
+            {
+                Label scopeLabel = new Label
+                {
+                    AutoSize = true,
+                    Dock = DockStyle.Fill,
+                    Enabled = false,
+                    Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Text = scopeList.Items[i].ToString() + ":",
+                    Name = scopeList.Items[i].ToString().ToLower() + "DevLabel",
+                };
+                TextBox scopeTBox = new TextBox
+                {
+                    Dock = DockStyle.Fill,
+                    Enabled = false,
+                    Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                    Multiline = true,
+                    Name = scopeList.Items[i].ToString().ToLower() + "DevTBox",
+                    PlaceholderText = scopeList.Items[i].ToString() + " Developer(s)"
+                };
+                developersTable.Controls.Add(scopeLabel, 0, i);
+                developersTable.Controls.Add(scopeTBox, 1, i);
+            }
+
+            typeList.SelectedIndex = 0;
+            functionList.SelectedIndex = 0;
+            conditionList.SelectedIndex = 0;
         }
 
         // Method to change the visible panel
@@ -46,6 +105,7 @@ namespace ProjectAssistant
                 setPathButton.Enabled = true;
                 folderPathLabel.Text = "Project Path:";
                 projectInfoBox.Enabled = false;
+                resetInfoButton.Enabled = false;
             }
         }
 
@@ -87,43 +147,73 @@ namespace ProjectAssistant
 
         private void scopeList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            string itemText = scopeList.Items[e.Index].ToString();
-            switch (itemText)
+            string itemText = scopeList.Items[e.Index].ToString().ToLower();
+            Control[] controls = developersTable.Controls.Find(itemText + "DevLabel", true);
+            controls[0].Enabled = e.NewValue == CheckState.Checked;
+            controls = developersTable.Controls.Find(itemText + "DevTBox", true);
+            controls[0].Enabled = e.NewValue == CheckState.Checked;
+        }
+
+        private JsonElement readJson(string path)
+        {
+            if (File.Exists(path))
             {
-                case "Mechanical":
-                    mechDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    mechDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
+                string jsonString = File.ReadAllText(path);
+                using var document = JsonDocument.Parse(jsonString);
+                return document.RootElement.Clone();
+            }
+            else
+            {
+                MessageBox.Show("The JSON file at path: " + path + " does not exist!", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new JsonElement();
+            }
+        }
 
-                case "Electrical":
-                    elecDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    elecDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
-
-                case "Plumbing":
-                    plumbDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    plumbDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
-
-                case "Fire Protection":
-                    fireDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    fireDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
-
-                case "T24/Energy":
-                    engDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    engDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
-
-                case "Structure":
-                    structDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    structDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
-
-                case "Architecture":
-                    archDevTBox.Enabled = e.NewValue == CheckState.Checked;
-                    archDevLabel.Enabled = e.NewValue == CheckState.Checked;
-                    break;
+        private void countryList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (countryList.SelectedItem.ToString() == "USA")
+            {
+                stateList.Enabled = true;
+            }
+            else
+            {
+                stateList.Enabled = false;
+                stateList.SelectedIndex = 0;
+            }
+        }
+        private void resetInfoButton_Click(object sender, EventArgs e)
+        {
+            resetFields(projectInfoTable);
+        }
+        private void resetFields(Control item)
+        {
+            foreach (Control subItem in item.Controls)
+            {
+                resetFields(subItem);
+            }
+            if (item is TextBox tb)
+            {
+                tb.Text = "";
+            }
+            else if (item is ComboBox cb)
+            {
+                cb.SelectedIndex = cb.Items.Count > 0 ? 0 : -1;
+            }
+            else if (item is CheckedListBox clb)
+            { 
+                for (int i = 0; i < clb.Items.Count; i++)
+                {
+                    clb.SetItemChecked(i, false);
+                }
+                clb.ClearSelected();
+            }
+            else if (item is ListBox lb)
+            {
+                lb.ClearSelected();
+            }
+            else if (item is RadioButton rb)
+            {
+                rb.Checked = false;
             }
         }
     }
