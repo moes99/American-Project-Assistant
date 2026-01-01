@@ -54,6 +54,7 @@
             typeList = new ComboBox();
             projectAddressBox = new GroupBox();
             projectAddressTable = new TableLayoutPanel();
+            label1 = new Label();
             fullAddressTBox = new TextBox();
             fullAddressLabel = new Label();
             stateList = new ComboBox();
@@ -66,20 +67,6 @@
             managementTable = new TableLayoutPanel();
             developersLabel = new Label();
             developersTable = new TableLayoutPanel();
-            archDevTBox = new TextBox();
-            archDevLabel = new Label();
-            structDevTBox = new TextBox();
-            structDevLabel = new Label();
-            engDevTBox = new TextBox();
-            engDevLabel = new Label();
-            fireDevTBox = new TextBox();
-            fireDevLabel = new Label();
-            plumbDevTBox = new TextBox();
-            plumbDevLabel = new Label();
-            elecDevTBox = new TextBox();
-            elecDevLabel = new Label();
-            mechDevTBox = new TextBox();
-            mechDevLabel = new Label();
             scopeLabel = new Label();
             scopeList = new CheckedListBox();
             managerLabel = new Label();
@@ -104,7 +91,6 @@
             projectAddressTable.SuspendLayout();
             managementBox.SuspendLayout();
             managementTable.SuspendLayout();
-            developersTable.SuspendLayout();
             infoControlButtonsTable.SuspendLayout();
             SuspendLayout();
             // 
@@ -359,9 +345,9 @@
             projectInfoTable.Location = new Point(3, 25);
             projectInfoTable.Name = "projectInfoTable";
             projectInfoTable.RowCount = 3;
-            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 39.99847F));
-            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.0028286F));
-            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 33.9987F));
+            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 47.2275352F));
+            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.0038242F));
+            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.9598465F));
             projectInfoTable.Size = new Size(991, 523);
             projectInfoTable.TabIndex = 1;
             // 
@@ -370,7 +356,7 @@
             buildingBox.Controls.Add(buildingTable);
             buildingBox.Dock = DockStyle.Fill;
             buildingBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buildingBox.Location = new Point(597, 212);
+            buildingBox.Location = new Point(597, 249);
             buildingBox.Name = "buildingBox";
             buildingBox.Size = new Size(391, 129);
             buildingBox.TabIndex = 3;
@@ -443,6 +429,7 @@
             functionList.DropDownStyle = ComboBoxStyle.DropDownList;
             functionList.Font = new Font("Segoe UI", 9.75F);
             functionList.FormattingEnabled = true;
+            functionList.Items.AddRange(new object[] { "Not Selected" });
             functionList.Location = new Point(123, 36);
             functionList.Name = "functionList";
             functionList.Size = new Size(259, 25);
@@ -480,7 +467,7 @@
             projectAddressBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             projectAddressBox.Location = new Point(597, 3);
             projectAddressBox.Name = "projectAddressBox";
-            projectAddressBox.Size = new Size(391, 203);
+            projectAddressBox.Size = new Size(391, 240);
             projectAddressBox.TabIndex = 2;
             projectAddressBox.TabStop = false;
             projectAddressBox.Text = "Address";
@@ -490,8 +477,9 @@
             projectAddressTable.ColumnCount = 2;
             projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
             projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            projectAddressTable.Controls.Add(fullAddressTBox, 1, 3);
-            projectAddressTable.Controls.Add(fullAddressLabel, 0, 3);
+            projectAddressTable.Controls.Add(label1, 0, 3);
+            projectAddressTable.Controls.Add(fullAddressTBox, 1, 4);
+            projectAddressTable.Controls.Add(fullAddressLabel, 0, 4);
             projectAddressTable.Controls.Add(stateList, 1, 2);
             projectAddressTable.Controls.Add(stateLabel, 0, 2);
             projectAddressTable.Controls.Add(countryLabel, 0, 1);
@@ -501,24 +489,39 @@
             projectAddressTable.Dock = DockStyle.Fill;
             projectAddressTable.Location = new Point(3, 25);
             projectAddressTable.Name = "projectAddressTable";
-            projectAddressTable.RowCount = 4;
+            projectAddressTable.RowCount = 5;
             projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            projectAddressTable.Size = new Size(385, 175);
+            projectAddressTable.Size = new Size(385, 212);
             projectAddressTable.TabIndex = 1;
             projectAddressTable.Paint += projectAddressTable_Paint;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            projectAddressTable.SetColumnSpan(label1, 2);
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(0, 99);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(385, 20);
+            label1.TabIndex = 12;
+            label1.Text = "State only needed for USA projects";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // fullAddressTBox
             // 
             fullAddressTBox.Dock = DockStyle.Fill;
             fullAddressTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            fullAddressTBox.Location = new Point(123, 102);
+            fullAddressTBox.Location = new Point(123, 122);
             fullAddressTBox.Multiline = true;
             fullAddressTBox.Name = "fullAddressTBox";
             fullAddressTBox.PlaceholderText = "Full Address";
-            fullAddressTBox.Size = new Size(259, 70);
+            fullAddressTBox.Size = new Size(259, 87);
             fullAddressTBox.TabIndex = 11;
             // 
             // fullAddressLabel
@@ -526,10 +529,10 @@
             fullAddressLabel.AutoSize = true;
             fullAddressLabel.Dock = DockStyle.Fill;
             fullAddressLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            fullAddressLabel.Location = new Point(10, 99);
+            fullAddressLabel.Location = new Point(10, 119);
             fullAddressLabel.Margin = new Padding(10, 0, 0, 0);
             fullAddressLabel.Name = "fullAddressLabel";
-            fullAddressLabel.Size = new Size(110, 76);
+            fullAddressLabel.Size = new Size(110, 93);
             fullAddressLabel.TabIndex = 10;
             fullAddressLabel.Text = "Full Address: ";
             fullAddressLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -540,6 +543,7 @@
             stateList.DropDownStyle = ComboBoxStyle.DropDownList;
             stateList.Font = new Font("Segoe UI", 9.75F);
             stateList.FormattingEnabled = true;
+            stateList.Items.AddRange(new object[] { "Not Selected" });
             stateList.Location = new Point(123, 69);
             stateList.Name = "stateList";
             stateList.Size = new Size(259, 25);
@@ -601,10 +605,12 @@
             countryList.DropDownStyle = ComboBoxStyle.DropDownList;
             countryList.Font = new Font("Segoe UI", 9.75F);
             countryList.FormattingEnabled = true;
+            countryList.Items.AddRange(new object[] { "Not Selected" });
             countryList.Location = new Point(123, 36);
             countryList.Name = "countryList";
             countryList.Size = new Size(259, 25);
             countryList.TabIndex = 7;
+            countryList.SelectedIndexChanged += countryList_SelectedIndexChanged;
             // 
             // managementBox
             // 
@@ -651,10 +657,10 @@
             developersLabel.AutoSize = true;
             developersLabel.Dock = DockStyle.Fill;
             developersLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            developersLabel.Location = new Point(10, 172);
+            developersLabel.Location = new Point(10, 185);
             developersLabel.Margin = new Padding(10, 0, 0, 0);
             developersLabel.Name = "developersLabel";
-            developersLabel.Size = new Size(130, 317);
+            developersLabel.Size = new Size(130, 304);
             developersLabel.TabIndex = 16;
             developersLabel.Text = "Trade Developers:";
             developersLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -664,22 +670,8 @@
             developersTable.ColumnCount = 2;
             developersTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             developersTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            developersTable.Controls.Add(archDevTBox, 1, 6);
-            developersTable.Controls.Add(archDevLabel, 0, 6);
-            developersTable.Controls.Add(structDevTBox, 1, 5);
-            developersTable.Controls.Add(structDevLabel, 0, 5);
-            developersTable.Controls.Add(engDevTBox, 1, 4);
-            developersTable.Controls.Add(engDevLabel, 0, 4);
-            developersTable.Controls.Add(fireDevTBox, 1, 3);
-            developersTable.Controls.Add(fireDevLabel, 0, 3);
-            developersTable.Controls.Add(plumbDevTBox, 1, 2);
-            developersTable.Controls.Add(plumbDevLabel, 0, 2);
-            developersTable.Controls.Add(elecDevTBox, 1, 1);
-            developersTable.Controls.Add(elecDevLabel, 0, 1);
-            developersTable.Controls.Add(mechDevTBox, 1, 0);
-            developersTable.Controls.Add(mechDevLabel, 0, 0);
             developersTable.Dock = DockStyle.Fill;
-            developersTable.Location = new Point(143, 175);
+            developersTable.Location = new Point(143, 188);
             developersTable.Name = "developersTable";
             developersTable.RowCount = 7;
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
@@ -689,190 +681,8 @@
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            developersTable.Size = new Size(436, 311);
+            developersTable.Size = new Size(436, 298);
             developersTable.TabIndex = 17;
-            // 
-            // archDevTBox
-            // 
-            archDevTBox.Dock = DockStyle.Fill;
-            archDevTBox.Enabled = false;
-            archDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            archDevTBox.Location = new Point(112, 267);
-            archDevTBox.Multiline = true;
-            archDevTBox.Name = "archDevTBox";
-            archDevTBox.PlaceholderText = "Architecture Developer";
-            archDevTBox.Size = new Size(321, 41);
-            archDevTBox.TabIndex = 25;
-            // 
-            // archDevLabel
-            // 
-            archDevLabel.AutoSize = true;
-            archDevLabel.Dock = DockStyle.Fill;
-            archDevLabel.Enabled = false;
-            archDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            archDevLabel.Location = new Point(0, 264);
-            archDevLabel.Margin = new Padding(0);
-            archDevLabel.Name = "archDevLabel";
-            archDevLabel.Size = new Size(109, 47);
-            archDevLabel.TabIndex = 24;
-            archDevLabel.Text = "Architecture:";
-            archDevLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // structDevTBox
-            // 
-            structDevTBox.Dock = DockStyle.Fill;
-            structDevTBox.Enabled = false;
-            structDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            structDevTBox.Location = new Point(112, 223);
-            structDevTBox.Multiline = true;
-            structDevTBox.Name = "structDevTBox";
-            structDevTBox.PlaceholderText = "Structure Developer";
-            structDevTBox.Size = new Size(321, 38);
-            structDevTBox.TabIndex = 23;
-            // 
-            // structDevLabel
-            // 
-            structDevLabel.AutoSize = true;
-            structDevLabel.Dock = DockStyle.Fill;
-            structDevLabel.Enabled = false;
-            structDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            structDevLabel.Location = new Point(0, 220);
-            structDevLabel.Margin = new Padding(0);
-            structDevLabel.Name = "structDevLabel";
-            structDevLabel.Size = new Size(109, 44);
-            structDevLabel.TabIndex = 22;
-            structDevLabel.Text = "Structure:";
-            structDevLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // engDevTBox
-            // 
-            engDevTBox.Dock = DockStyle.Fill;
-            engDevTBox.Enabled = false;
-            engDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            engDevTBox.Location = new Point(112, 179);
-            engDevTBox.Multiline = true;
-            engDevTBox.Name = "engDevTBox";
-            engDevTBox.PlaceholderText = "T24/Energy Developer";
-            engDevTBox.Size = new Size(321, 38);
-            engDevTBox.TabIndex = 21;
-            // 
-            // engDevLabel
-            // 
-            engDevLabel.AutoSize = true;
-            engDevLabel.Dock = DockStyle.Fill;
-            engDevLabel.Enabled = false;
-            engDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            engDevLabel.Location = new Point(0, 176);
-            engDevLabel.Margin = new Padding(0);
-            engDevLabel.Name = "engDevLabel";
-            engDevLabel.Size = new Size(109, 44);
-            engDevLabel.TabIndex = 20;
-            engDevLabel.Text = "T24/Energy:";
-            engDevLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // fireDevTBox
-            // 
-            fireDevTBox.Dock = DockStyle.Fill;
-            fireDevTBox.Enabled = false;
-            fireDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            fireDevTBox.Location = new Point(112, 135);
-            fireDevTBox.Multiline = true;
-            fireDevTBox.Name = "fireDevTBox";
-            fireDevTBox.PlaceholderText = "Fire Protection Developer";
-            fireDevTBox.Size = new Size(321, 38);
-            fireDevTBox.TabIndex = 19;
-            // 
-            // fireDevLabel
-            // 
-            fireDevLabel.AutoSize = true;
-            fireDevLabel.Dock = DockStyle.Fill;
-            fireDevLabel.Enabled = false;
-            fireDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            fireDevLabel.Location = new Point(0, 132);
-            fireDevLabel.Margin = new Padding(0);
-            fireDevLabel.Name = "fireDevLabel";
-            fireDevLabel.Size = new Size(109, 44);
-            fireDevLabel.TabIndex = 18;
-            fireDevLabel.Text = "Fire Protection:";
-            fireDevLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // plumbDevTBox
-            // 
-            plumbDevTBox.Dock = DockStyle.Fill;
-            plumbDevTBox.Enabled = false;
-            plumbDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            plumbDevTBox.Location = new Point(112, 91);
-            plumbDevTBox.Multiline = true;
-            plumbDevTBox.Name = "plumbDevTBox";
-            plumbDevTBox.PlaceholderText = "Plumbing Developer";
-            plumbDevTBox.Size = new Size(321, 38);
-            plumbDevTBox.TabIndex = 17;
-            // 
-            // plumbDevLabel
-            // 
-            plumbDevLabel.AutoSize = true;
-            plumbDevLabel.Dock = DockStyle.Fill;
-            plumbDevLabel.Enabled = false;
-            plumbDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            plumbDevLabel.Location = new Point(0, 88);
-            plumbDevLabel.Margin = new Padding(0);
-            plumbDevLabel.Name = "plumbDevLabel";
-            plumbDevLabel.Size = new Size(109, 44);
-            plumbDevLabel.TabIndex = 16;
-            plumbDevLabel.Text = "Plumbing:";
-            plumbDevLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // elecDevTBox
-            // 
-            elecDevTBox.Dock = DockStyle.Fill;
-            elecDevTBox.Enabled = false;
-            elecDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            elecDevTBox.Location = new Point(112, 47);
-            elecDevTBox.Multiline = true;
-            elecDevTBox.Name = "elecDevTBox";
-            elecDevTBox.PlaceholderText = "Electrical Developer";
-            elecDevTBox.Size = new Size(321, 38);
-            elecDevTBox.TabIndex = 15;
-            // 
-            // elecDevLabel
-            // 
-            elecDevLabel.AutoSize = true;
-            elecDevLabel.Dock = DockStyle.Fill;
-            elecDevLabel.Enabled = false;
-            elecDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            elecDevLabel.Location = new Point(0, 44);
-            elecDevLabel.Margin = new Padding(0);
-            elecDevLabel.Name = "elecDevLabel";
-            elecDevLabel.Size = new Size(109, 44);
-            elecDevLabel.TabIndex = 14;
-            elecDevLabel.Text = "Electrical:";
-            elecDevLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // mechDevTBox
-            // 
-            mechDevTBox.Dock = DockStyle.Fill;
-            mechDevTBox.Enabled = false;
-            mechDevTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mechDevTBox.Location = new Point(112, 3);
-            mechDevTBox.Multiline = true;
-            mechDevTBox.Name = "mechDevTBox";
-            mechDevTBox.PlaceholderText = "Mechanical Developer";
-            mechDevTBox.Size = new Size(321, 38);
-            mechDevTBox.TabIndex = 13;
-            // 
-            // mechDevLabel
-            // 
-            mechDevLabel.AutoSize = true;
-            mechDevLabel.Dock = DockStyle.Fill;
-            mechDevLabel.Enabled = false;
-            mechDevLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mechDevLabel.Location = new Point(0, 0);
-            mechDevLabel.Margin = new Padding(0);
-            mechDevLabel.Name = "mechDevLabel";
-            mechDevLabel.Size = new Size(109, 44);
-            mechDevLabel.TabIndex = 4;
-            mechDevLabel.Text = "Mechanical:";
-            mechDevLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // scopeLabel
             // 
@@ -882,7 +692,7 @@
             scopeLabel.Location = new Point(10, 99);
             scopeLabel.Margin = new Padding(10, 0, 0, 0);
             scopeLabel.Name = "scopeLabel";
-            scopeLabel.Size = new Size(130, 73);
+            scopeLabel.Size = new Size(130, 86);
             scopeLabel.TabIndex = 14;
             scopeLabel.Text = "Scope of Work:";
             scopeLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -893,11 +703,10 @@
             scopeList.Dock = DockStyle.Fill;
             scopeList.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             scopeList.FormattingEnabled = true;
-            scopeList.Items.AddRange(new object[] { "Mechanical", "Electrical", "Plumbing", "Fire Protection", "T24/Energy", "Structure", "Architecture" });
             scopeList.Location = new Point(143, 102);
             scopeList.MultiColumn = true;
             scopeList.Name = "scopeList";
-            scopeList.Size = new Size(436, 67);
+            scopeList.Size = new Size(436, 80);
             scopeList.TabIndex = 15;
             scopeList.ItemCheck += scopeList_ItemCheck;
             // 
@@ -1005,6 +814,7 @@
             resetInfoButton.TabIndex = 6;
             resetInfoButton.Text = "Reset";
             resetInfoButton.UseVisualStyleBackColor = false;
+            resetInfoButton.Click += resetInfoButton_Click;
             // 
             // saveInfoButton
             // 
@@ -1051,8 +861,6 @@
             managementBox.ResumeLayout(false);
             managementTable.ResumeLayout(false);
             managementTable.PerformLayout();
-            developersTable.ResumeLayout(false);
-            developersTable.PerformLayout();
             infoControlButtonsTable.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -1104,22 +912,9 @@
         private CheckedListBox scopeList;
         private Label developersLabel;
         private TableLayoutPanel developersTable;
-        private Label mechDevLabel;
-        private Label elecDevLabel;
-        private TextBox mechDevTBox;
-        private Label plumbDevLabel;
-        private TextBox elecDevTBox;
-        private TextBox plumbDevTBox;
-        private TextBox structDevTBox;
-        private Label structDevLabel;
-        private TextBox engDevTBox;
-        private Label engDevLabel;
-        private TextBox fireDevTBox;
-        private Label fireDevLabel;
-        private TextBox archDevTBox;
-        private Label archDevLabel;
         private FontAwesome.Sharp.IconButton saveInfoButton;
         private TableLayoutPanel infoControlButtonsTable;
         private FontAwesome.Sharp.IconButton resetInfoButton;
+        private Label label1;
     }
 }

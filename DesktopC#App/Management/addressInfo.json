@@ -1,0 +1,17 @@
+{
+  "Countries": [
+    "Morocco",
+    "UAE",
+    "KSA",
+    "Africa",
+    "Europe",
+    "Canada",
+    "USA",
+    "Lebanon",
+    "South America",
+    "New Zealand",
+    "Australia"
+  ],
+
+  "States": ["California", "Florida", "Other"]
+}
