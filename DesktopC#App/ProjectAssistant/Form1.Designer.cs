@@ -459,6 +459,7 @@
             typeList.Name = "typeList";
             typeList.Size = new Size(259, 25);
             typeList.TabIndex = 12;
+            typeList.SelectedIndexChanged += typeList_SelectedIndexChanged;
             // 
             // projectAddressBox
             // 
@@ -497,7 +498,6 @@
             projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
             projectAddressTable.Size = new Size(385, 212);
             projectAddressTable.TabIndex = 1;
-            projectAddressTable.Paint += projectAddressTable_Paint;
             // 
             // label1
             // 
@@ -833,6 +833,7 @@
             saveInfoButton.TabIndex = 5;
             saveInfoButton.Text = "Save";
             saveInfoButton.UseVisualStyleBackColor = false;
+            saveInfoButton.Click += saveInfoButton_Click;
             // 
             // mainForm
             // 

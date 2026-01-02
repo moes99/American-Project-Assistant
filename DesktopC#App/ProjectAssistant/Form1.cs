@@ -4,42 +4,35 @@ namespace ProjectAssistant
     using System.IO;
     using System.Windows.Forms;
     using System.Text.Json;
+    using DotNetEnv;
 
     public partial class mainForm : Form
     {
-        TableLayoutPanel currentPane = new TableLayoutPanel();
-        string basePath = "C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Management/";
+        string basePath = Environment.GetEnvironmentVariable("PathToManagementFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Management/";
+        string mainProjectFolder = Environment.GetEnvironmentVariable("PathToProjectParentFolder");//"\\\\192.168.1.224\\New8TB\\1-Projects In Hand";
+        JsonElement functionJsonData;
+        ProjectInfoJson projectInfoJson;
         public mainForm()
         {
             InitializeComponent();
-            currentPane = infoPane;
             this.Shown += mainForm_Shown;
 
             //Get the list of countries from the JSON file and populate the countryList ComboBox
             countryList.SelectedIndex = 0;
-            JsonElement addressJsonData = readJson(basePath + "addressInfo.json");
-            JsonElement countries = addressJsonData.GetProperty("Countries");
-            foreach (JsonElement country in countries.EnumerateArray())
-            {
-                countryList.Items.Add(country.GetString());
-            }
+            JsonElement addressJsonData = JsonFileHandler.readJson(basePath + "addressInfo.json");
+            UIHandler.populateListFromJsonElement(countryList, addressJsonData, "Countries");
 
             //Get the list of states from the JSON file and populate the stateList ComboBox
             stateList.SelectedIndex = 0;
             stateList.Enabled = false;
-            JsonElement states = addressJsonData.GetProperty("States");
-            foreach (JsonElement state in states.EnumerateArray())
-            {
-                stateList.Items.Add(state.GetString());
-            }
+            UIHandler.populateListFromJsonElement(stateList, addressJsonData, "States");
 
             //Get the list of scopes of work from the JSON file and populate the scopeList CheckedListBox
-            JsonElement scopeJsonData = readJson(basePath + "scopeOfWork.json");
-            JsonElement scopes = scopeJsonData.GetProperty("ScopesOfWork");
-            foreach (JsonElement scope in scopes.EnumerateArray())
-            {
-                scopeList.Items.Add(scope.GetString());
-            }
+            JsonElement scopeJsonData = JsonFileHandler.readJson(basePath + "scopeOfWork.json");
+            UIHandler.populateListFromJsonElement(scopeList, scopeJsonData, "ScopesOfWork");
+
+            //Get the list of functions from the JSON file and populate the functionList ComboBox
+            functionJsonData = JsonFileHandler.readJson(basePath + "buildingFunction.json");
 
             //Add labels and textboxes for each scope of work dynamically
             developersTable.RowCount = scopeList.Items.Count;
@@ -71,24 +64,16 @@ namespace ProjectAssistant
             typeList.SelectedIndex = 0;
             functionList.SelectedIndex = 0;
             conditionList.SelectedIndex = 0;
-        }
 
-        // Method to change the visible panel
-        private void changePanel(TableLayoutPanel newPane)
-        {
-            if (currentPane != null)
-            {
-                currentPane.Visible = false;
-            }
-            currentPane = newPane;
-            currentPane.Visible = true;
+            saveInfoButton.Enabled = false;
+            resetInfoButton.Enabled = false;
         }
 
         private void newRButton_CheckedChanged(object sender, EventArgs e)
         {
             if (newRButton.Checked)
             {
-                projectPathTBox.Text = "\\\\192.168.1.224\\New8TB\\1-Projects In Hand";
+                projectPathTBox.Text = mainProjectFolder;
                 projectPathTBox.Enabled = false;
                 folderPathLabel.Text = "Parent Path:";
                 setPathButton.Enabled = false;
@@ -105,18 +90,14 @@ namespace ProjectAssistant
                 setPathButton.Enabled = true;
                 folderPathLabel.Text = "Project Path:";
                 projectInfoBox.Enabled = false;
+                saveInfoButton.Enabled = false;
                 resetInfoButton.Enabled = false;
             }
         }
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-            changePanel(infoPane);
-        }
-
-        private void projectAddressTable_Paint(object sender, PaintEventArgs e)
-        {
-
+            UIHandler.changePanel(infoPane);
         }
 
         // Shown event handler: focus the infoButton after the form is displayed
@@ -135,10 +116,48 @@ namespace ProjectAssistant
                     setPathButton.BackColor = System.Drawing.Color.LightGreen;
                     projectInfoBox.Enabled = true;
                     MessageBox.Show("Path has been set successfully.", "Valid Path", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    projectInfoJson = JsonFileHandler.jsonToObject<ProjectInfoJson>(projectPathTBox.Text, "projectInfo.json");
+                    if (projectInfoJson != null)
+                    {
+                        //Populate the fields with existing data
+                        clientTBox.Text = projectInfoJson.Client;
+                        directorTBox.Text = projectInfoJson.Director;
+                        managerTBox.Text = projectInfoJson.Manager;
+                        //Scope of Work
+                        for (int i = 0; i < scopeList.Items.Count; i++)
+                        {
+                            string itemText = scopeList.Items[i].ToString();
+                            if (projectInfoJson.ScopeOfWork.Contains(itemText))
+                            {
+                                scopeList.SetItemChecked(i, true);
+                                Control[] controls = developersTable.Controls.Find(itemText.ToLower() + "DevTBox", true);
+                                foreach (string tradeDev in projectInfoJson.TradeDevelopers)
+                                {
+                                    if (tradeDev.StartsWith(itemText + ":"))
+                                    {
+                                        controls[0].Text = tradeDev.Substring(tradeDev.IndexOf(":") + 1).Trim();
+                                    }
+                                }
+                            }
+                        }
+                        projectNameTBox.Text = projectInfoJson.ProjectName;
+                        countryList.SelectedItem = projectInfoJson.Country;
+                        if (projectInfoJson.Country == "USA")
+                        {
+                            stateList.Enabled = true;
+                            stateList.SelectedItem = projectInfoJson.State;
+                        }
+                        fullAddressTBox.Text = projectInfoJson.FullAddress;
+                        typeList.SelectedItem = projectInfoJson.BuilidngType;
+                        functionList.SelectedItem = projectInfoJson.BuildingFunction;
+                        conditionList.SelectedItem = projectInfoJson.BuildingCondition;
+                        saveInfoButton.Enabled = true;
+                        resetInfoButton.Enabled = true;
+                    }
                 }
                 else
                 {
-                    setPathButton.BackColor = System.Drawing.Color.PaleVioletRed;
+                    setPathButton.BackColor = System.Drawing.Color.LightCoral;
                     projectInfoBox.Enabled = false;
                     MessageBox.Show("The specified folder does not exist! Please enter a valid path.", "Invalid Path", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -152,21 +171,6 @@ namespace ProjectAssistant
             controls[0].Enabled = e.NewValue == CheckState.Checked;
             controls = developersTable.Controls.Find(itemText + "DevTBox", true);
             controls[0].Enabled = e.NewValue == CheckState.Checked;
-        }
-
-        private JsonElement readJson(string path)
-        {
-            if (File.Exists(path))
-            {
-                string jsonString = File.ReadAllText(path);
-                using var document = JsonDocument.Parse(jsonString);
-                return document.RootElement.Clone();
-            }
-            else
-            {
-                MessageBox.Show("The JSON file at path: " + path + " does not exist!", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new JsonElement();
-            }
         }
 
         private void countryList_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,37 +187,70 @@ namespace ProjectAssistant
         }
         private void resetInfoButton_Click(object sender, EventArgs e)
         {
-            resetFields(projectInfoTable);
+            UIHandler.resetFields(projectInfoTable);
         }
-        private void resetFields(Control item)
+
+        private void saveInfoButton_Click(object sender, EventArgs e)
         {
-            foreach (Control subItem in item.Controls)
+            if (DataValidator.validateControls(projectInfoTable))
             {
-                resetFields(subItem);
-            }
-            if (item is TextBox tb)
-            {
-                tb.Text = "";
-            }
-            else if (item is ComboBox cb)
-            {
-                cb.SelectedIndex = cb.Items.Count > 0 ? 0 : -1;
-            }
-            else if (item is CheckedListBox clb)
-            { 
-                for (int i = 0; i < clb.Items.Count; i++)
+                //Get values from the form
+                string client = clientTBox.Text;
+                string director = directorTBox.Text;
+                string manager = managerTBox.Text;
+                List<string> scopeOfWork = scopeList.CheckedItems.Cast<string>().ToList();
+                List<string> tradeDevelopers = new List<string>();
+                foreach (string scope in scopeOfWork)
                 {
-                    clb.SetItemChecked(i, false);
+                    Control[] controls = developersTable.Controls.Find(scope.ToLower() + "DevTBox", true);
+                    tradeDevelopers.Add($"{scope}: {controls[0].Text}");
                 }
-                clb.ClearSelected();
+                string projectName = projectNameTBox.Text;
+                string country = countryList.SelectedItem.ToString();
+                string state = stateList.Enabled ? stateList.SelectedItem.ToString() : "N/A";
+                string fullAddress = fullAddressTBox.Text;
+                string buildingType = typeList.SelectedItem.ToString();
+                string buildingFunction = functionList.SelectedItem.ToString();
+                string buildingCondition = conditionList.SelectedItem.ToString();
+
+                //Determine project path
+                string projectPath = "";
+
+                if (projectPathTBox.Text == mainProjectFolder) //This is a new project
+                {
+                    JsonElement projectNumberingJsonData = JsonFileHandler.readJson(basePath + "projectNumbering.json");
+                    string countryPrefix = projectNumberingJsonData.GetProperty("CountryPrefix").GetProperty(country).GetString();
+                    int projectNumber = projectNumberingJsonData.GetProperty("CurrentProjectNumber").GetProperty(country).GetInt32() + 1;
+                    projectPath = $"{mainProjectFolder}/{countryPrefix}.{projectNumber}_{client} {projectName} {fullAddress} {string.Join(", ", scopeOfWork)}".Trim();
+                    projectPathTBox.Text = projectPath;
+                    folderPathLabel.Text = "Project Path:";
+                }
+                else
+                {
+                    projectPath = projectPathTBox.Text;
+                }
+                projectInfoJson = new ProjectInfoJson(client, director, manager, scopeOfWork, tradeDevelopers, projectName, country, state, fullAddress, buildingType, buildingFunction, buildingCondition);
+                bool writeResult = JsonFileHandler.writeJson(projectPath, "projectInfo.json", projectInfoJson);
+                if (writeResult)
+                {
+                    MessageBox.Show("Project information has been saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while saving the project information.", "Save Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if (item is ListBox lb)
+        }
+
+        private void typeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedType = typeList.SelectedItem.ToString();
+            functionList.Items.Clear();
+            functionList.Items.Add("Not Selected");
+            functionList.SelectedIndex = 0;
+            if (selectedType != "Not Selected")
             {
-                lb.ClearSelected();
-            }
-            else if (item is RadioButton rb)
-            {
-                rb.Checked = false;
+                UIHandler.populateListFromJsonElement(functionList, functionJsonData, selectedType);
             }
         }
     }

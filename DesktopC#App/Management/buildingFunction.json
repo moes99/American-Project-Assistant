@@ -1,0 +1,19 @@
+{
+  "Residential": ["Single-Family", "Multi-Family", "ADU", "Dormitory", "Other"],
+  "Commercial": [
+    "Office",
+    "Retail",
+    "Industrial",
+    "Warehouse",
+    "Hospitality",
+    "Healthcare",
+    "Educational",
+    "Mixed-Use",
+    "Recreational",
+    "Gymnasium",
+    "Restaurant",
+    "Swimming Pool",
+    "Parking",
+    "Other"
+  ]
+}
