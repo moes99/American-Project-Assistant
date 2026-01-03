@@ -1,0 +1,58 @@
+{
+  "Name": "Project Folder (Check The First Window for The Project Path)",
+  "Children": [
+    {
+      "Name": "Working Folder",
+      "Children": [
+        {
+          "Name": "Arch"
+        },
+        {
+          "Name": "MP",
+          "Children": [
+            {
+              "Name": "DWGs"
+            },
+            {
+              "Name": "PDFs"
+            },
+            {
+              "Name": "Calculations"
+            },
+            {
+              "Name": "Selection",
+              "Children": [
+                {
+                  "Name": "Mechanical"
+                },
+                {
+                  "Name": "Plumbing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "Electrical",
+          "Children": [
+            {
+              "Name": "DWGs"
+            },
+            {
+              "Name": "PDFs"
+            },
+            {
+              "Name": "Calculations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Received"
+    },
+    {
+      "Name": "Submitted"
+    }
+  ]
+}

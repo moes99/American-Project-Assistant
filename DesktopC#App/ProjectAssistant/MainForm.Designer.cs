@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             folderButton = new FontAwesome.Sharp.IconButton();
             infoButton = new FontAwesome.Sharp.IconButton();
             templateButton = new FontAwesome.Sharp.IconButton();
@@ -78,6 +79,19 @@
             infoControlButtonsTable = new TableLayoutPanel();
             resetInfoButton = new FontAwesome.Sharp.IconButton();
             saveInfoButton = new FontAwesome.Sharp.IconButton();
+            folderPane = new TableLayoutPanel();
+            folderControlButtonsTable = new TableLayoutPanel();
+            deleteFolderButton = new FontAwesome.Sharp.IconButton();
+            addFolderButton = new FontAwesome.Sharp.IconButton();
+            createFolderButton = new FontAwesome.Sharp.IconButton();
+            folderStructureBox = new GroupBox();
+            folderView = new TreeView();
+            folderNoteLabel = new Label();
+            templatesPane = new TableLayoutPanel();
+            templateControlButtonsTable = new TableLayoutPanel();
+            copyTemplateButton = new FontAwesome.Sharp.IconButton();
+            templateViewer = new TableLayoutPanel();
+            templateMessageLabel = new Label();
             projectPathBox.SuspendLayout();
             projectPathTable.SuspendLayout();
             controlGroup.SuspendLayout();
@@ -92,6 +106,11 @@
             managementBox.SuspendLayout();
             managementTable.SuspendLayout();
             infoControlButtonsTable.SuspendLayout();
+            folderPane.SuspendLayout();
+            folderControlButtonsTable.SuspendLayout();
+            folderStructureBox.SuspendLayout();
+            templatesPane.SuspendLayout();
+            templateControlButtonsTable.SuspendLayout();
             SuspendLayout();
             // 
             // folderButton
@@ -109,6 +128,7 @@
             folderButton.TabIndex = 1;
             folderButton.Text = "Folders";
             folderButton.UseVisualStyleBackColor = true;
+            folderButton.Click += folderButton_Click;
             // 
             // infoButton
             // 
@@ -142,6 +162,7 @@
             templateButton.TabIndex = 2;
             templateButton.Text = "Templates";
             templateButton.UseVisualStyleBackColor = true;
+            templateButton.Click += templateButton_Click;
             // 
             // projectPathBox
             // 
@@ -224,6 +245,7 @@
             // projectPathTBox
             // 
             projectPathTBox.Dock = DockStyle.Fill;
+            projectPathTBox.Enabled = false;
             projectPathTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             projectPathTBox.Location = new Point(263, 3);
             projectPathTBox.Multiline = true;
@@ -835,11 +857,217 @@
             saveInfoButton.UseVisualStyleBackColor = false;
             saveInfoButton.Click += saveInfoButton_Click;
             // 
+            // folderPane
+            // 
+            folderPane.ColumnCount = 1;
+            folderPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            folderPane.Controls.Add(folderControlButtonsTable, 0, 1);
+            folderPane.Controls.Add(folderStructureBox, 0, 0);
+            folderPane.Controls.Add(folderNoteLabel, 0, 1);
+            folderPane.Dock = DockStyle.Fill;
+            folderPane.Location = new Point(200, 0);
+            folderPane.Name = "folderPane";
+            folderPane.RowCount = 4;
+            folderPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            folderPane.RowStyles.Add(new RowStyle());
+            folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            folderPane.Size = new Size(1003, 664);
+            folderPane.TabIndex = 5;
+            folderPane.Visible = false;
+            // 
+            // folderControlButtonsTable
+            // 
+            folderControlButtonsTable.ColumnCount = 3;
+            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
+            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
+            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
+            folderControlButtonsTable.Controls.Add(deleteFolderButton, 2, 0);
+            folderControlButtonsTable.Controls.Add(addFolderButton, 1, 0);
+            folderControlButtonsTable.Controls.Add(createFolderButton, 0, 0);
+            folderControlButtonsTable.Location = new Point(3, 607);
+            folderControlButtonsTable.Name = "folderControlButtonsTable";
+            folderControlButtonsTable.RowCount = 1;
+            folderControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            folderControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            folderControlButtonsTable.Size = new Size(375, 34);
+            folderControlButtonsTable.TabIndex = 3;
+            // 
+            // deleteFolderButton
+            // 
+            deleteFolderButton.BackColor = Color.Gainsboro;
+            deleteFolderButton.Dock = DockStyle.Fill;
+            deleteFolderButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteFolderButton.IconChar = FontAwesome.Sharp.IconChar.FolderMinus;
+            deleteFolderButton.IconColor = Color.Black;
+            deleteFolderButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            deleteFolderButton.IconSize = 30;
+            deleteFolderButton.ImageAlign = ContentAlignment.MiddleLeft;
+            deleteFolderButton.Location = new Point(250, 0);
+            deleteFolderButton.Margin = new Padding(0);
+            deleteFolderButton.Name = "deleteFolderButton";
+            deleteFolderButton.Size = new Size(125, 34);
+            deleteFolderButton.TabIndex = 7;
+            deleteFolderButton.Text = "Delete";
+            deleteFolderButton.UseVisualStyleBackColor = false;
+            deleteFolderButton.Click += deleteFolderButton_Click;
+            // 
+            // addFolderButton
+            // 
+            addFolderButton.BackColor = Color.Gainsboro;
+            addFolderButton.Dock = DockStyle.Fill;
+            addFolderButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addFolderButton.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
+            addFolderButton.IconColor = Color.Black;
+            addFolderButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            addFolderButton.IconSize = 30;
+            addFolderButton.ImageAlign = ContentAlignment.MiddleLeft;
+            addFolderButton.Location = new Point(125, 0);
+            addFolderButton.Margin = new Padding(0);
+            addFolderButton.Name = "addFolderButton";
+            addFolderButton.Size = new Size(125, 34);
+            addFolderButton.TabIndex = 6;
+            addFolderButton.Text = "Add";
+            addFolderButton.UseVisualStyleBackColor = false;
+            addFolderButton.Click += addFolderButton_Click;
+            // 
+            // createFolderButton
+            // 
+            createFolderButton.BackColor = Color.Gainsboro;
+            createFolderButton.Dock = DockStyle.Fill;
+            createFolderButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createFolderButton.IconChar = FontAwesome.Sharp.IconChar.Play;
+            createFolderButton.IconColor = Color.Black;
+            createFolderButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            createFolderButton.IconSize = 25;
+            createFolderButton.ImageAlign = ContentAlignment.MiddleLeft;
+            createFolderButton.Location = new Point(0, 0);
+            createFolderButton.Margin = new Padding(0);
+            createFolderButton.Name = "createFolderButton";
+            createFolderButton.Size = new Size(125, 34);
+            createFolderButton.TabIndex = 5;
+            createFolderButton.Text = "Create";
+            createFolderButton.UseVisualStyleBackColor = false;
+            createFolderButton.Click += createFolderButton_Click;
+            // 
+            // folderStructureBox
+            // 
+            folderStructureBox.Controls.Add(folderView);
+            folderStructureBox.Dock = DockStyle.Fill;
+            folderStructureBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            folderStructureBox.Location = new Point(3, 0);
+            folderStructureBox.Margin = new Padding(3, 0, 3, 3);
+            folderStructureBox.Name = "folderStructureBox";
+            folderStructureBox.Size = new Size(997, 567);
+            folderStructureBox.TabIndex = 0;
+            folderStructureBox.TabStop = false;
+            folderStructureBox.Text = "Typical Folder Structure";
+            // 
+            // folderView
+            // 
+            folderView.Dock = DockStyle.Fill;
+            folderView.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            folderView.Location = new Point(3, 25);
+            folderView.Name = "folderView";
+            folderView.Size = new Size(991, 539);
+            folderView.TabIndex = 0;
+            folderView.AfterLabelEdit += folderView_AfterLabelEdit;
+            // 
+            // folderNoteLabel
+            // 
+            folderNoteLabel.AutoSize = true;
+            folderNoteLabel.Dock = DockStyle.Fill;
+            folderNoteLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            folderNoteLabel.Location = new Point(3, 570);
+            folderNoteLabel.Name = "folderNoteLabel";
+            folderNoteLabel.Size = new Size(997, 34);
+            folderNoteLabel.TabIndex = 1;
+            folderNoteLabel.Text = resources.GetString("folderNoteLabel.Text");
+            folderNoteLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // templatesPane
+            // 
+            templatesPane.AutoSize = true;
+            templatesPane.ColumnCount = 1;
+            templatesPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            templatesPane.Controls.Add(templateControlButtonsTable, 0, 2);
+            templatesPane.Controls.Add(templateViewer, 0, 0);
+            templatesPane.Controls.Add(templateMessageLabel, 0, 1);
+            templatesPane.Dock = DockStyle.Fill;
+            templatesPane.Location = new Point(200, 0);
+            templatesPane.Name = "templatesPane";
+            templatesPane.RowCount = 3;
+            templatesPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            templatesPane.RowStyles.Add(new RowStyle());
+            templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            templatesPane.Size = new Size(1003, 664);
+            templatesPane.TabIndex = 1;
+            templatesPane.Visible = false;
+            // 
+            // templateControlButtonsTable
+            // 
+            templateControlButtonsTable.ColumnCount = 2;
+            templateControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            templateControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            templateControlButtonsTable.Controls.Add(copyTemplateButton, 0, 0);
+            templateControlButtonsTable.Location = new Point(3, 627);
+            templateControlButtonsTable.Name = "templateControlButtonsTable";
+            templateControlButtonsTable.RowCount = 1;
+            templateControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            templateControlButtonsTable.Size = new Size(380, 34);
+            templateControlButtonsTable.TabIndex = 3;
+            // 
+            // copyTemplateButton
+            // 
+            copyTemplateButton.BackColor = Color.Gainsboro;
+            copyTemplateButton.Dock = DockStyle.Fill;
+            copyTemplateButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            copyTemplateButton.IconChar = FontAwesome.Sharp.IconChar.Clone;
+            copyTemplateButton.IconColor = Color.Black;
+            copyTemplateButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            copyTemplateButton.IconSize = 30;
+            copyTemplateButton.ImageAlign = ContentAlignment.MiddleLeft;
+            copyTemplateButton.Location = new Point(0, 0);
+            copyTemplateButton.Margin = new Padding(0);
+            copyTemplateButton.Name = "copyTemplateButton";
+            copyTemplateButton.Size = new Size(190, 34);
+            copyTemplateButton.TabIndex = 5;
+            copyTemplateButton.Text = "Copy Selected";
+            copyTemplateButton.UseVisualStyleBackColor = false;
+            // 
+            // templateViewer
+            // 
+            templateViewer.ColumnCount = 1;
+            templateViewer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            templateViewer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            templateViewer.Dock = DockStyle.Fill;
+            templateViewer.Location = new Point(3, 3);
+            templateViewer.Name = "templateViewer";
+            templateViewer.RowCount = 1;
+            templateViewer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            templateViewer.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            templateViewer.Size = new Size(997, 601);
+            templateViewer.TabIndex = 0;
+            // 
+            // templateMessageLabel
+            // 
+            templateMessageLabel.AutoSize = true;
+            templateMessageLabel.Dock = DockStyle.Fill;
+            templateMessageLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            templateMessageLabel.Location = new Point(3, 607);
+            templateMessageLabel.Name = "templateMessageLabel";
+            templateMessageLabel.Size = new Size(997, 17);
+            templateMessageLabel.TabIndex = 1;
+            templateMessageLabel.Text = "Each template is copied to its appropriate folder inside the \"Working Folder\" folder.";
+            templateMessageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1203, 664);
+            Controls.Add(templatesPane);
+            Controls.Add(folderPane);
             Controls.Add(infoPane);
             Controls.Add(controlGroup);
             MinimumSize = new Size(1000, 700);
@@ -863,7 +1091,15 @@
             managementTable.ResumeLayout(false);
             managementTable.PerformLayout();
             infoControlButtonsTable.ResumeLayout(false);
+            folderPane.ResumeLayout(false);
+            folderPane.PerformLayout();
+            folderControlButtonsTable.ResumeLayout(false);
+            folderStructureBox.ResumeLayout(false);
+            templatesPane.ResumeLayout(false);
+            templatesPane.PerformLayout();
+            templateControlButtonsTable.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -917,5 +1153,19 @@
         private TableLayoutPanel infoControlButtonsTable;
         private FontAwesome.Sharp.IconButton resetInfoButton;
         private Label label1;
+        private TableLayoutPanel folderPane;
+        private TreeView folderView;
+        private GroupBox folderStructureBox;
+        private TableLayoutPanel folderControlButtonsTable;
+        private FontAwesome.Sharp.IconButton createFolderButton;
+        private Label folderNoteLabel;
+        private FontAwesome.Sharp.IconButton deleteFolderButton;
+        private FontAwesome.Sharp.IconButton addFolderButton;
+        private TableLayoutPanel templatesPane;
+        private TableLayoutPanel templateViewer;
+        private Label templateMessageLabel;
+        private TableLayoutPanel templateControlButtonsTable;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton copyTemplateButton;
     }
 }
