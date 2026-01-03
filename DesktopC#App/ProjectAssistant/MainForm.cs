@@ -5,10 +5,12 @@ namespace ProjectAssistant
     using System.Windows.Forms;
     using System.Text.Json;
     using DotNetEnv;
+    using System.Text.Json.Nodes;
 
     public partial class mainForm : Form
     {
-        string basePath = Environment.GetEnvironmentVariable("PathToManagementFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Management/";
+        string managementFolder = Environment.GetEnvironmentVariable("PathToManagementFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Management/";
+        string resourcesFolder = Environment.GetEnvironmentVariable("PathToResourcesFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Resources/";
         string mainProjectFolder = Environment.GetEnvironmentVariable("PathToProjectParentFolder");//"\\\\192.168.1.224\\New8TB\\1-Projects In Hand";
         JsonElement functionJsonData;
         ProjectInfoJson projectInfoJson;
@@ -19,7 +21,7 @@ namespace ProjectAssistant
 
             //Get the list of countries from the JSON file and populate the countryList ComboBox
             countryList.SelectedIndex = 0;
-            JsonElement addressJsonData = JsonFileHandler.readJson(basePath + "addressInfo.json");
+            JsonElement addressJsonData = JsonFileHandler.readJson(managementFolder + "addressInfo.json");
             UIHandler.populateListFromJsonElement(countryList, addressJsonData, "Countries");
 
             //Get the list of states from the JSON file and populate the stateList ComboBox
@@ -28,11 +30,11 @@ namespace ProjectAssistant
             UIHandler.populateListFromJsonElement(stateList, addressJsonData, "States");
 
             //Get the list of scopes of work from the JSON file and populate the scopeList CheckedListBox
-            JsonElement scopeJsonData = JsonFileHandler.readJson(basePath + "scopeOfWork.json");
+            JsonElement scopeJsonData = JsonFileHandler.readJson(managementFolder + "scopeOfWork.json");
             UIHandler.populateListFromJsonElement(scopeList, scopeJsonData, "ScopesOfWork");
 
             //Get the list of functions from the JSON file and populate the functionList ComboBox
-            functionJsonData = JsonFileHandler.readJson(basePath + "buildingFunction.json");
+            functionJsonData = JsonFileHandler.readJson(managementFolder + "buildingFunction.json");
 
             //Add labels and textboxes for each scope of work dynamically
             developersTable.RowCount = scopeList.Items.Count;
@@ -67,6 +69,14 @@ namespace ProjectAssistant
 
             saveInfoButton.Enabled = false;
             resetInfoButton.Enabled = false;
+
+            //Populate folderview
+            JsonElement folderStructure = JsonFileHandler.readJson(managementFolder + "folderStructure.json");
+            UIHandler.buildTreeViewFromJsonElement(folderView, folderStructure);
+
+            //Populate templateViewer
+            List<string> templateDirectories = FolderHandler.getAllDirectoriesHavingFilesOnly(resourcesFolder + "Templates/");
+            UIHandler.populateTableWithListViewOfFiles(templateViewer, templateDirectories);
         }
 
         private void newRButton_CheckedChanged(object sender, EventArgs e)
@@ -78,6 +88,8 @@ namespace ProjectAssistant
                 folderPathLabel.Text = "Parent Path:";
                 setPathButton.Enabled = false;
                 projectInfoBox.Enabled = true;
+                saveInfoButton.Enabled = true;
+                resetInfoButton.Enabled = true;
             }
         }
 
@@ -215,15 +227,22 @@ namespace ProjectAssistant
 
                 //Determine project path
                 string projectPath = "";
+                JsonElement projectNumberingJsonData;
+                JsonNode projectNumberingJsonNode;
 
                 if (projectPathTBox.Text == mainProjectFolder) //This is a new project
                 {
-                    JsonElement projectNumberingJsonData = JsonFileHandler.readJson(basePath + "projectNumbering.json");
+                    projectNumberingJsonData = JsonFileHandler.readJson(managementFolder + "projectNumbering.json");
+                    projectNumberingJsonNode = JsonNode.Parse(projectNumberingJsonData.GetRawText());
                     string countryPrefix = projectNumberingJsonData.GetProperty("CountryPrefix").GetProperty(country).GetString();
-                    int projectNumber = projectNumberingJsonData.GetProperty("CurrentProjectNumber").GetProperty(country).GetInt32() + 1;
+                    int projectNumber = projectNumberingJsonData.GetProperty("CurrentProjectNumber").GetProperty(country).GetInt32();
                     projectPath = $"{mainProjectFolder}/{countryPrefix}.{projectNumber}_{client} {projectName} {fullAddress} {string.Join(", ", scopeOfWork)}".Trim();
                     projectPathTBox.Text = projectPath;
                     folderPathLabel.Text = "Project Path:";
+
+                    //Update the project numbering JSON file
+                    projectNumberingJsonNode["CurrentProjectNumber"][country] = projectNumber + 1;
+                    JsonFileHandler.writeJson(managementFolder, "projectNumbering.json", projectNumberingJsonNode);
                 }
                 else
                 {
@@ -252,6 +271,74 @@ namespace ProjectAssistant
             {
                 UIHandler.populateListFromJsonElement(functionList, functionJsonData, selectedType);
             }
+        }
+
+        private void folderButton_Click(object sender, EventArgs e)
+        {
+            folderView.Nodes[0].Text = projectPathTBox.Text;
+            UIHandler.changePanel(folderPane);
+        }
+
+        private void createFolderButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(projectPathTBox.Text) && projectPathTBox.Text != mainProjectFolder)
+            {
+                bool result = FolderHandler.createFolderFromTreeView(projectPathTBox.Text, folderView);
+                if (result)
+                {
+                    MessageBox.Show("Folders have been created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while creating folders.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please either set a valid project path or create a new one.", "Path Not Set", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void addFolderButton_Click(object sender, EventArgs e)
+        {
+            if (folderView.SelectedNode != null)
+            {
+                TreeNode newNode = new TreeNode("New Folder");
+                folderView.SelectedNode.Nodes.Add(newNode);
+                folderView.SelectedNode.Expand();
+                folderView.LabelEdit = true;
+                newNode.BeginEdit();
+            }
+            else
+            {
+                MessageBox.Show("Please select a node to add a new folder under.", "No Node Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void folderView_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.Label))
+            {
+                e.CancelEdit = true;
+                MessageBox.Show("Folder name cannot be empty.", "Invalid Folder Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void deleteFolderButton_Click(object sender, EventArgs e)
+        {
+            if (folderView.SelectedNode != null)
+            {
+                folderView.Nodes.Remove(folderView.SelectedNode);
+            }
+            else
+            {
+                MessageBox.Show("Please select a node to delete.", "No Node Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void templateButton_Click(object sender, EventArgs e)
+        {
+            UIHandler.changePanel(templatesPane);
         }
     }
 }

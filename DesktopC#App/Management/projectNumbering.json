@@ -1,4 +1,4 @@
-{
+﻿{
   "CountryPrefix": {
     "Morocco": "2.10",
     "UAE": "2.5",
@@ -12,14 +12,13 @@
     "New Zealand": "2.4",
     "Australia": "2.3"
   },
-
   "CurrentProjectNumber": {
-    "Morocco": 8,
+    "Morocco": 9,
     "UAE": 29,
-    "KSA": 14,
+    "KSA": 15,
     "Africa": 3,
     "Europe": 9,
-    "Canada": 288,
+    "Canada": 289,
     "USA": 3240,
     "Lebanon": 10,
     "South America": 4,
