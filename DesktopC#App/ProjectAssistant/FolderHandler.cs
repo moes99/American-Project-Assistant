@@ -113,5 +113,30 @@ namespace ProjectAssistant
             }
         }
 
+        public static bool copyFileToDirectory(string sourceFilePath, string destinationDirectory)
+        {
+            try
+            {
+                if (!File.Exists(sourceFilePath))
+                {
+                    MessageBox.Show("Source file does not exist. " + sourceFilePath , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!Directory.Exists(destinationDirectory))
+                {
+                    Directory.CreateDirectory(destinationDirectory);
+                }
+                string fileName = Path.GetFileName(sourceFilePath);
+                string destinationFilePath = Path.Combine(destinationDirectory, fileName);
+                File.Copy(sourceFilePath, destinationFilePath, true);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error copying file: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }
