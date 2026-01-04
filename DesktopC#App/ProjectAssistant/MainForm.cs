@@ -340,5 +340,48 @@ namespace ProjectAssistant
         {
             UIHandler.changePanel(templatesPane);
         }
+
+        private void copyTemplateButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(projectPathTBox.Text) && projectPathTBox.Text != mainProjectFolder)
+            {
+                int rowCount = templateViewer.RowCount;
+                bool result = false;
+                if (rowCount > 0)
+                {
+                    foreach (GroupBox gb in templateViewer.Controls)
+                    {
+                        string[] paths = gb.Text.Split(" ");
+                        string pathFolders = string.Join("/", paths);
+                        string sourcePath = resourcesFolder + "Templates/" + gb.Text;
+                        string destinationPath = projectPathTBox.Text + "/Working Folder/" + pathFolders;
+
+                        ListView fileViewer = gb.Controls.OfType<ListView>().FirstOrDefault() ?? new ListView();
+                        foreach (ListViewItem item in fileViewer.CheckedItems)
+                        {
+                            string fileName = item.Text;
+                            result = FolderHandler.copyFileToDirectory(sourcePath + "/" + fileName, destinationPath);
+                        }
+                    }
+                }
+                if (result)
+                {
+                    MessageBox.Show("Selected templates have been copied successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No templates available to copy.", "No Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please either set a valid project path or create a new one.", "Path Not Set", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void datasheetButton_Click(object sender, EventArgs e)
+        {
+            UIHandler.changePanel(datasheetsPane);
+        }
     }
 }
