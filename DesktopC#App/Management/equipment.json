@@ -1,4 +1,5 @@
 {
+  "Categories": ["Mechanical", "Plumbing", "Electrical"],
   "EquipmentByCategory": {
     "Mechanical": [
       "AHU",

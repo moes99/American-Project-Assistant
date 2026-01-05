@@ -96,16 +96,19 @@
             label2 = new Label();
             datasheetControlButtonsTable = new TableLayoutPanel();
             copyDatasheetButton = new FontAwesome.Sharp.IconButton();
+            findDatasheetButton = new FontAwesome.Sharp.IconButton();
             datasheetGroupBox = new GroupBox();
             datasheetSplitterContainer = new SplitContainer();
             inputGroupBox = new GroupBox();
             inputTable = new TableLayoutPanel();
             equipmentOptionLabel = new Label();
-            equipmentOptionList = new ComboBox();
             equipmentTypeLabel = new Label();
             equipmentTypeList = new ComboBox();
             equipmentCatLabel = new Label();
             equipmentCatList = new ComboBox();
+            equipmentOptionList = new ComboBox();
+            equipOptionAcronymLabel = new Label();
+            equipTypeAcronymLabel = new Label();
             equipmentSpecsTable = new TableLayoutPanel();
             matchingDatasheetGroupBox = new GroupBox();
             matchingDatasheetList = new CheckedListBox();
@@ -1127,7 +1130,8 @@
             datasheetControlButtonsTable.ColumnCount = 2;
             datasheetControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             datasheetControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            datasheetControlButtonsTable.Controls.Add(copyDatasheetButton, 0, 0);
+            datasheetControlButtonsTable.Controls.Add(copyDatasheetButton, 1, 0);
+            datasheetControlButtonsTable.Controls.Add(findDatasheetButton, 0, 0);
             datasheetControlButtonsTable.Location = new Point(3, 627);
             datasheetControlButtonsTable.Name = "datasheetControlButtonsTable";
             datasheetControlButtonsTable.RowCount = 1;
@@ -1145,13 +1149,31 @@
             copyDatasheetButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             copyDatasheetButton.IconSize = 30;
             copyDatasheetButton.ImageAlign = ContentAlignment.MiddleLeft;
-            copyDatasheetButton.Location = new Point(0, 0);
+            copyDatasheetButton.Location = new Point(125, 0);
             copyDatasheetButton.Margin = new Padding(0);
             copyDatasheetButton.Name = "copyDatasheetButton";
             copyDatasheetButton.Size = new Size(125, 34);
-            copyDatasheetButton.TabIndex = 5;
+            copyDatasheetButton.TabIndex = 6;
             copyDatasheetButton.Text = "Copy";
             copyDatasheetButton.UseVisualStyleBackColor = false;
+            // 
+            // findDatasheetButton
+            // 
+            findDatasheetButton.BackColor = Color.Gainsboro;
+            findDatasheetButton.Dock = DockStyle.Fill;
+            findDatasheetButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            findDatasheetButton.IconChar = FontAwesome.Sharp.IconChar.Search;
+            findDatasheetButton.IconColor = Color.Black;
+            findDatasheetButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            findDatasheetButton.IconSize = 30;
+            findDatasheetButton.ImageAlign = ContentAlignment.MiddleLeft;
+            findDatasheetButton.Location = new Point(0, 0);
+            findDatasheetButton.Margin = new Padding(0);
+            findDatasheetButton.Name = "findDatasheetButton";
+            findDatasheetButton.Size = new Size(125, 34);
+            findDatasheetButton.TabIndex = 5;
+            findDatasheetButton.Text = "Find";
+            findDatasheetButton.UseVisualStyleBackColor = false;
             // 
             // datasheetGroupBox
             // 
@@ -1168,7 +1190,6 @@
             // 
             // datasheetSplitterContainer
             // 
-            datasheetSplitterContainer.BorderStyle = BorderStyle.FixedSingle;
             datasheetSplitterContainer.Dock = DockStyle.Fill;
             datasheetSplitterContainer.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             datasheetSplitterContainer.Location = new Point(3, 25);
@@ -1192,7 +1213,7 @@
             inputGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             inputGroupBox.Location = new Point(0, 0);
             inputGroupBox.Name = "inputGroupBox";
-            inputGroupBox.Size = new Size(493, 571);
+            inputGroupBox.Size = new Size(495, 573);
             inputGroupBox.TabIndex = 0;
             inputGroupBox.TabStop = false;
             inputGroupBox.Text = "Inputs";
@@ -1202,22 +1223,26 @@
             inputTable.ColumnCount = 2;
             inputTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             inputTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            inputTable.Controls.Add(equipmentOptionLabel, 0, 2);
-            inputTable.Controls.Add(equipmentOptionList, 1, 2);
+            inputTable.Controls.Add(equipmentOptionLabel, 0, 3);
             inputTable.Controls.Add(equipmentTypeLabel, 0, 1);
             inputTable.Controls.Add(equipmentTypeList, 1, 1);
             inputTable.Controls.Add(equipmentCatLabel, 0, 0);
             inputTable.Controls.Add(equipmentCatList, 1, 0);
-            inputTable.Controls.Add(equipmentSpecsTable, 0, 3);
+            inputTable.Controls.Add(equipmentOptionList, 1, 3);
+            inputTable.Controls.Add(equipOptionAcronymLabel, 0, 4);
+            inputTable.Controls.Add(equipTypeAcronymLabel, 0, 2);
+            inputTable.Controls.Add(equipmentSpecsTable, 0, 5);
             inputTable.Dock = DockStyle.Fill;
             inputTable.Location = new Point(3, 25);
             inputTable.Name = "inputTable";
-            inputTable.RowCount = 4;
+            inputTable.RowCount = 6;
             inputTable.RowStyles.Add(new RowStyle());
             inputTable.RowStyles.Add(new RowStyle());
             inputTable.RowStyles.Add(new RowStyle());
-            inputTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            inputTable.Size = new Size(487, 543);
+            inputTable.RowStyles.Add(new RowStyle());
+            inputTable.RowStyles.Add(new RowStyle());
+            inputTable.RowStyles.Add(new RowStyle());
+            inputTable.Size = new Size(489, 545);
             inputTable.TabIndex = 0;
             // 
             // equipmentOptionLabel
@@ -1225,44 +1250,37 @@
             equipmentOptionLabel.AutoSize = true;
             equipmentOptionLabel.Dock = DockStyle.Fill;
             equipmentOptionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            equipmentOptionLabel.Location = new Point(3, 70);
+            equipmentOptionLabel.Location = new Point(3, 79);
             equipmentOptionLabel.Name = "equipmentOptionLabel";
-            equipmentOptionLabel.Size = new Size(237, 35);
+            equipmentOptionLabel.Size = new Size(238, 31);
             equipmentOptionLabel.TabIndex = 4;
             equipmentOptionLabel.Text = "Option:";
-            equipmentOptionLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // equipmentOptionList
-            // 
-            equipmentOptionList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            equipmentOptionList.DropDownStyle = ComboBoxStyle.DropDownList;
-            equipmentOptionList.FormattingEnabled = true;
-            equipmentOptionList.Location = new Point(246, 73);
-            equipmentOptionList.Name = "equipmentOptionList";
-            equipmentOptionList.Size = new Size(238, 29);
-            equipmentOptionList.TabIndex = 5;
+            equipmentOptionLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // equipmentTypeLabel
             // 
             equipmentTypeLabel.AutoSize = true;
             equipmentTypeLabel.Dock = DockStyle.Fill;
             equipmentTypeLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            equipmentTypeLabel.Location = new Point(3, 35);
+            equipmentTypeLabel.Location = new Point(3, 31);
             equipmentTypeLabel.Name = "equipmentTypeLabel";
-            equipmentTypeLabel.Size = new Size(237, 35);
+            equipmentTypeLabel.Size = new Size(238, 31);
             equipmentTypeLabel.TabIndex = 2;
             equipmentTypeLabel.Text = "Equipment Type:";
-            equipmentTypeLabel.TextAlign = ContentAlignment.MiddleCenter;
+            equipmentTypeLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // equipmentTypeList
             // 
             equipmentTypeList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             equipmentTypeList.DropDownStyle = ComboBoxStyle.DropDownList;
+            equipmentTypeList.Font = new Font("Segoe UI", 9.75F);
             equipmentTypeList.FormattingEnabled = true;
-            equipmentTypeList.Location = new Point(246, 38);
+            equipmentTypeList.Items.AddRange(new object[] { "Not Selected" });
+            equipmentTypeList.Location = new Point(247, 34);
             equipmentTypeList.Name = "equipmentTypeList";
-            equipmentTypeList.Size = new Size(238, 29);
+            equipmentTypeList.Size = new Size(239, 25);
             equipmentTypeList.TabIndex = 3;
+            equipmentTypeList.SelectedIndexChanged += equipmentTypeList_SelectedIndexChanged;
             // 
             // equipmentCatLabel
             // 
@@ -1271,20 +1289,61 @@
             equipmentCatLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             equipmentCatLabel.Location = new Point(3, 0);
             equipmentCatLabel.Name = "equipmentCatLabel";
-            equipmentCatLabel.Size = new Size(237, 35);
+            equipmentCatLabel.Size = new Size(238, 31);
             equipmentCatLabel.TabIndex = 0;
             equipmentCatLabel.Text = "Equipment Category:";
-            equipmentCatLabel.TextAlign = ContentAlignment.MiddleCenter;
+            equipmentCatLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // equipmentCatList
             // 
             equipmentCatList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             equipmentCatList.DropDownStyle = ComboBoxStyle.DropDownList;
+            equipmentCatList.Font = new Font("Segoe UI", 9.75F);
             equipmentCatList.FormattingEnabled = true;
-            equipmentCatList.Location = new Point(246, 3);
+            equipmentCatList.Items.AddRange(new object[] { "Not Selected" });
+            equipmentCatList.Location = new Point(247, 3);
             equipmentCatList.Name = "equipmentCatList";
-            equipmentCatList.Size = new Size(238, 29);
+            equipmentCatList.Size = new Size(239, 25);
             equipmentCatList.TabIndex = 1;
+            equipmentCatList.SelectedIndexChanged += equipmentCatList_SelectedIndexChanged;
+            // 
+            // equipmentOptionList
+            // 
+            equipmentOptionList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            equipmentOptionList.DropDownStyle = ComboBoxStyle.DropDownList;
+            equipmentOptionList.Font = new Font("Segoe UI", 9.75F);
+            equipmentOptionList.FormattingEnabled = true;
+            equipmentOptionList.Location = new Point(247, 82);
+            equipmentOptionList.Name = "equipmentOptionList";
+            equipmentOptionList.Size = new Size(239, 25);
+            equipmentOptionList.TabIndex = 5;
+            equipmentOptionList.SelectedIndexChanged += equipmentOptionList_SelectedIndexChanged;
+            // 
+            // equipOptionAcronymLabel
+            // 
+            equipOptionAcronymLabel.AutoSize = true;
+            inputTable.SetColumnSpan(equipOptionAcronymLabel, 2);
+            equipOptionAcronymLabel.Dock = DockStyle.Fill;
+            equipOptionAcronymLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            equipOptionAcronymLabel.Location = new Point(3, 110);
+            equipOptionAcronymLabel.Name = "equipOptionAcronymLabel";
+            equipOptionAcronymLabel.Size = new Size(483, 17);
+            equipOptionAcronymLabel.TabIndex = 8;
+            equipOptionAcronymLabel.Text = "description of equipment option";
+            equipOptionAcronymLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // equipTypeAcronymLabel
+            // 
+            equipTypeAcronymLabel.AutoSize = true;
+            inputTable.SetColumnSpan(equipTypeAcronymLabel, 2);
+            equipTypeAcronymLabel.Dock = DockStyle.Fill;
+            equipTypeAcronymLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            equipTypeAcronymLabel.Location = new Point(3, 62);
+            equipTypeAcronymLabel.Name = "equipTypeAcronymLabel";
+            equipTypeAcronymLabel.Size = new Size(483, 17);
+            equipTypeAcronymLabel.TabIndex = 7;
+            equipTypeAcronymLabel.Text = "description of equipment type";
+            equipTypeAcronymLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // equipmentSpecsTable
             // 
@@ -1293,13 +1352,13 @@
             equipmentSpecsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             equipmentSpecsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             equipmentSpecsTable.Dock = DockStyle.Fill;
-            equipmentSpecsTable.Location = new Point(3, 108);
+            equipmentSpecsTable.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            equipmentSpecsTable.Location = new Point(3, 130);
             equipmentSpecsTable.Name = "equipmentSpecsTable";
             equipmentSpecsTable.RowCount = 1;
-            equipmentSpecsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            equipmentSpecsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            equipmentSpecsTable.Size = new Size(481, 432);
-            equipmentSpecsTable.TabIndex = 6;
+            equipmentSpecsTable.RowStyles.Add(new RowStyle());
+            equipmentSpecsTable.Size = new Size(483, 412);
+            equipmentSpecsTable.TabIndex = 9;
             // 
             // matchingDatasheetGroupBox
             // 
@@ -1308,7 +1367,7 @@
             matchingDatasheetGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             matchingDatasheetGroupBox.Location = new Point(0, 0);
             matchingDatasheetGroupBox.Name = "matchingDatasheetGroupBox";
-            matchingDatasheetGroupBox.Size = new Size(490, 571);
+            matchingDatasheetGroupBox.Size = new Size(492, 573);
             matchingDatasheetGroupBox.TabIndex = 1;
             matchingDatasheetGroupBox.TabStop = false;
             matchingDatasheetGroupBox.Text = "Matching Datasheets";
@@ -1320,7 +1379,7 @@
             matchingDatasheetList.FormattingEnabled = true;
             matchingDatasheetList.Location = new Point(3, 25);
             matchingDatasheetList.Name = "matchingDatasheetList";
-            matchingDatasheetList.Size = new Size(484, 543);
+            matchingDatasheetList.Size = new Size(486, 545);
             matchingDatasheetList.TabIndex = 0;
             // 
             // mainForm
@@ -1333,6 +1392,7 @@
             Controls.Add(folderPane);
             Controls.Add(infoPane);
             Controls.Add(controlGroup);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 700);
             Name = "mainForm";
             Text = "Project Assistant";
@@ -1443,7 +1503,7 @@
         private TableLayoutPanel datasheetsPane;
         private Label label2;
         private TableLayoutPanel datasheetControlButtonsTable;
-        private FontAwesome.Sharp.IconButton copyDatasheetButton;
+        private FontAwesome.Sharp.IconButton findDatasheetButton;
         private GroupBox datasheetGroupBox;
         private SplitContainer datasheetSplitterContainer;
         private GroupBox inputGroupBox;
@@ -1457,6 +1517,9 @@
         private ComboBox equipmentTypeList;
         private Label equipmentOptionLabel;
         private ComboBox equipmentOptionList;
+        private Label equipTypeAcronymLabel;
+        private Label equipOptionAcronymLabel;
         private TableLayoutPanel equipmentSpecsTable;
+        private FontAwesome.Sharp.IconButton copyDatasheetButton;
     }
 }

@@ -13,6 +13,7 @@ namespace ProjectAssistant
         string resourcesFolder = Environment.GetEnvironmentVariable("PathToResourcesFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Resources/";
         string mainProjectFolder = Environment.GetEnvironmentVariable("PathToProjectParentFolder");//"\\\\192.168.1.224\\New8TB\\1-Projects In Hand";
         JsonElement functionJsonData;
+        JsonElement equipmentJsonData;
         ProjectInfoJson projectInfoJson;
         public mainForm()
         {
@@ -77,6 +78,11 @@ namespace ProjectAssistant
             //Populate templateViewer
             List<string> templateDirectories = FolderHandler.getAllDirectoriesHavingFilesOnly(resourcesFolder + "Templates/");
             UIHandler.populateTableWithListViewOfFiles(templateViewer, templateDirectories);
+
+            //Read equipment json file
+            equipmentJsonData = JsonFileHandler.readJson(managementFolder + "equipment.json");
+            UIHandler.populateListFromJsonElement(equipmentCatList, equipmentJsonData, "Categories");
+            equipmentCatList.SelectedIndex = 0;
         }
 
         private void newRButton_CheckedChanged(object sender, EventArgs e)
@@ -383,5 +389,103 @@ namespace ProjectAssistant
         {
             UIHandler.changePanel(datasheetsPane);
         }
+
+        private void equipmentCatList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategory = equipmentCatList.SelectedItem.ToString();
+            if (selectedCategory == "Not Selected")
+            {
+                equipmentTypeList.Enabled = false;
+                equipmentOptionList.Enabled = false;
+            }
+            else
+            {
+                equipmentTypeList.Enabled = true;
+                equipmentOptionList.Enabled = false;
+                equipmentTypeList.Items.Clear();
+                equipmentTypeList.Items.Add("Not Selected");
+                equipmentTypeList.SelectedIndex = 0;
+                UIHandler.populateListFromJsonElement(equipmentTypeList, equipmentJsonData.GetProperty("EquipmentByCategory"), selectedCategory);
+            }
+        }
+
+        private void equipmentTypeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedType = equipmentTypeList.SelectedItem.ToString();
+            if (selectedType == "Not Selected")
+            {
+                equipmentOptionList.Enabled = false;
+                equipTypeAcronymLabel.Text = "N/A";
+                equipmentSpecsTable.Controls.Clear();
+            }
+            else
+            {
+                equipTypeAcronymLabel.Text = $"{selectedType}: {getAcronymDefinition(selectedType, equipmentJsonData.GetProperty("Acronyms"))}";
+                equipmentOptionList.Enabled = true;
+                equipmentOptionList.Items.Clear();
+                equipmentOptionList.Items.Add("Not Selected");
+                equipmentOptionList.SelectedIndex = 0;
+                UIHandler.populateListFromJsonElement(equipmentOptionList, equipmentJsonData.GetProperty("Options"), selectedType);
+
+                //Add labels and textboxes for each required input dynamically
+                equipmentSpecsTable.RowStyles.Clear();
+                JsonElement requiredInputs = equipmentJsonData.GetProperty("RequiredInput").GetProperty(selectedType);
+                equipmentSpecsTable.RowCount = requiredInputs.GetArrayLength();
+                int i = 0;
+                foreach (JsonElement input in requiredInputs.EnumerateArray())
+                {
+                    Label inputLabel = new Label
+                    {
+                        AutoSize = true,
+                        Dock = DockStyle.Fill,
+                        Enabled = true,
+                        Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0),
+                        TextAlign = ContentAlignment.MiddleLeft,
+                        Text = $"{input.GetString()} (in {equipmentJsonData.GetProperty("Units").GetProperty(input.GetString())}):",
+                        Name = $"inputLabel{i}"
+                    };
+                    TextBox inputTBox = new TextBox
+                    {
+                        Dock = DockStyle.Fill,
+                        Enabled = true,
+                        Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                        Multiline = true,
+                        Name = $"inputTBox{i}",
+                        PlaceholderText = inputLabel.Text.Replace(":", "")
+                    };
+                    equipmentSpecsTable.Controls.Add(inputLabel, 0, i);
+                    equipmentSpecsTable.Controls.Add(inputTBox, 1, i);
+                    //Make each row autosize to its content
+                    equipmentSpecsTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                    i++;
+                }
+            }
+        }
+
+        private void equipmentOptionList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedOption = equipmentOptionList.SelectedItem.ToString();
+            if (selectedOption == "Not Selected")
+            {
+                equipOptionAcronymLabel.Text = "N/A";
+            }
+            else
+            {
+                equipOptionAcronymLabel.Text = $"{selectedOption}: {getAcronymDefinition(selectedOption, equipmentJsonData.GetProperty("Acronyms"))}";
+            }
+        }
+
+        private string getAcronymDefinition(string acronym, JsonElement data)
+        {
+            try
+            {
+                return data.GetProperty(acronym).GetString() ?? "Definition not found";
+            }
+            catch (Exception ex)
+            {
+                return "Definition not found";
+            }
+        }
+
     }
 }
