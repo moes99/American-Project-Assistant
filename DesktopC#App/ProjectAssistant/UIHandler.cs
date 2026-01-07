@@ -58,6 +58,7 @@ namespace ProjectAssistant
 
         public static void populateListFromJsonElement(Control list, JsonElement source, string property)
         {
+            list.Enabled = true;
             try
             {
                 JsonElement items = source.GetProperty(property);
@@ -76,6 +77,10 @@ namespace ProjectAssistant
                         lb.Items.Add(item.GetString());
                     }
                 }
+            }
+            catch (KeyNotFoundException ex)
+            { 
+                list.Enabled = false;
             }
             catch (Exception ex)
             {
