@@ -55,15 +55,19 @@
             typeList = new ComboBox();
             projectAddressBox = new GroupBox();
             projectAddressTable = new TableLayoutPanel();
+            codeTypeList = new ComboBox();
+            codeTypeLabel = new Label();
+            cityTBox = new TextBox();
+            cityLabel = new Label();
             stateNoteLabel = new Label();
-            fullAddressTBox = new TextBox();
-            fullAddressLabel = new Label();
             stateList = new ComboBox();
             stateLabel = new Label();
             projectNameTBox = new TextBox();
             projectNameLabel = new Label();
             countryLabel = new Label();
             countryList = new ComboBox();
+            fullAddressLabel = new Label();
+            fullAddressTBox = new TextBox();
             managementBox = new GroupBox();
             managementTable = new TableLayoutPanel();
             developersLabel = new Label();
@@ -202,7 +206,7 @@
             projectPathBox.Location = new Point(3, 0);
             projectPathBox.Margin = new Padding(3, 0, 3, 3);
             projectPathBox.Name = "projectPathBox";
-            projectPathBox.Size = new Size(997, 67);
+            projectPathBox.Size = new Size(1102, 67);
             projectPathBox.TabIndex = 0;
             projectPathBox.TabStop = false;
             projectPathBox.Text = "Project Path";
@@ -225,7 +229,7 @@
             projectPathTable.Name = "projectPathTable";
             projectPathTable.RowCount = 1;
             projectPathTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            projectPathTable.Size = new Size(991, 39);
+            projectPathTable.Size = new Size(1096, 39);
             projectPathTable.TabIndex = 1;
             // 
             // newRButton
@@ -281,7 +285,7 @@
             projectPathTBox.Multiline = true;
             projectPathTBox.Name = "projectPathTBox";
             projectPathTBox.PlaceholderText = "Project Path";
-            projectPathTBox.Size = new Size(685, 33);
+            projectPathTBox.Size = new Size(790, 33);
             projectPathTBox.TabIndex = 4;
             // 
             // setPathButton
@@ -291,7 +295,7 @@
             setPathButton.IconColor = Color.Black;
             setPathButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             setPathButton.IconSize = 30;
-            setPathButton.Location = new Point(954, 3);
+            setPathButton.Location = new Point(1059, 3);
             setPathButton.Name = "setPathButton";
             setPathButton.Rotation = -5D;
             setPathButton.Size = new Size(34, 33);
@@ -355,6 +359,8 @@
             // 
             // infoPane
             // 
+            infoPane.AutoScroll = true;
+            infoPane.AutoScrollMinSize = new Size(1100, 660);
             infoPane.ColumnCount = 1;
             infoPane.ColumnStyles.Add(new ColumnStyle());
             infoPane.Controls.Add(projectInfoBox, 0, 1);
@@ -368,7 +374,7 @@
             infoPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            infoPane.Size = new Size(1003, 664);
+            infoPane.Size = new Size(1108, 664);
             infoPane.TabIndex = 1;
             infoPane.Visible = false;
             // 
@@ -381,7 +387,7 @@
             projectInfoBox.Location = new Point(3, 70);
             projectInfoBox.Margin = new Padding(3, 0, 3, 3);
             projectInfoBox.Name = "projectInfoBox";
-            projectInfoBox.Size = new Size(997, 551);
+            projectInfoBox.Size = new Size(1102, 551);
             projectInfoBox.TabIndex = 1;
             projectInfoBox.TabStop = false;
             projectInfoBox.Text = "Project Information";
@@ -398,10 +404,10 @@
             projectInfoTable.Location = new Point(3, 25);
             projectInfoTable.Name = "projectInfoTable";
             projectInfoTable.RowCount = 3;
-            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 47.2275352F));
-            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.0038242F));
-            projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.9598465F));
-            projectInfoTable.Size = new Size(991, 523);
+            projectInfoTable.RowStyles.Add(new RowStyle());
+            projectInfoTable.RowStyles.Add(new RowStyle());
+            projectInfoTable.RowStyles.Add(new RowStyle());
+            projectInfoTable.Size = new Size(1096, 523);
             projectInfoTable.TabIndex = 1;
             // 
             // buildingBox
@@ -409,9 +415,9 @@
             buildingBox.Controls.Add(buildingTable);
             buildingBox.Dock = DockStyle.Fill;
             buildingBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buildingBox.Location = new Point(597, 249);
+            buildingBox.Location = new Point(660, 284);
             buildingBox.Name = "buildingBox";
-            buildingBox.Size = new Size(391, 129);
+            buildingBox.Size = new Size(433, 129);
             buildingBox.TabIndex = 3;
             buildingBox.TabStop = false;
             buildingBox.Text = "Building State";
@@ -431,11 +437,10 @@
             buildingTable.Location = new Point(3, 25);
             buildingTable.Name = "buildingTable";
             buildingTable.RowCount = 3;
+            buildingTable.RowStyles.Add(new RowStyle());
             buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            buildingTable.Size = new Size(385, 101);
+            buildingTable.Size = new Size(427, 101);
             buildingTable.TabIndex = 1;
             // 
             // conditionLabel
@@ -443,10 +448,10 @@
             conditionLabel.AutoSize = true;
             conditionLabel.Dock = DockStyle.Fill;
             conditionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            conditionLabel.Location = new Point(10, 66);
+            conditionLabel.Location = new Point(10, 64);
             conditionLabel.Margin = new Padding(10, 0, 0, 0);
             conditionLabel.Name = "conditionLabel";
-            conditionLabel.Size = new Size(110, 35);
+            conditionLabel.Size = new Size(110, 37);
             conditionLabel.TabIndex = 8;
             conditionLabel.Text = "Condition:";
             conditionLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -458,9 +463,9 @@
             conditionList.Font = new Font("Segoe UI", 9.75F);
             conditionList.FormattingEnabled = true;
             conditionList.Items.AddRange(new object[] { "Not Selected", "New", "Existing" });
-            conditionList.Location = new Point(123, 69);
+            conditionList.Location = new Point(123, 67);
             conditionList.Name = "conditionList";
-            conditionList.Size = new Size(259, 25);
+            conditionList.Size = new Size(301, 25);
             conditionList.TabIndex = 9;
             // 
             // functionLabel
@@ -468,7 +473,7 @@
             functionLabel.AutoSize = true;
             functionLabel.Dock = DockStyle.Fill;
             functionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            functionLabel.Location = new Point(10, 33);
+            functionLabel.Location = new Point(10, 31);
             functionLabel.Margin = new Padding(10, 0, 0, 0);
             functionLabel.Name = "functionLabel";
             functionLabel.Size = new Size(110, 33);
@@ -483,9 +488,9 @@
             functionList.Font = new Font("Segoe UI", 9.75F);
             functionList.FormattingEnabled = true;
             functionList.Items.AddRange(new object[] { "Not Selected" });
-            functionList.Location = new Point(123, 36);
+            functionList.Location = new Point(123, 34);
             functionList.Name = "functionList";
-            functionList.Size = new Size(259, 25);
+            functionList.Size = new Size(301, 25);
             functionList.TabIndex = 7;
             // 
             // typeLabel
@@ -496,7 +501,7 @@
             typeLabel.Location = new Point(10, 0);
             typeLabel.Margin = new Padding(10, 0, 0, 0);
             typeLabel.Name = "typeLabel";
-            typeLabel.Size = new Size(110, 33);
+            typeLabel.Size = new Size(110, 31);
             typeLabel.TabIndex = 0;
             typeLabel.Text = "Type:";
             typeLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -510,7 +515,7 @@
             typeList.Items.AddRange(new object[] { "Not Selected", "Residential", "Commercial" });
             typeList.Location = new Point(123, 3);
             typeList.Name = "typeList";
-            typeList.Size = new Size(259, 25);
+            typeList.Size = new Size(301, 25);
             typeList.TabIndex = 12;
             typeList.SelectedIndexChanged += typeList_SelectedIndexChanged;
             // 
@@ -519,9 +524,9 @@
             projectAddressBox.Controls.Add(projectAddressTable);
             projectAddressBox.Dock = DockStyle.Fill;
             projectAddressBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            projectAddressBox.Location = new Point(597, 3);
+            projectAddressBox.Location = new Point(660, 3);
             projectAddressBox.Name = "projectAddressBox";
-            projectAddressBox.Size = new Size(391, 240);
+            projectAddressBox.Size = new Size(433, 275);
             projectAddressBox.TabIndex = 2;
             projectAddressBox.TabStop = false;
             projectAddressBox.Text = "Address";
@@ -531,26 +536,81 @@
             projectAddressTable.ColumnCount = 2;
             projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
             projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            projectAddressTable.Controls.Add(codeTypeList, 1, 6);
+            projectAddressTable.Controls.Add(codeTypeLabel, 0, 6);
+            projectAddressTable.Controls.Add(cityTBox, 1, 4);
+            projectAddressTable.Controls.Add(cityLabel, 0, 4);
             projectAddressTable.Controls.Add(stateNoteLabel, 0, 3);
-            projectAddressTable.Controls.Add(fullAddressTBox, 1, 4);
-            projectAddressTable.Controls.Add(fullAddressLabel, 0, 4);
             projectAddressTable.Controls.Add(stateList, 1, 2);
             projectAddressTable.Controls.Add(stateLabel, 0, 2);
             projectAddressTable.Controls.Add(projectNameTBox, 1, 0);
             projectAddressTable.Controls.Add(projectNameLabel, 0, 0);
             projectAddressTable.Controls.Add(countryLabel, 0, 1);
             projectAddressTable.Controls.Add(countryList, 1, 1);
+            projectAddressTable.Controls.Add(fullAddressLabel, 0, 5);
+            projectAddressTable.Controls.Add(fullAddressTBox, 1, 5);
             projectAddressTable.Dock = DockStyle.Fill;
             projectAddressTable.Location = new Point(3, 25);
             projectAddressTable.Name = "projectAddressTable";
-            projectAddressTable.RowCount = 5;
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            projectAddressTable.Size = new Size(385, 212);
+            projectAddressTable.RowCount = 7;
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.RowStyles.Add(new RowStyle());
+            projectAddressTable.Size = new Size(427, 247);
             projectAddressTable.TabIndex = 1;
+            // 
+            // codeTypeList
+            // 
+            codeTypeList.Dock = DockStyle.Fill;
+            codeTypeList.DropDownStyle = ComboBoxStyle.DropDownList;
+            codeTypeList.Font = new Font("Segoe UI", 9.75F);
+            codeTypeList.FormattingEnabled = true;
+            codeTypeList.Items.AddRange(new object[] { "Not Selected", "California Codes", "Florida Codes", "International Codes", "Uniform Codes" });
+            codeTypeList.Location = new Point(123, 218);
+            codeTypeList.Name = "codeTypeList";
+            codeTypeList.Size = new Size(301, 25);
+            codeTypeList.TabIndex = 16;
+            // 
+            // codeTypeLabel
+            // 
+            codeTypeLabel.AutoSize = true;
+            codeTypeLabel.Dock = DockStyle.Fill;
+            codeTypeLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            codeTypeLabel.Location = new Point(10, 215);
+            codeTypeLabel.Margin = new Padding(10, 0, 0, 0);
+            codeTypeLabel.Name = "codeTypeLabel";
+            codeTypeLabel.Size = new Size(110, 32);
+            codeTypeLabel.TabIndex = 15;
+            codeTypeLabel.Text = "Code Type:";
+            codeTypeLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cityTBox
+            // 
+            cityTBox.Dock = DockStyle.Fill;
+            cityTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cityTBox.Location = new Point(123, 115);
+            cityTBox.Multiline = true;
+            cityTBox.Name = "cityTBox";
+            cityTBox.PlaceholderText = "City";
+            cityTBox.Size = new Size(301, 27);
+            cityTBox.TabIndex = 14;
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Dock = DockStyle.Fill;
+            cityLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            cityLabel.Location = new Point(10, 112);
+            cityLabel.Margin = new Padding(10, 0, 0, 0);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new Size(110, 33);
+            cityLabel.TabIndex = 13;
+            cityLabel.Text = "City:";
+            cityLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // stateNoteLabel
             // 
@@ -558,48 +618,25 @@
             projectAddressTable.SetColumnSpan(stateNoteLabel, 2);
             stateNoteLabel.Dock = DockStyle.Fill;
             stateNoteLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            stateNoteLabel.Location = new Point(0, 99);
+            stateNoteLabel.Location = new Point(0, 95);
             stateNoteLabel.Margin = new Padding(0);
             stateNoteLabel.Name = "stateNoteLabel";
-            stateNoteLabel.Size = new Size(385, 20);
+            stateNoteLabel.Size = new Size(427, 17);
             stateNoteLabel.TabIndex = 12;
             stateNoteLabel.Text = "State only needed for USA projects";
             stateNoteLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // fullAddressTBox
-            // 
-            fullAddressTBox.Dock = DockStyle.Fill;
-            fullAddressTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            fullAddressTBox.Location = new Point(123, 122);
-            fullAddressTBox.Multiline = true;
-            fullAddressTBox.Name = "fullAddressTBox";
-            fullAddressTBox.PlaceholderText = "Full Address";
-            fullAddressTBox.Size = new Size(259, 87);
-            fullAddressTBox.TabIndex = 11;
-            // 
-            // fullAddressLabel
-            // 
-            fullAddressLabel.AutoSize = true;
-            fullAddressLabel.Dock = DockStyle.Fill;
-            fullAddressLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            fullAddressLabel.Location = new Point(10, 119);
-            fullAddressLabel.Margin = new Padding(10, 0, 0, 0);
-            fullAddressLabel.Name = "fullAddressLabel";
-            fullAddressLabel.Size = new Size(110, 93);
-            fullAddressLabel.TabIndex = 10;
-            fullAddressLabel.Text = "Full Address: ";
-            fullAddressLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // stateList
             // 
             stateList.Dock = DockStyle.Fill;
             stateList.DropDownStyle = ComboBoxStyle.DropDownList;
+            stateList.Enabled = false;
             stateList.Font = new Font("Segoe UI", 9.75F);
             stateList.FormattingEnabled = true;
             stateList.Items.AddRange(new object[] { "Not Selected" });
-            stateList.Location = new Point(123, 69);
+            stateList.Location = new Point(123, 67);
             stateList.Name = "stateList";
-            stateList.Size = new Size(259, 25);
+            stateList.Size = new Size(301, 25);
             stateList.TabIndex = 9;
             // 
             // stateLabel
@@ -607,10 +644,10 @@
             stateLabel.AutoSize = true;
             stateLabel.Dock = DockStyle.Fill;
             stateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            stateLabel.Location = new Point(10, 66);
+            stateLabel.Location = new Point(10, 64);
             stateLabel.Margin = new Padding(10, 0, 0, 0);
             stateLabel.Name = "stateLabel";
-            stateLabel.Size = new Size(110, 33);
+            stateLabel.Size = new Size(110, 31);
             stateLabel.TabIndex = 8;
             stateLabel.Text = "State:";
             stateLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -623,7 +660,7 @@
             projectNameTBox.Multiline = true;
             projectNameTBox.Name = "projectNameTBox";
             projectNameTBox.PlaceholderText = "Name";
-            projectNameTBox.Size = new Size(259, 27);
+            projectNameTBox.Size = new Size(301, 27);
             projectNameTBox.TabIndex = 5;
             // 
             // projectNameLabel
@@ -647,7 +684,7 @@
             countryLabel.Location = new Point(10, 33);
             countryLabel.Margin = new Padding(10, 0, 0, 0);
             countryLabel.Name = "countryLabel";
-            countryLabel.Size = new Size(110, 33);
+            countryLabel.Size = new Size(110, 31);
             countryLabel.TabIndex = 6;
             countryLabel.Text = "Country:";
             countryLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -661,9 +698,33 @@
             countryList.Items.AddRange(new object[] { "Not Selected" });
             countryList.Location = new Point(123, 36);
             countryList.Name = "countryList";
-            countryList.Size = new Size(259, 25);
+            countryList.Size = new Size(301, 25);
             countryList.TabIndex = 7;
             countryList.SelectedIndexChanged += countryList_SelectedIndexChanged;
+            // 
+            // fullAddressLabel
+            // 
+            fullAddressLabel.AutoSize = true;
+            fullAddressLabel.Dock = DockStyle.Fill;
+            fullAddressLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            fullAddressLabel.Location = new Point(10, 145);
+            fullAddressLabel.Margin = new Padding(10, 0, 0, 0);
+            fullAddressLabel.Name = "fullAddressLabel";
+            fullAddressLabel.Size = new Size(110, 70);
+            fullAddressLabel.TabIndex = 10;
+            fullAddressLabel.Text = "Full Address: ";
+            fullAddressLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // fullAddressTBox
+            // 
+            fullAddressTBox.Dock = DockStyle.Fill;
+            fullAddressTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            fullAddressTBox.Location = new Point(123, 148);
+            fullAddressTBox.Multiline = true;
+            fullAddressTBox.Name = "fullAddressTBox";
+            fullAddressTBox.PlaceholderText = "Full Address";
+            fullAddressTBox.Size = new Size(301, 64);
+            fullAddressTBox.TabIndex = 11;
             // 
             // managementBox
             // 
@@ -673,7 +734,7 @@
             managementBox.Location = new Point(3, 3);
             managementBox.Name = "managementBox";
             projectInfoTable.SetRowSpan(managementBox, 3);
-            managementBox.Size = new Size(588, 517);
+            managementBox.Size = new Size(651, 517);
             managementBox.TabIndex = 4;
             managementBox.TabStop = false;
             managementBox.Text = "Management";
@@ -702,7 +763,7 @@
             managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             managementTable.RowStyles.Add(new RowStyle());
             managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 280F));
-            managementTable.Size = new Size(582, 489);
+            managementTable.Size = new Size(645, 489);
             managementTable.TabIndex = 1;
             // 
             // developersLabel
@@ -734,7 +795,7 @@
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            developersTable.Size = new Size(436, 298);
+            developersTable.Size = new Size(499, 298);
             developersTable.TabIndex = 17;
             // 
             // scopeLabel
@@ -753,13 +814,14 @@
             // scopeList
             // 
             scopeList.CheckOnClick = true;
+            scopeList.ColumnWidth = 150;
             scopeList.Dock = DockStyle.Fill;
             scopeList.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             scopeList.FormattingEnabled = true;
             scopeList.Location = new Point(143, 102);
             scopeList.MultiColumn = true;
             scopeList.Name = "scopeList";
-            scopeList.Size = new Size(436, 80);
+            scopeList.Size = new Size(499, 80);
             scopeList.TabIndex = 15;
             scopeList.ItemCheck += scopeList_ItemCheck;
             // 
@@ -784,7 +846,7 @@
             managerTBox.Multiline = true;
             managerTBox.Name = "managerTBox";
             managerTBox.PlaceholderText = "Manager";
-            managerTBox.Size = new Size(436, 27);
+            managerTBox.Size = new Size(499, 27);
             managerTBox.TabIndex = 13;
             // 
             // directorLabel
@@ -808,7 +870,7 @@
             directorTBox.Multiline = true;
             directorTBox.Name = "directorTBox";
             directorTBox.PlaceholderText = "Director";
-            directorTBox.Size = new Size(436, 27);
+            directorTBox.Size = new Size(499, 27);
             directorTBox.TabIndex = 12;
             // 
             // clientLabel
@@ -832,7 +894,7 @@
             clientTBox.Multiline = true;
             clientTBox.Name = "clientTBox";
             clientTBox.PlaceholderText = "Client";
-            clientTBox.Size = new Size(436, 27);
+            clientTBox.Size = new Size(499, 27);
             clientTBox.TabIndex = 5;
             // 
             // infoControlButtonsTable
@@ -890,6 +952,8 @@
             // 
             // folderPane
             // 
+            folderPane.AutoScroll = true;
+            folderPane.AutoScrollMinSize = new Size(1100, 660);
             folderPane.ColumnCount = 1;
             folderPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             folderPane.Controls.Add(folderControlButtonsTable, 0, 1);
@@ -903,7 +967,7 @@
             folderPane.RowStyles.Add(new RowStyle());
             folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            folderPane.Size = new Size(1003, 664);
+            folderPane.Size = new Size(1108, 664);
             folderPane.TabIndex = 5;
             folderPane.Visible = false;
             // 
@@ -989,7 +1053,7 @@
             folderStructureBox.Location = new Point(3, 0);
             folderStructureBox.Margin = new Padding(3, 0, 3, 3);
             folderStructureBox.Name = "folderStructureBox";
-            folderStructureBox.Size = new Size(997, 567);
+            folderStructureBox.Size = new Size(1102, 567);
             folderStructureBox.TabIndex = 0;
             folderStructureBox.TabStop = false;
             folderStructureBox.Text = "Typical Folder Structure";
@@ -1000,7 +1064,7 @@
             folderView.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             folderView.Location = new Point(3, 25);
             folderView.Name = "folderView";
-            folderView.Size = new Size(991, 539);
+            folderView.Size = new Size(1096, 539);
             folderView.TabIndex = 0;
             folderView.AfterLabelEdit += folderView_AfterLabelEdit;
             // 
@@ -1011,13 +1075,15 @@
             folderNoteLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             folderNoteLabel.Location = new Point(3, 570);
             folderNoteLabel.Name = "folderNoteLabel";
-            folderNoteLabel.Size = new Size(997, 34);
+            folderNoteLabel.Size = new Size(1102, 34);
             folderNoteLabel.TabIndex = 1;
             folderNoteLabel.Text = resources.GetString("folderNoteLabel.Text");
             folderNoteLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // templatesPane
             // 
+            templatesPane.AutoScroll = true;
+            templatesPane.AutoScrollMinSize = new Size(1100, 660);
             templatesPane.AutoSize = true;
             templatesPane.ColumnCount = 1;
             templatesPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -1032,7 +1098,7 @@
             templatesPane.RowStyles.Add(new RowStyle());
             templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            templatesPane.Size = new Size(1003, 664);
+            templatesPane.Size = new Size(1108, 664);
             templatesPane.TabIndex = 1;
             templatesPane.Visible = false;
             // 
@@ -1079,7 +1145,7 @@
             templateViewer.RowCount = 1;
             templateViewer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             templateViewer.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            templateViewer.Size = new Size(997, 581);
+            templateViewer.Size = new Size(1102, 581);
             templateViewer.TabIndex = 0;
             // 
             // templateMessageLabel
@@ -1089,13 +1155,15 @@
             templateMessageLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             templateMessageLabel.Location = new Point(3, 587);
             templateMessageLabel.Name = "templateMessageLabel";
-            templateMessageLabel.Size = new Size(997, 17);
+            templateMessageLabel.Size = new Size(1102, 17);
             templateMessageLabel.TabIndex = 1;
             templateMessageLabel.Text = "Each template is copied to its appropriate folder inside the \"Working Folder\" folder.";
             templateMessageLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // datasheetsPane
             // 
+            datasheetsPane.AutoScroll = true;
+            datasheetsPane.AutoScrollMinSize = new Size(1100, 660);
             datasheetsPane.ColumnCount = 1;
             datasheetsPane.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             datasheetsPane.Controls.Add(label2, 0, 1);
@@ -1108,7 +1176,7 @@
             datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            datasheetsPane.Size = new Size(1003, 664);
+            datasheetsPane.Size = new Size(1108, 664);
             datasheetsPane.TabIndex = 0;
             datasheetsPane.Visible = false;
             // 
@@ -1120,7 +1188,7 @@
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 604);
             label2.Name = "label2";
-            label2.Size = new Size(997, 20);
+            label2.Size = new Size(1102, 20);
             label2.TabIndex = 5;
             label2.Text = "The selected datasheet is copied to the \"Selection\" folder of the selected category.";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -1183,7 +1251,7 @@
             datasheetGroupBox.Location = new Point(3, 0);
             datasheetGroupBox.Margin = new Padding(3, 0, 3, 3);
             datasheetGroupBox.Name = "datasheetGroupBox";
-            datasheetGroupBox.Size = new Size(997, 601);
+            datasheetGroupBox.Size = new Size(1102, 601);
             datasheetGroupBox.TabIndex = 7;
             datasheetGroupBox.TabStop = false;
             datasheetGroupBox.Text = "Datasheet Selection";
@@ -1202,8 +1270,8 @@
             // datasheetSplitterContainer.Panel2
             // 
             datasheetSplitterContainer.Panel2.Controls.Add(matchingDatasheetGroupBox);
-            datasheetSplitterContainer.Size = new Size(991, 573);
-            datasheetSplitterContainer.SplitterDistance = 495;
+            datasheetSplitterContainer.Size = new Size(1096, 573);
+            datasheetSplitterContainer.SplitterDistance = 545;
             datasheetSplitterContainer.TabIndex = 0;
             // 
             // inputGroupBox
@@ -1213,7 +1281,7 @@
             inputGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             inputGroupBox.Location = new Point(0, 0);
             inputGroupBox.Name = "inputGroupBox";
-            inputGroupBox.Size = new Size(495, 573);
+            inputGroupBox.Size = new Size(545, 573);
             inputGroupBox.TabIndex = 0;
             inputGroupBox.TabStop = false;
             inputGroupBox.Text = "Inputs";
@@ -1242,7 +1310,7 @@
             inputTable.RowStyles.Add(new RowStyle());
             inputTable.RowStyles.Add(new RowStyle());
             inputTable.RowStyles.Add(new RowStyle());
-            inputTable.Size = new Size(489, 545);
+            inputTable.Size = new Size(539, 545);
             inputTable.TabIndex = 0;
             // 
             // equipmentOptionLabel
@@ -1252,7 +1320,7 @@
             equipmentOptionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             equipmentOptionLabel.Location = new Point(3, 79);
             equipmentOptionLabel.Name = "equipmentOptionLabel";
-            equipmentOptionLabel.Size = new Size(238, 31);
+            equipmentOptionLabel.Size = new Size(263, 31);
             equipmentOptionLabel.TabIndex = 4;
             equipmentOptionLabel.Text = "Option:";
             equipmentOptionLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -1264,7 +1332,7 @@
             equipmentTypeLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             equipmentTypeLabel.Location = new Point(3, 31);
             equipmentTypeLabel.Name = "equipmentTypeLabel";
-            equipmentTypeLabel.Size = new Size(238, 31);
+            equipmentTypeLabel.Size = new Size(263, 31);
             equipmentTypeLabel.TabIndex = 2;
             equipmentTypeLabel.Text = "Equipment Type:";
             equipmentTypeLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -1276,9 +1344,9 @@
             equipmentTypeList.Font = new Font("Segoe UI", 9.75F);
             equipmentTypeList.FormattingEnabled = true;
             equipmentTypeList.Items.AddRange(new object[] { "Not Selected" });
-            equipmentTypeList.Location = new Point(247, 34);
+            equipmentTypeList.Location = new Point(272, 34);
             equipmentTypeList.Name = "equipmentTypeList";
-            equipmentTypeList.Size = new Size(239, 25);
+            equipmentTypeList.Size = new Size(264, 25);
             equipmentTypeList.TabIndex = 3;
             equipmentTypeList.SelectedIndexChanged += equipmentTypeList_SelectedIndexChanged;
             // 
@@ -1289,7 +1357,7 @@
             equipmentCatLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             equipmentCatLabel.Location = new Point(3, 0);
             equipmentCatLabel.Name = "equipmentCatLabel";
-            equipmentCatLabel.Size = new Size(238, 31);
+            equipmentCatLabel.Size = new Size(263, 31);
             equipmentCatLabel.TabIndex = 0;
             equipmentCatLabel.Text = "Equipment Category:";
             equipmentCatLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -1301,9 +1369,9 @@
             equipmentCatList.Font = new Font("Segoe UI", 9.75F);
             equipmentCatList.FormattingEnabled = true;
             equipmentCatList.Items.AddRange(new object[] { "Not Selected" });
-            equipmentCatList.Location = new Point(247, 3);
+            equipmentCatList.Location = new Point(272, 3);
             equipmentCatList.Name = "equipmentCatList";
-            equipmentCatList.Size = new Size(239, 25);
+            equipmentCatList.Size = new Size(264, 25);
             equipmentCatList.TabIndex = 1;
             equipmentCatList.SelectedIndexChanged += equipmentCatList_SelectedIndexChanged;
             // 
@@ -1313,9 +1381,9 @@
             equipmentOptionList.DropDownStyle = ComboBoxStyle.DropDownList;
             equipmentOptionList.Font = new Font("Segoe UI", 9.75F);
             equipmentOptionList.FormattingEnabled = true;
-            equipmentOptionList.Location = new Point(247, 82);
+            equipmentOptionList.Location = new Point(272, 82);
             equipmentOptionList.Name = "equipmentOptionList";
-            equipmentOptionList.Size = new Size(239, 25);
+            equipmentOptionList.Size = new Size(264, 25);
             equipmentOptionList.TabIndex = 5;
             equipmentOptionList.SelectedIndexChanged += equipmentOptionList_SelectedIndexChanged;
             // 
@@ -1327,7 +1395,7 @@
             equipOptionAcronymLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             equipOptionAcronymLabel.Location = new Point(3, 110);
             equipOptionAcronymLabel.Name = "equipOptionAcronymLabel";
-            equipOptionAcronymLabel.Size = new Size(483, 17);
+            equipOptionAcronymLabel.Size = new Size(533, 17);
             equipOptionAcronymLabel.TabIndex = 8;
             equipOptionAcronymLabel.Text = "description of equipment option";
             equipOptionAcronymLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1340,7 +1408,7 @@
             equipTypeAcronymLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             equipTypeAcronymLabel.Location = new Point(3, 62);
             equipTypeAcronymLabel.Name = "equipTypeAcronymLabel";
-            equipTypeAcronymLabel.Size = new Size(483, 17);
+            equipTypeAcronymLabel.Size = new Size(533, 17);
             equipTypeAcronymLabel.TabIndex = 7;
             equipTypeAcronymLabel.Text = "description of equipment type";
             equipTypeAcronymLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1357,7 +1425,7 @@
             equipmentSpecsTable.Name = "equipmentSpecsTable";
             equipmentSpecsTable.RowCount = 1;
             equipmentSpecsTable.RowStyles.Add(new RowStyle());
-            equipmentSpecsTable.Size = new Size(483, 412);
+            equipmentSpecsTable.Size = new Size(533, 548);
             equipmentSpecsTable.TabIndex = 9;
             // 
             // matchingDatasheetGroupBox
@@ -1367,7 +1435,7 @@
             matchingDatasheetGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             matchingDatasheetGroupBox.Location = new Point(0, 0);
             matchingDatasheetGroupBox.Name = "matchingDatasheetGroupBox";
-            matchingDatasheetGroupBox.Size = new Size(492, 573);
+            matchingDatasheetGroupBox.Size = new Size(547, 573);
             matchingDatasheetGroupBox.TabIndex = 1;
             matchingDatasheetGroupBox.TabStop = false;
             matchingDatasheetGroupBox.Text = "Matching Datasheets";
@@ -1379,18 +1447,18 @@
             matchingDatasheetList.FormattingEnabled = true;
             matchingDatasheetList.Location = new Point(3, 25);
             matchingDatasheetList.Name = "matchingDatasheetList";
-            matchingDatasheetList.Size = new Size(486, 545);
+            matchingDatasheetList.Size = new Size(541, 545);
             matchingDatasheetList.TabIndex = 0;
             // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1203, 664);
+            ClientSize = new Size(1308, 664);
+            Controls.Add(infoPane);
             Controls.Add(datasheetsPane);
             Controls.Add(templatesPane);
             Controls.Add(folderPane);
-            Controls.Add(infoPane);
             Controls.Add(controlGroup);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 700);
@@ -1521,5 +1589,9 @@
         private Label equipOptionAcronymLabel;
         private TableLayoutPanel equipmentSpecsTable;
         private FontAwesome.Sharp.IconButton copyDatasheetButton;
+        private Label cityLabel;
+        private TextBox cityTBox;
+        private ComboBox codeTypeList;
+        private Label codeTypeLabel;
     }
 }

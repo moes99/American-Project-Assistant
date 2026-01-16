@@ -9,9 +9,9 @@ namespace ProjectAssistant
 
     public partial class mainForm : Form
     {
-        string managementFolder = Environment.GetEnvironmentVariable("PathToManagementFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Management/";
-        string resourcesFolder = Environment.GetEnvironmentVariable("PathToResourcesFolder");//"C:/Users/Mohammad Omar Shehab/Desktop/American Project Assistant/DesktopC#App/Resources/";
-        string mainProjectFolder = Environment.GetEnvironmentVariable("PathToProjectParentFolder");//"\\\\192.168.1.224\\New8TB\\1-Projects In Hand";
+        string managementFolder = Environment.GetEnvironmentVariable("PathToManagementFolder");
+        string resourcesFolder = Environment.GetEnvironmentVariable("PathToResourcesFolder");
+        string mainProjectFolder = Environment.GetEnvironmentVariable("PathToProjectParentFolder");
         JsonElement functionJsonData;
         JsonElement equipmentJsonData;
         ProjectInfoJson projectInfoJson;
@@ -30,6 +30,10 @@ namespace ProjectAssistant
             stateList.Enabled = false;
             UIHandler.populateListFromJsonElement(stateList, addressJsonData, "States");
 
+            //Set index of code lists to 0
+            codeTypeList.SelectedIndex = 0;
+            codeTypeList.Enabled = false;
+
             //Get the list of scopes of work from the JSON file and populate the scopeList CheckedListBox
             JsonElement scopeJsonData = JsonFileHandler.readJson(managementFolder + "scopeOfWork.json");
             UIHandler.populateListFromJsonElement(scopeList, scopeJsonData, "ScopesOfWork");
@@ -39,8 +43,10 @@ namespace ProjectAssistant
 
             //Add labels and textboxes for each scope of work dynamically
             developersTable.RowCount = scopeList.Items.Count;
+            developersTable.RowStyles.Clear();
             for (int i = 0; i < scopeList.Items.Count; i++)
             {
+                developersTable.RowStyles.Add(new RowStyle(SizeType.Percent));
                 Label scopeLabel = new Label
                 {
                     AutoSize = true,
@@ -193,14 +199,27 @@ namespace ProjectAssistant
 
         private void countryList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (countryList.SelectedItem.ToString() == "USA")
+            if(countryList.SelectedItem.ToString() == "Not Selected")
+            {
+                stateList.Enabled = false;
+                stateList.SelectedIndex = -1;
+                cityTBox.Enabled = false;
+                cityTBox.Text = "";
+                codeTypeList.Enabled = false;
+                codeTypeList.SelectedIndex = -1;
+            }
+            else if (countryList.SelectedItem.ToString() == "USA")
             {
                 stateList.Enabled = true;
+                stateList.SelectedIndex = 0;
             }
             else
             {
                 stateList.Enabled = false;
-                stateList.SelectedIndex = 0;
+                stateList.SelectedIndex = -1;
+                cityTBox.Enabled = true;
+                codeTypeList.Enabled = true;
+                codeTypeList.SelectedIndex = 0;
             }
         }
         private void resetInfoButton_Click(object sender, EventArgs e)
@@ -486,6 +505,5 @@ namespace ProjectAssistant
                 return "Definition not found";
             }
         }
-
     }
 }
