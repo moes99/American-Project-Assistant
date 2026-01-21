@@ -3,9 +3,12 @@
     "Mechanical",
     "Electrical",
     "Plumbing",
-    "Fire Protection",
+    "Fire Sprinklers",
+    "Fire Alarm",
     "T24/Energy",
     "Structure",
-    "Architecture"
+    "Architecture",
+    "Photometric Analysis",
+    "PV Design"
   ]
 }
