@@ -152,9 +152,10 @@
             folderButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             folderButton.IconSize = 35;
             folderButton.ImageAlign = ContentAlignment.MiddleLeft;
-            folderButton.Location = new Point(3, 49);
+            folderButton.Location = new Point(3, 65);
+            folderButton.Margin = new Padding(3, 4, 3, 4);
             folderButton.Name = "folderButton";
-            folderButton.Size = new Size(188, 40);
+            folderButton.Size = new Size(217, 53);
             folderButton.TabIndex = 1;
             folderButton.Text = "Folders";
             folderButton.UseVisualStyleBackColor = true;
@@ -169,9 +170,10 @@
             infoButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             infoButton.IconSize = 30;
             infoButton.ImageAlign = ContentAlignment.MiddleLeft;
-            infoButton.Location = new Point(3, 3);
+            infoButton.Location = new Point(3, 4);
+            infoButton.Margin = new Padding(3, 4, 3, 4);
             infoButton.Name = "infoButton";
-            infoButton.Size = new Size(188, 40);
+            infoButton.Size = new Size(217, 53);
             infoButton.TabIndex = 3;
             infoButton.Text = "Project Info";
             infoButton.UseVisualStyleBackColor = true;
@@ -186,9 +188,10 @@
             templateButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             templateButton.IconSize = 30;
             templateButton.ImageAlign = ContentAlignment.MiddleLeft;
-            templateButton.Location = new Point(3, 95);
+            templateButton.Location = new Point(3, 126);
+            templateButton.Margin = new Padding(3, 4, 3, 4);
             templateButton.Name = "templateButton";
-            templateButton.Size = new Size(188, 40);
+            templateButton.Size = new Size(217, 53);
             templateButton.TabIndex = 2;
             templateButton.Text = "Templates";
             templateButton.UseVisualStyleBackColor = true;
@@ -200,9 +203,10 @@
             projectPathBox.Dock = DockStyle.Fill;
             projectPathBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             projectPathBox.Location = new Point(3, 0);
-            projectPathBox.Margin = new Padding(3, 0, 3, 3);
+            projectPathBox.Margin = new Padding(3, 0, 3, 4);
             projectPathBox.Name = "projectPathBox";
-            projectPathBox.Size = new Size(997, 67);
+            projectPathBox.Padding = new Padding(3, 4, 3, 4);
+            projectPathBox.Size = new Size(1140, 89);
             projectPathBox.TabIndex = 0;
             projectPathBox.TabStop = false;
             projectPathBox.Text = "Project Path";
@@ -210,22 +214,23 @@
             // projectPathTable
             // 
             projectPathTable.ColumnCount = 5;
-            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
-            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
-            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 103F));
+            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 114F));
             projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
+            projectPathTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
             projectPathTable.Controls.Add(newRButton, 1, 0);
             projectPathTable.Controls.Add(existingRButton, 0, 0);
             projectPathTable.Controls.Add(folderPathLabel, 2, 0);
             projectPathTable.Controls.Add(projectPathTBox, 3, 0);
             projectPathTable.Controls.Add(setPathButton, 4, 0);
             projectPathTable.Dock = DockStyle.Fill;
-            projectPathTable.Location = new Point(3, 25);
+            projectPathTable.Location = new Point(3, 31);
+            projectPathTable.Margin = new Padding(3, 4, 3, 4);
             projectPathTable.Name = "projectPathTable";
             projectPathTable.RowCount = 1;
             projectPathTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            projectPathTable.Size = new Size(991, 39);
+            projectPathTable.Size = new Size(1134, 54);
             projectPathTable.TabIndex = 1;
             // 
             // newRButton
@@ -233,10 +238,11 @@
             newRButton.Anchor = AnchorStyles.None;
             newRButton.AutoSize = true;
             newRButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            newRButton.Location = new Point(93, 3);
-            newRButton.MinimumSize = new Size(63, 34);
+            newRButton.Location = new Point(107, 4);
+            newRButton.Margin = new Padding(3, 4, 3, 4);
+            newRButton.MinimumSize = new Size(72, 45);
             newRButton.Name = "newRButton";
-            newRButton.Size = new Size(63, 34);
+            newRButton.Size = new Size(72, 45);
             newRButton.TabIndex = 1;
             newRButton.TabStop = true;
             newRButton.Text = "New";
@@ -248,10 +254,11 @@
             existingRButton.Anchor = AnchorStyles.None;
             existingRButton.AutoSize = true;
             existingRButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            existingRButton.Location = new Point(8, 3);
-            existingRButton.MinimumSize = new Size(73, 34);
+            existingRButton.Location = new Point(7, 4);
+            existingRButton.Margin = new Padding(3, 4, 3, 4);
+            existingRButton.MinimumSize = new Size(83, 45);
             existingRButton.Name = "existingRButton";
-            existingRButton.Size = new Size(73, 34);
+            existingRButton.Size = new Size(89, 45);
             existingRButton.TabIndex = 0;
             existingRButton.TabStop = true;
             existingRButton.Text = "Existing";
@@ -263,11 +270,11 @@
             folderPathLabel.AutoSize = true;
             folderPathLabel.Dock = DockStyle.Fill;
             folderPathLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            folderPathLabel.Location = new Point(163, 3);
-            folderPathLabel.Margin = new Padding(3);
-            folderPathLabel.MinimumSize = new Size(93, 34);
+            folderPathLabel.Location = new Point(186, 4);
+            folderPathLabel.Margin = new Padding(3, 4, 3, 4);
+            folderPathLabel.MinimumSize = new Size(106, 45);
             folderPathLabel.Name = "folderPathLabel";
-            folderPathLabel.Size = new Size(94, 34);
+            folderPathLabel.Size = new Size(108, 46);
             folderPathLabel.TabIndex = 3;
             folderPathLabel.Text = "Project Path:";
             folderPathLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -277,11 +284,12 @@
             projectPathTBox.Dock = DockStyle.Fill;
             projectPathTBox.Enabled = false;
             projectPathTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            projectPathTBox.Location = new Point(263, 3);
+            projectPathTBox.Location = new Point(300, 4);
+            projectPathTBox.Margin = new Padding(3, 4, 3, 4);
             projectPathTBox.Multiline = true;
             projectPathTBox.Name = "projectPathTBox";
             projectPathTBox.PlaceholderText = "Project Path";
-            projectPathTBox.Size = new Size(685, 33);
+            projectPathTBox.Size = new Size(785, 46);
             projectPathTBox.TabIndex = 4;
             // 
             // setPathButton
@@ -291,10 +299,11 @@
             setPathButton.IconColor = Color.Black;
             setPathButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             setPathButton.IconSize = 30;
-            setPathButton.Location = new Point(954, 3);
+            setPathButton.Location = new Point(1091, 4);
+            setPathButton.Margin = new Padding(3, 4, 3, 4);
             setPathButton.Name = "setPathButton";
             setPathButton.Rotation = -5D;
-            setPathButton.Size = new Size(34, 33);
+            setPathButton.Size = new Size(40, 46);
             setPathButton.TabIndex = 5;
             setPathButton.UseVisualStyleBackColor = true;
             setPathButton.Click += setPathButton_Click;
@@ -305,8 +314,10 @@
             controlGroup.Dock = DockStyle.Left;
             controlGroup.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             controlGroup.Location = new Point(0, 0);
+            controlGroup.Margin = new Padding(3, 4, 3, 4);
             controlGroup.Name = "controlGroup";
-            controlGroup.Size = new Size(200, 664);
+            controlGroup.Padding = new Padding(3, 4, 3, 4);
+            controlGroup.Size = new Size(229, 885);
             controlGroup.TabIndex = 4;
             controlGroup.TabStop = false;
             controlGroup.Text = "Controls";
@@ -320,7 +331,8 @@
             controlTable.Controls.Add(folderButton, 0, 1);
             controlTable.Controls.Add(infoButton, 0, 0);
             controlTable.Dock = DockStyle.Fill;
-            controlTable.Location = new Point(3, 25);
+            controlTable.Location = new Point(3, 31);
+            controlTable.Margin = new Padding(3, 4, 3, 4);
             controlTable.Name = "controlTable";
             controlTable.RowCount = 10;
             controlTable.RowStyles.Add(new RowStyle());
@@ -333,7 +345,7 @@
             controlTable.RowStyles.Add(new RowStyle());
             controlTable.RowStyles.Add(new RowStyle());
             controlTable.RowStyles.Add(new RowStyle());
-            controlTable.Size = new Size(194, 636);
+            controlTable.Size = new Size(223, 850);
             controlTable.TabIndex = 0;
             // 
             // datasheetButton
@@ -345,9 +357,10 @@
             datasheetButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             datasheetButton.IconSize = 30;
             datasheetButton.ImageAlign = ContentAlignment.MiddleLeft;
-            datasheetButton.Location = new Point(3, 141);
+            datasheetButton.Location = new Point(3, 187);
+            datasheetButton.Margin = new Padding(3, 4, 3, 4);
             datasheetButton.Name = "datasheetButton";
-            datasheetButton.Size = new Size(188, 40);
+            datasheetButton.Size = new Size(217, 53);
             datasheetButton.TabIndex = 4;
             datasheetButton.Text = "Datasheets";
             datasheetButton.UseVisualStyleBackColor = true;
@@ -361,14 +374,15 @@
             infoPane.Controls.Add(projectPathBox, 0, 0);
             infoPane.Controls.Add(infoControlButtonsTable, 0, 2);
             infoPane.Dock = DockStyle.Fill;
-            infoPane.Location = new Point(200, 0);
+            infoPane.Location = new Point(229, 0);
+            infoPane.Margin = new Padding(3, 4, 3, 4);
             infoPane.Name = "infoPane";
             infoPane.RowCount = 3;
-            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
             infoPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            infoPane.Size = new Size(1003, 664);
+            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            infoPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            infoPane.Size = new Size(1146, 885);
             infoPane.TabIndex = 1;
             infoPane.Visible = false;
             // 
@@ -378,10 +392,11 @@
             projectInfoBox.Dock = DockStyle.Fill;
             projectInfoBox.Enabled = false;
             projectInfoBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            projectInfoBox.Location = new Point(3, 70);
-            projectInfoBox.Margin = new Padding(3, 0, 3, 3);
+            projectInfoBox.Location = new Point(3, 93);
+            projectInfoBox.Margin = new Padding(3, 0, 3, 4);
             projectInfoBox.Name = "projectInfoBox";
-            projectInfoBox.Size = new Size(997, 551);
+            projectInfoBox.Padding = new Padding(3, 4, 3, 4);
+            projectInfoBox.Size = new Size(1140, 735);
             projectInfoBox.TabIndex = 1;
             projectInfoBox.TabStop = false;
             projectInfoBox.Text = "Project Information";
@@ -395,13 +410,14 @@
             projectInfoTable.Controls.Add(projectAddressBox, 1, 0);
             projectInfoTable.Controls.Add(managementBox, 0, 0);
             projectInfoTable.Dock = DockStyle.Fill;
-            projectInfoTable.Location = new Point(3, 25);
+            projectInfoTable.Location = new Point(3, 31);
+            projectInfoTable.Margin = new Padding(3, 4, 3, 4);
             projectInfoTable.Name = "projectInfoTable";
             projectInfoTable.RowCount = 3;
             projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 47.2275352F));
             projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.0038242F));
             projectInfoTable.RowStyles.Add(new RowStyle(SizeType.Percent, 26.9598465F));
-            projectInfoTable.Size = new Size(991, 523);
+            projectInfoTable.Size = new Size(1134, 700);
             projectInfoTable.TabIndex = 1;
             // 
             // buildingBox
@@ -409,9 +425,11 @@
             buildingBox.Controls.Add(buildingTable);
             buildingBox.Dock = DockStyle.Fill;
             buildingBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buildingBox.Location = new Point(597, 249);
+            buildingBox.Location = new Point(683, 333);
+            buildingBox.Margin = new Padding(3, 4, 3, 4);
             buildingBox.Name = "buildingBox";
-            buildingBox.Size = new Size(391, 129);
+            buildingBox.Padding = new Padding(3, 4, 3, 4);
+            buildingBox.Size = new Size(448, 173);
             buildingBox.TabIndex = 3;
             buildingBox.TabStop = false;
             buildingBox.Text = "Building State";
@@ -419,7 +437,7 @@
             // buildingTable
             // 
             buildingTable.ColumnCount = 2;
-            buildingTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            buildingTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             buildingTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             buildingTable.Controls.Add(conditionLabel, 0, 2);
             buildingTable.Controls.Add(conditionList, 1, 2);
@@ -428,14 +446,15 @@
             buildingTable.Controls.Add(typeLabel, 0, 0);
             buildingTable.Controls.Add(typeList, 1, 0);
             buildingTable.Dock = DockStyle.Fill;
-            buildingTable.Location = new Point(3, 25);
+            buildingTable.Location = new Point(3, 31);
+            buildingTable.Margin = new Padding(3, 4, 3, 4);
             buildingTable.Name = "buildingTable";
             buildingTable.RowCount = 3;
-            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            buildingTable.Size = new Size(385, 101);
+            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            buildingTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
+            buildingTable.Size = new Size(442, 138);
             buildingTable.TabIndex = 1;
             // 
             // conditionLabel
@@ -443,10 +462,10 @@
             conditionLabel.AutoSize = true;
             conditionLabel.Dock = DockStyle.Fill;
             conditionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            conditionLabel.Location = new Point(10, 66);
-            conditionLabel.Margin = new Padding(10, 0, 0, 0);
+            conditionLabel.Location = new Point(11, 88);
+            conditionLabel.Margin = new Padding(11, 0, 0, 0);
             conditionLabel.Name = "conditionLabel";
-            conditionLabel.Size = new Size(110, 35);
+            conditionLabel.Size = new Size(126, 50);
             conditionLabel.TabIndex = 8;
             conditionLabel.Text = "Condition:";
             conditionLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -458,9 +477,10 @@
             conditionList.Font = new Font("Segoe UI", 9.75F);
             conditionList.FormattingEnabled = true;
             conditionList.Items.AddRange(new object[] { "Not Selected", "New", "Existing" });
-            conditionList.Location = new Point(123, 69);
+            conditionList.Location = new Point(140, 92);
+            conditionList.Margin = new Padding(3, 4, 3, 4);
             conditionList.Name = "conditionList";
-            conditionList.Size = new Size(259, 25);
+            conditionList.Size = new Size(299, 29);
             conditionList.TabIndex = 9;
             // 
             // functionLabel
@@ -468,10 +488,10 @@
             functionLabel.AutoSize = true;
             functionLabel.Dock = DockStyle.Fill;
             functionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            functionLabel.Location = new Point(10, 33);
-            functionLabel.Margin = new Padding(10, 0, 0, 0);
+            functionLabel.Location = new Point(11, 44);
+            functionLabel.Margin = new Padding(11, 0, 0, 0);
             functionLabel.Name = "functionLabel";
-            functionLabel.Size = new Size(110, 33);
+            functionLabel.Size = new Size(126, 44);
             functionLabel.TabIndex = 6;
             functionLabel.Text = "Function:";
             functionLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -483,9 +503,10 @@
             functionList.Font = new Font("Segoe UI", 9.75F);
             functionList.FormattingEnabled = true;
             functionList.Items.AddRange(new object[] { "Not Selected" });
-            functionList.Location = new Point(123, 36);
+            functionList.Location = new Point(140, 48);
+            functionList.Margin = new Padding(3, 4, 3, 4);
             functionList.Name = "functionList";
-            functionList.Size = new Size(259, 25);
+            functionList.Size = new Size(299, 29);
             functionList.TabIndex = 7;
             // 
             // typeLabel
@@ -493,10 +514,10 @@
             typeLabel.AutoSize = true;
             typeLabel.Dock = DockStyle.Fill;
             typeLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            typeLabel.Location = new Point(10, 0);
-            typeLabel.Margin = new Padding(10, 0, 0, 0);
+            typeLabel.Location = new Point(11, 0);
+            typeLabel.Margin = new Padding(11, 0, 0, 0);
             typeLabel.Name = "typeLabel";
-            typeLabel.Size = new Size(110, 33);
+            typeLabel.Size = new Size(126, 44);
             typeLabel.TabIndex = 0;
             typeLabel.Text = "Type:";
             typeLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -508,9 +529,10 @@
             typeList.Font = new Font("Segoe UI", 9.75F);
             typeList.FormattingEnabled = true;
             typeList.Items.AddRange(new object[] { "Not Selected", "Residential", "Commercial" });
-            typeList.Location = new Point(123, 3);
+            typeList.Location = new Point(140, 4);
+            typeList.Margin = new Padding(3, 4, 3, 4);
             typeList.Name = "typeList";
-            typeList.Size = new Size(259, 25);
+            typeList.Size = new Size(299, 29);
             typeList.TabIndex = 12;
             typeList.SelectedIndexChanged += typeList_SelectedIndexChanged;
             // 
@@ -519,9 +541,11 @@
             projectAddressBox.Controls.Add(projectAddressTable);
             projectAddressBox.Dock = DockStyle.Fill;
             projectAddressBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            projectAddressBox.Location = new Point(597, 3);
+            projectAddressBox.Location = new Point(683, 4);
+            projectAddressBox.Margin = new Padding(3, 4, 3, 4);
             projectAddressBox.Name = "projectAddressBox";
-            projectAddressBox.Size = new Size(391, 240);
+            projectAddressBox.Padding = new Padding(3, 4, 3, 4);
+            projectAddressBox.Size = new Size(448, 321);
             projectAddressBox.TabIndex = 2;
             projectAddressBox.TabStop = false;
             projectAddressBox.Text = "Address";
@@ -529,7 +553,7 @@
             // projectAddressTable
             // 
             projectAddressTable.ColumnCount = 2;
-            projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             projectAddressTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             projectAddressTable.Controls.Add(stateNoteLabel, 0, 3);
             projectAddressTable.Controls.Add(fullAddressTBox, 1, 4);
@@ -541,15 +565,16 @@
             projectAddressTable.Controls.Add(countryLabel, 0, 1);
             projectAddressTable.Controls.Add(countryList, 1, 1);
             projectAddressTable.Dock = DockStyle.Fill;
-            projectAddressTable.Location = new Point(3, 25);
+            projectAddressTable.Location = new Point(3, 31);
+            projectAddressTable.Margin = new Padding(3, 4, 3, 4);
             projectAddressTable.Name = "projectAddressTable";
             projectAddressTable.RowCount = 5;
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            projectAddressTable.Size = new Size(385, 212);
+            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            projectAddressTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
+            projectAddressTable.Size = new Size(442, 286);
             projectAddressTable.TabIndex = 1;
             // 
             // stateNoteLabel
@@ -558,10 +583,10 @@
             projectAddressTable.SetColumnSpan(stateNoteLabel, 2);
             stateNoteLabel.Dock = DockStyle.Fill;
             stateNoteLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            stateNoteLabel.Location = new Point(0, 99);
+            stateNoteLabel.Location = new Point(0, 132);
             stateNoteLabel.Margin = new Padding(0);
             stateNoteLabel.Name = "stateNoteLabel";
-            stateNoteLabel.Size = new Size(385, 20);
+            stateNoteLabel.Size = new Size(442, 27);
             stateNoteLabel.TabIndex = 12;
             stateNoteLabel.Text = "State only needed for USA projects";
             stateNoteLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -570,11 +595,12 @@
             // 
             fullAddressTBox.Dock = DockStyle.Fill;
             fullAddressTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            fullAddressTBox.Location = new Point(123, 122);
+            fullAddressTBox.Location = new Point(140, 163);
+            fullAddressTBox.Margin = new Padding(3, 4, 3, 4);
             fullAddressTBox.Multiline = true;
             fullAddressTBox.Name = "fullAddressTBox";
             fullAddressTBox.PlaceholderText = "Full Address";
-            fullAddressTBox.Size = new Size(259, 87);
+            fullAddressTBox.Size = new Size(299, 119);
             fullAddressTBox.TabIndex = 11;
             // 
             // fullAddressLabel
@@ -582,10 +608,10 @@
             fullAddressLabel.AutoSize = true;
             fullAddressLabel.Dock = DockStyle.Fill;
             fullAddressLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            fullAddressLabel.Location = new Point(10, 119);
-            fullAddressLabel.Margin = new Padding(10, 0, 0, 0);
+            fullAddressLabel.Location = new Point(11, 159);
+            fullAddressLabel.Margin = new Padding(11, 0, 0, 0);
             fullAddressLabel.Name = "fullAddressLabel";
-            fullAddressLabel.Size = new Size(110, 93);
+            fullAddressLabel.Size = new Size(126, 127);
             fullAddressLabel.TabIndex = 10;
             fullAddressLabel.Text = "Full Address: ";
             fullAddressLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -597,9 +623,10 @@
             stateList.Font = new Font("Segoe UI", 9.75F);
             stateList.FormattingEnabled = true;
             stateList.Items.AddRange(new object[] { "Not Selected" });
-            stateList.Location = new Point(123, 69);
+            stateList.Location = new Point(140, 92);
+            stateList.Margin = new Padding(3, 4, 3, 4);
             stateList.Name = "stateList";
-            stateList.Size = new Size(259, 25);
+            stateList.Size = new Size(299, 29);
             stateList.TabIndex = 9;
             // 
             // stateLabel
@@ -607,10 +634,10 @@
             stateLabel.AutoSize = true;
             stateLabel.Dock = DockStyle.Fill;
             stateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            stateLabel.Location = new Point(10, 66);
-            stateLabel.Margin = new Padding(10, 0, 0, 0);
+            stateLabel.Location = new Point(11, 88);
+            stateLabel.Margin = new Padding(11, 0, 0, 0);
             stateLabel.Name = "stateLabel";
-            stateLabel.Size = new Size(110, 33);
+            stateLabel.Size = new Size(126, 44);
             stateLabel.TabIndex = 8;
             stateLabel.Text = "State:";
             stateLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -619,11 +646,12 @@
             // 
             projectNameTBox.Dock = DockStyle.Fill;
             projectNameTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            projectNameTBox.Location = new Point(123, 3);
+            projectNameTBox.Location = new Point(140, 4);
+            projectNameTBox.Margin = new Padding(3, 4, 3, 4);
             projectNameTBox.Multiline = true;
             projectNameTBox.Name = "projectNameTBox";
             projectNameTBox.PlaceholderText = "Name";
-            projectNameTBox.Size = new Size(259, 27);
+            projectNameTBox.Size = new Size(299, 36);
             projectNameTBox.TabIndex = 5;
             // 
             // projectNameLabel
@@ -631,10 +659,10 @@
             projectNameLabel.AutoSize = true;
             projectNameLabel.Dock = DockStyle.Fill;
             projectNameLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            projectNameLabel.Location = new Point(10, 0);
-            projectNameLabel.Margin = new Padding(10, 0, 0, 0);
+            projectNameLabel.Location = new Point(11, 0);
+            projectNameLabel.Margin = new Padding(11, 0, 0, 0);
             projectNameLabel.Name = "projectNameLabel";
-            projectNameLabel.Size = new Size(110, 33);
+            projectNameLabel.Size = new Size(126, 44);
             projectNameLabel.TabIndex = 0;
             projectNameLabel.Text = "Name:";
             projectNameLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -644,10 +672,10 @@
             countryLabel.AutoSize = true;
             countryLabel.Dock = DockStyle.Fill;
             countryLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            countryLabel.Location = new Point(10, 33);
-            countryLabel.Margin = new Padding(10, 0, 0, 0);
+            countryLabel.Location = new Point(11, 44);
+            countryLabel.Margin = new Padding(11, 0, 0, 0);
             countryLabel.Name = "countryLabel";
-            countryLabel.Size = new Size(110, 33);
+            countryLabel.Size = new Size(126, 44);
             countryLabel.TabIndex = 6;
             countryLabel.Text = "Country:";
             countryLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -659,9 +687,10 @@
             countryList.Font = new Font("Segoe UI", 9.75F);
             countryList.FormattingEnabled = true;
             countryList.Items.AddRange(new object[] { "Not Selected" });
-            countryList.Location = new Point(123, 36);
+            countryList.Location = new Point(140, 48);
+            countryList.Margin = new Padding(3, 4, 3, 4);
             countryList.Name = "countryList";
-            countryList.Size = new Size(259, 25);
+            countryList.Size = new Size(299, 29);
             countryList.TabIndex = 7;
             countryList.SelectedIndexChanged += countryList_SelectedIndexChanged;
             // 
@@ -670,10 +699,12 @@
             managementBox.Controls.Add(managementTable);
             managementBox.Dock = DockStyle.Fill;
             managementBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            managementBox.Location = new Point(3, 3);
+            managementBox.Location = new Point(3, 4);
+            managementBox.Margin = new Padding(3, 4, 3, 4);
             managementBox.Name = "managementBox";
+            managementBox.Padding = new Padding(3, 4, 3, 4);
             projectInfoTable.SetRowSpan(managementBox, 3);
-            managementBox.Size = new Size(588, 517);
+            managementBox.Size = new Size(674, 692);
             managementBox.TabIndex = 4;
             managementBox.TabStop = false;
             managementBox.Text = "Management";
@@ -681,7 +712,7 @@
             // managementTable
             // 
             managementTable.ColumnCount = 2;
-            managementTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            managementTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 160F));
             managementTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             managementTable.Controls.Add(developersLabel, 0, 4);
             managementTable.Controls.Add(developersTable, 1, 4);
@@ -694,15 +725,16 @@
             managementTable.Controls.Add(clientLabel, 0, 0);
             managementTable.Controls.Add(clientTBox, 1, 0);
             managementTable.Dock = DockStyle.Fill;
-            managementTable.Location = new Point(3, 25);
+            managementTable.Location = new Point(3, 31);
+            managementTable.Margin = new Padding(3, 4, 3, 4);
             managementTable.Name = "managementTable";
             managementTable.RowCount = 5;
-            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             managementTable.RowStyles.Add(new RowStyle());
-            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 280F));
-            managementTable.Size = new Size(582, 489);
+            managementTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 373F));
+            managementTable.Size = new Size(668, 657);
             managementTable.TabIndex = 1;
             // 
             // developersLabel
@@ -710,10 +742,10 @@
             developersLabel.AutoSize = true;
             developersLabel.Dock = DockStyle.Fill;
             developersLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            developersLabel.Location = new Point(10, 185);
-            developersLabel.Margin = new Padding(10, 0, 0, 0);
+            developersLabel.Location = new Point(11, 245);
+            developersLabel.Margin = new Padding(11, 0, 0, 0);
             developersLabel.Name = "developersLabel";
-            developersLabel.Size = new Size(130, 304);
+            developersLabel.Size = new Size(149, 412);
             developersLabel.TabIndex = 16;
             developersLabel.Text = "Trade Developers:";
             developersLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -724,7 +756,8 @@
             developersTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             developersTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
             developersTable.Dock = DockStyle.Fill;
-            developersTable.Location = new Point(143, 188);
+            developersTable.Location = new Point(163, 249);
+            developersTable.Margin = new Padding(3, 4, 3, 4);
             developersTable.Name = "developersTable";
             developersTable.RowCount = 7;
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
@@ -734,7 +767,7 @@
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            developersTable.Size = new Size(436, 298);
+            developersTable.Size = new Size(502, 404);
             developersTable.TabIndex = 17;
             // 
             // scopeLabel
@@ -742,10 +775,10 @@
             scopeLabel.AutoSize = true;
             scopeLabel.Dock = DockStyle.Fill;
             scopeLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            scopeLabel.Location = new Point(10, 99);
-            scopeLabel.Margin = new Padding(10, 0, 0, 0);
+            scopeLabel.Location = new Point(11, 132);
+            scopeLabel.Margin = new Padding(11, 0, 0, 0);
             scopeLabel.Name = "scopeLabel";
-            scopeLabel.Size = new Size(130, 86);
+            scopeLabel.Size = new Size(149, 113);
             scopeLabel.TabIndex = 14;
             scopeLabel.Text = "Scope of Work:";
             scopeLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -756,10 +789,11 @@
             scopeList.Dock = DockStyle.Fill;
             scopeList.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             scopeList.FormattingEnabled = true;
-            scopeList.Location = new Point(143, 102);
+            scopeList.Location = new Point(163, 136);
+            scopeList.Margin = new Padding(3, 4, 3, 4);
             scopeList.MultiColumn = true;
             scopeList.Name = "scopeList";
-            scopeList.Size = new Size(436, 80);
+            scopeList.Size = new Size(502, 105);
             scopeList.TabIndex = 15;
             scopeList.ItemCheck += scopeList_ItemCheck;
             // 
@@ -768,10 +802,10 @@
             managerLabel.AutoSize = true;
             managerLabel.Dock = DockStyle.Fill;
             managerLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            managerLabel.Location = new Point(10, 66);
-            managerLabel.Margin = new Padding(10, 0, 0, 0);
+            managerLabel.Location = new Point(11, 88);
+            managerLabel.Margin = new Padding(11, 0, 0, 0);
             managerLabel.Name = "managerLabel";
-            managerLabel.Size = new Size(130, 33);
+            managerLabel.Size = new Size(149, 44);
             managerLabel.TabIndex = 8;
             managerLabel.Text = "Manager:";
             managerLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -780,11 +814,12 @@
             // 
             managerTBox.Dock = DockStyle.Fill;
             managerTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            managerTBox.Location = new Point(143, 69);
+            managerTBox.Location = new Point(163, 92);
+            managerTBox.Margin = new Padding(3, 4, 3, 4);
             managerTBox.Multiline = true;
             managerTBox.Name = "managerTBox";
             managerTBox.PlaceholderText = "Manager";
-            managerTBox.Size = new Size(436, 27);
+            managerTBox.Size = new Size(502, 36);
             managerTBox.TabIndex = 13;
             // 
             // directorLabel
@@ -792,10 +827,10 @@
             directorLabel.AutoSize = true;
             directorLabel.Dock = DockStyle.Fill;
             directorLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            directorLabel.Location = new Point(10, 33);
-            directorLabel.Margin = new Padding(10, 0, 0, 0);
+            directorLabel.Location = new Point(11, 44);
+            directorLabel.Margin = new Padding(11, 0, 0, 0);
             directorLabel.Name = "directorLabel";
-            directorLabel.Size = new Size(130, 33);
+            directorLabel.Size = new Size(149, 44);
             directorLabel.TabIndex = 6;
             directorLabel.Text = "Director:";
             directorLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -804,11 +839,12 @@
             // 
             directorTBox.Dock = DockStyle.Fill;
             directorTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            directorTBox.Location = new Point(143, 36);
+            directorTBox.Location = new Point(163, 48);
+            directorTBox.Margin = new Padding(3, 4, 3, 4);
             directorTBox.Multiline = true;
             directorTBox.Name = "directorTBox";
             directorTBox.PlaceholderText = "Director";
-            directorTBox.Size = new Size(436, 27);
+            directorTBox.Size = new Size(502, 36);
             directorTBox.TabIndex = 12;
             // 
             // clientLabel
@@ -816,10 +852,10 @@
             clientLabel.AutoSize = true;
             clientLabel.Dock = DockStyle.Fill;
             clientLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            clientLabel.Location = new Point(10, 0);
-            clientLabel.Margin = new Padding(10, 0, 0, 0);
+            clientLabel.Location = new Point(11, 0);
+            clientLabel.Margin = new Padding(11, 0, 0, 0);
             clientLabel.Name = "clientLabel";
-            clientLabel.Size = new Size(130, 33);
+            clientLabel.Size = new Size(149, 44);
             clientLabel.TabIndex = 0;
             clientLabel.Text = "Client:";
             clientLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -828,11 +864,12 @@
             // 
             clientTBox.Dock = DockStyle.Fill;
             clientTBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clientTBox.Location = new Point(143, 3);
+            clientTBox.Location = new Point(163, 4);
+            clientTBox.Margin = new Padding(3, 4, 3, 4);
             clientTBox.Multiline = true;
             clientTBox.Name = "clientTBox";
             clientTBox.PlaceholderText = "Client";
-            clientTBox.Size = new Size(436, 27);
+            clientTBox.Size = new Size(502, 36);
             clientTBox.TabIndex = 5;
             // 
             // infoControlButtonsTable
@@ -842,12 +879,13 @@
             infoControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             infoControlButtonsTable.Controls.Add(resetInfoButton, 1, 0);
             infoControlButtonsTable.Controls.Add(saveInfoButton, 0, 0);
-            infoControlButtonsTable.Location = new Point(3, 627);
+            infoControlButtonsTable.Location = new Point(3, 836);
+            infoControlButtonsTable.Margin = new Padding(3, 4, 3, 4);
             infoControlButtonsTable.Name = "infoControlButtonsTable";
             infoControlButtonsTable.RowCount = 1;
             infoControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             infoControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            infoControlButtonsTable.Size = new Size(250, 34);
+            infoControlButtonsTable.Size = new Size(286, 45);
             infoControlButtonsTable.TabIndex = 2;
             // 
             // resetInfoButton
@@ -860,10 +898,10 @@
             resetInfoButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             resetInfoButton.IconSize = 30;
             resetInfoButton.ImageAlign = ContentAlignment.MiddleLeft;
-            resetInfoButton.Location = new Point(125, 0);
+            resetInfoButton.Location = new Point(143, 0);
             resetInfoButton.Margin = new Padding(0);
             resetInfoButton.Name = "resetInfoButton";
-            resetInfoButton.Size = new Size(125, 34);
+            resetInfoButton.Size = new Size(143, 45);
             resetInfoButton.TabIndex = 6;
             resetInfoButton.Text = "Reset";
             resetInfoButton.UseVisualStyleBackColor = false;
@@ -882,7 +920,7 @@
             saveInfoButton.Location = new Point(0, 0);
             saveInfoButton.Margin = new Padding(0);
             saveInfoButton.Name = "saveInfoButton";
-            saveInfoButton.Size = new Size(125, 34);
+            saveInfoButton.Size = new Size(143, 45);
             saveInfoButton.TabIndex = 5;
             saveInfoButton.Text = "Save";
             saveInfoButton.UseVisualStyleBackColor = false;
@@ -896,32 +934,34 @@
             folderPane.Controls.Add(folderStructureBox, 0, 0);
             folderPane.Controls.Add(folderNoteLabel, 0, 1);
             folderPane.Dock = DockStyle.Fill;
-            folderPane.Location = new Point(200, 0);
+            folderPane.Location = new Point(229, 0);
+            folderPane.Margin = new Padding(3, 4, 3, 4);
             folderPane.Name = "folderPane";
             folderPane.RowCount = 4;
             folderPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             folderPane.RowStyles.Add(new RowStyle());
-            folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            folderPane.Size = new Size(1003, 664);
+            folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            folderPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            folderPane.Size = new Size(1146, 885);
             folderPane.TabIndex = 5;
             folderPane.Visible = false;
             // 
             // folderControlButtonsTable
             // 
             folderControlButtonsTable.ColumnCount = 3;
-            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
-            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
-            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
+            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 143F));
+            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 143F));
+            folderControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 143F));
             folderControlButtonsTable.Controls.Add(deleteFolderButton, 2, 0);
             folderControlButtonsTable.Controls.Add(addFolderButton, 1, 0);
             folderControlButtonsTable.Controls.Add(createFolderButton, 0, 0);
-            folderControlButtonsTable.Location = new Point(3, 607);
+            folderControlButtonsTable.Location = new Point(3, 809);
+            folderControlButtonsTable.Margin = new Padding(3, 4, 3, 4);
             folderControlButtonsTable.Name = "folderControlButtonsTable";
             folderControlButtonsTable.RowCount = 1;
             folderControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            folderControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            folderControlButtonsTable.Size = new Size(375, 34);
+            folderControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            folderControlButtonsTable.Size = new Size(429, 45);
             folderControlButtonsTable.TabIndex = 3;
             // 
             // deleteFolderButton
@@ -934,10 +974,10 @@
             deleteFolderButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             deleteFolderButton.IconSize = 30;
             deleteFolderButton.ImageAlign = ContentAlignment.MiddleLeft;
-            deleteFolderButton.Location = new Point(250, 0);
+            deleteFolderButton.Location = new Point(286, 0);
             deleteFolderButton.Margin = new Padding(0);
             deleteFolderButton.Name = "deleteFolderButton";
-            deleteFolderButton.Size = new Size(125, 34);
+            deleteFolderButton.Size = new Size(143, 45);
             deleteFolderButton.TabIndex = 7;
             deleteFolderButton.Text = "Delete";
             deleteFolderButton.UseVisualStyleBackColor = false;
@@ -953,10 +993,10 @@
             addFolderButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             addFolderButton.IconSize = 30;
             addFolderButton.ImageAlign = ContentAlignment.MiddleLeft;
-            addFolderButton.Location = new Point(125, 0);
+            addFolderButton.Location = new Point(143, 0);
             addFolderButton.Margin = new Padding(0);
             addFolderButton.Name = "addFolderButton";
-            addFolderButton.Size = new Size(125, 34);
+            addFolderButton.Size = new Size(143, 45);
             addFolderButton.TabIndex = 6;
             addFolderButton.Text = "Add";
             addFolderButton.UseVisualStyleBackColor = false;
@@ -975,7 +1015,7 @@
             createFolderButton.Location = new Point(0, 0);
             createFolderButton.Margin = new Padding(0);
             createFolderButton.Name = "createFolderButton";
-            createFolderButton.Size = new Size(125, 34);
+            createFolderButton.Size = new Size(143, 45);
             createFolderButton.TabIndex = 5;
             createFolderButton.Text = "Create";
             createFolderButton.UseVisualStyleBackColor = false;
@@ -987,9 +1027,10 @@
             folderStructureBox.Dock = DockStyle.Fill;
             folderStructureBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             folderStructureBox.Location = new Point(3, 0);
-            folderStructureBox.Margin = new Padding(3, 0, 3, 3);
+            folderStructureBox.Margin = new Padding(3, 0, 3, 4);
             folderStructureBox.Name = "folderStructureBox";
-            folderStructureBox.Size = new Size(997, 567);
+            folderStructureBox.Padding = new Padding(3, 4, 3, 4);
+            folderStructureBox.Size = new Size(1140, 755);
             folderStructureBox.TabIndex = 0;
             folderStructureBox.TabStop = false;
             folderStructureBox.Text = "Typical Folder Structure";
@@ -998,9 +1039,10 @@
             // 
             folderView.Dock = DockStyle.Fill;
             folderView.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            folderView.Location = new Point(3, 25);
+            folderView.Location = new Point(3, 31);
+            folderView.Margin = new Padding(3, 4, 3, 4);
             folderView.Name = "folderView";
-            folderView.Size = new Size(991, 539);
+            folderView.Size = new Size(1134, 720);
             folderView.TabIndex = 0;
             folderView.AfterLabelEdit += folderView_AfterLabelEdit;
             // 
@@ -1009,9 +1051,9 @@
             folderNoteLabel.AutoSize = true;
             folderNoteLabel.Dock = DockStyle.Fill;
             folderNoteLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            folderNoteLabel.Location = new Point(3, 570);
+            folderNoteLabel.Location = new Point(3, 759);
             folderNoteLabel.Name = "folderNoteLabel";
-            folderNoteLabel.Size = new Size(997, 34);
+            folderNoteLabel.Size = new Size(1140, 46);
             folderNoteLabel.TabIndex = 1;
             folderNoteLabel.Text = resources.GetString("folderNoteLabel.Text");
             folderNoteLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1025,14 +1067,15 @@
             templatesPane.Controls.Add(templateViewer, 0, 0);
             templatesPane.Controls.Add(templateMessageLabel, 0, 1);
             templatesPane.Dock = DockStyle.Fill;
-            templatesPane.Location = new Point(200, 0);
+            templatesPane.Location = new Point(229, 0);
+            templatesPane.Margin = new Padding(3, 4, 3, 4);
             templatesPane.Name = "templatesPane";
             templatesPane.RowCount = 4;
             templatesPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             templatesPane.RowStyles.Add(new RowStyle());
-            templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            templatesPane.Size = new Size(1003, 664);
+            templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            templatesPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            templatesPane.Size = new Size(1146, 885);
             templatesPane.TabIndex = 1;
             templatesPane.Visible = false;
             // 
@@ -1042,11 +1085,12 @@
             templateControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             templateControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             templateControlButtonsTable.Controls.Add(copyTemplateButton, 0, 0);
-            templateControlButtonsTable.Location = new Point(3, 607);
+            templateControlButtonsTable.Location = new Point(3, 809);
+            templateControlButtonsTable.Margin = new Padding(3, 4, 3, 4);
             templateControlButtonsTable.Name = "templateControlButtonsTable";
             templateControlButtonsTable.RowCount = 1;
             templateControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            templateControlButtonsTable.Size = new Size(380, 34);
+            templateControlButtonsTable.Size = new Size(434, 45);
             templateControlButtonsTable.TabIndex = 3;
             // 
             // copyTemplateButton
@@ -1062,7 +1106,7 @@
             copyTemplateButton.Location = new Point(0, 0);
             copyTemplateButton.Margin = new Padding(0);
             copyTemplateButton.Name = "copyTemplateButton";
-            copyTemplateButton.Size = new Size(190, 34);
+            copyTemplateButton.Size = new Size(217, 45);
             copyTemplateButton.TabIndex = 5;
             copyTemplateButton.Text = "Copy Selected";
             copyTemplateButton.UseVisualStyleBackColor = false;
@@ -1072,14 +1116,15 @@
             // 
             templateViewer.ColumnCount = 1;
             templateViewer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            templateViewer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            templateViewer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 23F));
             templateViewer.Dock = DockStyle.Fill;
-            templateViewer.Location = new Point(3, 3);
+            templateViewer.Location = new Point(3, 4);
+            templateViewer.Margin = new Padding(3, 4, 3, 4);
             templateViewer.Name = "templateViewer";
             templateViewer.RowCount = 1;
             templateViewer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            templateViewer.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            templateViewer.Size = new Size(997, 581);
+            templateViewer.RowStyles.Add(new RowStyle(SizeType.Absolute, 767F));
+            templateViewer.Size = new Size(1140, 774);
             templateViewer.TabIndex = 0;
             // 
             // templateMessageLabel
@@ -1087,9 +1132,9 @@
             templateMessageLabel.AutoSize = true;
             templateMessageLabel.Dock = DockStyle.Fill;
             templateMessageLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            templateMessageLabel.Location = new Point(3, 587);
+            templateMessageLabel.Location = new Point(3, 782);
             templateMessageLabel.Name = "templateMessageLabel";
-            templateMessageLabel.Size = new Size(997, 17);
+            templateMessageLabel.Size = new Size(1140, 23);
             templateMessageLabel.TabIndex = 1;
             templateMessageLabel.Text = "Each template is copied to its appropriate folder inside the \"Working Folder\" folder.";
             templateMessageLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1102,13 +1147,14 @@
             datasheetsPane.Controls.Add(datasheetControlButtonsTable, 0, 2);
             datasheetsPane.Controls.Add(datasheetGroupBox, 0, 0);
             datasheetsPane.Dock = DockStyle.Fill;
-            datasheetsPane.Location = new Point(200, 0);
+            datasheetsPane.Location = new Point(229, 0);
+            datasheetsPane.Margin = new Padding(3, 4, 3, 4);
             datasheetsPane.Name = "datasheetsPane";
             datasheetsPane.RowCount = 3;
             datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            datasheetsPane.Size = new Size(1003, 664);
+            datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            datasheetsPane.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            datasheetsPane.Size = new Size(1146, 885);
             datasheetsPane.TabIndex = 0;
             datasheetsPane.Visible = false;
             // 
@@ -1118,9 +1164,9 @@
             datasheetsPane.SetColumnSpan(label2, 2);
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(3, 604);
+            label2.Location = new Point(3, 805);
             label2.Name = "label2";
-            label2.Size = new Size(997, 20);
+            label2.Size = new Size(1140, 27);
             label2.TabIndex = 5;
             label2.Text = "The selected datasheet is copied to the \"Selection\" folder of the selected category.";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -1132,11 +1178,12 @@
             datasheetControlButtonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             datasheetControlButtonsTable.Controls.Add(copyDatasheetButton, 1, 0);
             datasheetControlButtonsTable.Controls.Add(findDatasheetButton, 0, 0);
-            datasheetControlButtonsTable.Location = new Point(3, 627);
+            datasheetControlButtonsTable.Location = new Point(3, 836);
+            datasheetControlButtonsTable.Margin = new Padding(3, 4, 3, 4);
             datasheetControlButtonsTable.Name = "datasheetControlButtonsTable";
             datasheetControlButtonsTable.RowCount = 1;
             datasheetControlButtonsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            datasheetControlButtonsTable.Size = new Size(250, 34);
+            datasheetControlButtonsTable.Size = new Size(286, 45);
             datasheetControlButtonsTable.TabIndex = 6;
             // 
             // copyDatasheetButton
@@ -1149,10 +1196,10 @@
             copyDatasheetButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             copyDatasheetButton.IconSize = 30;
             copyDatasheetButton.ImageAlign = ContentAlignment.MiddleLeft;
-            copyDatasheetButton.Location = new Point(125, 0);
+            copyDatasheetButton.Location = new Point(143, 0);
             copyDatasheetButton.Margin = new Padding(0);
             copyDatasheetButton.Name = "copyDatasheetButton";
-            copyDatasheetButton.Size = new Size(125, 34);
+            copyDatasheetButton.Size = new Size(143, 45);
             copyDatasheetButton.TabIndex = 6;
             copyDatasheetButton.Text = "Copy";
             copyDatasheetButton.UseVisualStyleBackColor = false;
@@ -1170,7 +1217,7 @@
             findDatasheetButton.Location = new Point(0, 0);
             findDatasheetButton.Margin = new Padding(0);
             findDatasheetButton.Name = "findDatasheetButton";
-            findDatasheetButton.Size = new Size(125, 34);
+            findDatasheetButton.Size = new Size(143, 45);
             findDatasheetButton.TabIndex = 5;
             findDatasheetButton.Text = "Find";
             findDatasheetButton.UseVisualStyleBackColor = false;
@@ -1181,9 +1228,10 @@
             datasheetGroupBox.Dock = DockStyle.Fill;
             datasheetGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             datasheetGroupBox.Location = new Point(3, 0);
-            datasheetGroupBox.Margin = new Padding(3, 0, 3, 3);
+            datasheetGroupBox.Margin = new Padding(3, 0, 3, 4);
             datasheetGroupBox.Name = "datasheetGroupBox";
-            datasheetGroupBox.Size = new Size(997, 601);
+            datasheetGroupBox.Padding = new Padding(3, 4, 3, 4);
+            datasheetGroupBox.Size = new Size(1140, 801);
             datasheetGroupBox.TabIndex = 7;
             datasheetGroupBox.TabStop = false;
             datasheetGroupBox.Text = "Datasheet Selection";
@@ -1192,7 +1240,8 @@
             // 
             datasheetSplitterContainer.Dock = DockStyle.Fill;
             datasheetSplitterContainer.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            datasheetSplitterContainer.Location = new Point(3, 25);
+            datasheetSplitterContainer.Location = new Point(3, 31);
+            datasheetSplitterContainer.Margin = new Padding(3, 4, 3, 4);
             datasheetSplitterContainer.Name = "datasheetSplitterContainer";
             // 
             // datasheetSplitterContainer.Panel1
@@ -1202,8 +1251,9 @@
             // datasheetSplitterContainer.Panel2
             // 
             datasheetSplitterContainer.Panel2.Controls.Add(matchingDatasheetGroupBox);
-            datasheetSplitterContainer.Size = new Size(991, 573);
-            datasheetSplitterContainer.SplitterDistance = 495;
+            datasheetSplitterContainer.Size = new Size(1134, 766);
+            datasheetSplitterContainer.SplitterDistance = 566;
+            datasheetSplitterContainer.SplitterWidth = 5;
             datasheetSplitterContainer.TabIndex = 0;
             // 
             // inputGroupBox
@@ -1212,8 +1262,10 @@
             inputGroupBox.Dock = DockStyle.Fill;
             inputGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             inputGroupBox.Location = new Point(0, 0);
+            inputGroupBox.Margin = new Padding(3, 4, 3, 4);
             inputGroupBox.Name = "inputGroupBox";
-            inputGroupBox.Size = new Size(495, 573);
+            inputGroupBox.Padding = new Padding(3, 4, 3, 4);
+            inputGroupBox.Size = new Size(566, 766);
             inputGroupBox.TabIndex = 0;
             inputGroupBox.TabStop = false;
             inputGroupBox.Text = "Inputs";
@@ -1233,7 +1285,8 @@
             inputTable.Controls.Add(equipTypeAcronymLabel, 0, 2);
             inputTable.Controls.Add(equipmentSpecsTable, 0, 5);
             inputTable.Dock = DockStyle.Fill;
-            inputTable.Location = new Point(3, 25);
+            inputTable.Location = new Point(3, 31);
+            inputTable.Margin = new Padding(3, 4, 3, 4);
             inputTable.Name = "inputTable";
             inputTable.RowCount = 6;
             inputTable.RowStyles.Add(new RowStyle());
@@ -1242,7 +1295,7 @@
             inputTable.RowStyles.Add(new RowStyle());
             inputTable.RowStyles.Add(new RowStyle());
             inputTable.RowStyles.Add(new RowStyle());
-            inputTable.Size = new Size(489, 545);
+            inputTable.Size = new Size(560, 731);
             inputTable.TabIndex = 0;
             // 
             // equipmentOptionLabel
@@ -1250,9 +1303,9 @@
             equipmentOptionLabel.AutoSize = true;
             equipmentOptionLabel.Dock = DockStyle.Fill;
             equipmentOptionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            equipmentOptionLabel.Location = new Point(3, 79);
+            equipmentOptionLabel.Location = new Point(3, 97);
             equipmentOptionLabel.Name = "equipmentOptionLabel";
-            equipmentOptionLabel.Size = new Size(238, 31);
+            equipmentOptionLabel.Size = new Size(274, 37);
             equipmentOptionLabel.TabIndex = 4;
             equipmentOptionLabel.Text = "Option:";
             equipmentOptionLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -1262,9 +1315,9 @@
             equipmentTypeLabel.AutoSize = true;
             equipmentTypeLabel.Dock = DockStyle.Fill;
             equipmentTypeLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            equipmentTypeLabel.Location = new Point(3, 31);
+            equipmentTypeLabel.Location = new Point(3, 37);
             equipmentTypeLabel.Name = "equipmentTypeLabel";
-            equipmentTypeLabel.Size = new Size(238, 31);
+            equipmentTypeLabel.Size = new Size(274, 37);
             equipmentTypeLabel.TabIndex = 2;
             equipmentTypeLabel.Text = "Equipment Type:";
             equipmentTypeLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -1276,9 +1329,10 @@
             equipmentTypeList.Font = new Font("Segoe UI", 9.75F);
             equipmentTypeList.FormattingEnabled = true;
             equipmentTypeList.Items.AddRange(new object[] { "Not Selected" });
-            equipmentTypeList.Location = new Point(247, 34);
+            equipmentTypeList.Location = new Point(283, 41);
+            equipmentTypeList.Margin = new Padding(3, 4, 3, 4);
             equipmentTypeList.Name = "equipmentTypeList";
-            equipmentTypeList.Size = new Size(239, 25);
+            equipmentTypeList.Size = new Size(274, 29);
             equipmentTypeList.TabIndex = 3;
             equipmentTypeList.SelectedIndexChanged += equipmentTypeList_SelectedIndexChanged;
             // 
@@ -1289,7 +1343,7 @@
             equipmentCatLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             equipmentCatLabel.Location = new Point(3, 0);
             equipmentCatLabel.Name = "equipmentCatLabel";
-            equipmentCatLabel.Size = new Size(238, 31);
+            equipmentCatLabel.Size = new Size(274, 37);
             equipmentCatLabel.TabIndex = 0;
             equipmentCatLabel.Text = "Equipment Category:";
             equipmentCatLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -1301,9 +1355,10 @@
             equipmentCatList.Font = new Font("Segoe UI", 9.75F);
             equipmentCatList.FormattingEnabled = true;
             equipmentCatList.Items.AddRange(new object[] { "Not Selected" });
-            equipmentCatList.Location = new Point(247, 3);
+            equipmentCatList.Location = new Point(283, 4);
+            equipmentCatList.Margin = new Padding(3, 4, 3, 4);
             equipmentCatList.Name = "equipmentCatList";
-            equipmentCatList.Size = new Size(239, 25);
+            equipmentCatList.Size = new Size(274, 29);
             equipmentCatList.TabIndex = 1;
             equipmentCatList.SelectedIndexChanged += equipmentCatList_SelectedIndexChanged;
             // 
@@ -1313,9 +1368,10 @@
             equipmentOptionList.DropDownStyle = ComboBoxStyle.DropDownList;
             equipmentOptionList.Font = new Font("Segoe UI", 9.75F);
             equipmentOptionList.FormattingEnabled = true;
-            equipmentOptionList.Location = new Point(247, 82);
+            equipmentOptionList.Location = new Point(283, 101);
+            equipmentOptionList.Margin = new Padding(3, 4, 3, 4);
             equipmentOptionList.Name = "equipmentOptionList";
-            equipmentOptionList.Size = new Size(239, 25);
+            equipmentOptionList.Size = new Size(274, 29);
             equipmentOptionList.TabIndex = 5;
             equipmentOptionList.SelectedIndexChanged += equipmentOptionList_SelectedIndexChanged;
             // 
@@ -1325,9 +1381,9 @@
             inputTable.SetColumnSpan(equipOptionAcronymLabel, 2);
             equipOptionAcronymLabel.Dock = DockStyle.Fill;
             equipOptionAcronymLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            equipOptionAcronymLabel.Location = new Point(3, 110);
+            equipOptionAcronymLabel.Location = new Point(3, 134);
             equipOptionAcronymLabel.Name = "equipOptionAcronymLabel";
-            equipOptionAcronymLabel.Size = new Size(483, 17);
+            equipOptionAcronymLabel.Size = new Size(554, 23);
             equipOptionAcronymLabel.TabIndex = 8;
             equipOptionAcronymLabel.Text = "description of equipment option";
             equipOptionAcronymLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1338,9 +1394,9 @@
             inputTable.SetColumnSpan(equipTypeAcronymLabel, 2);
             equipTypeAcronymLabel.Dock = DockStyle.Fill;
             equipTypeAcronymLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            equipTypeAcronymLabel.Location = new Point(3, 62);
+            equipTypeAcronymLabel.Location = new Point(3, 74);
             equipTypeAcronymLabel.Name = "equipTypeAcronymLabel";
-            equipTypeAcronymLabel.Size = new Size(483, 17);
+            equipTypeAcronymLabel.Size = new Size(554, 23);
             equipTypeAcronymLabel.TabIndex = 7;
             equipTypeAcronymLabel.Text = "description of equipment type";
             equipTypeAcronymLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1353,11 +1409,12 @@
             equipmentSpecsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             equipmentSpecsTable.Dock = DockStyle.Fill;
             equipmentSpecsTable.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            equipmentSpecsTable.Location = new Point(3, 130);
+            equipmentSpecsTable.Location = new Point(3, 161);
+            equipmentSpecsTable.Margin = new Padding(3, 4, 3, 4);
             equipmentSpecsTable.Name = "equipmentSpecsTable";
             equipmentSpecsTable.RowCount = 1;
             equipmentSpecsTable.RowStyles.Add(new RowStyle());
-            equipmentSpecsTable.Size = new Size(483, 412);
+            equipmentSpecsTable.Size = new Size(554, 566);
             equipmentSpecsTable.TabIndex = 9;
             // 
             // matchingDatasheetGroupBox
@@ -1366,8 +1423,10 @@
             matchingDatasheetGroupBox.Dock = DockStyle.Fill;
             matchingDatasheetGroupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             matchingDatasheetGroupBox.Location = new Point(0, 0);
+            matchingDatasheetGroupBox.Margin = new Padding(3, 4, 3, 4);
             matchingDatasheetGroupBox.Name = "matchingDatasheetGroupBox";
-            matchingDatasheetGroupBox.Size = new Size(492, 573);
+            matchingDatasheetGroupBox.Padding = new Padding(3, 4, 3, 4);
+            matchingDatasheetGroupBox.Size = new Size(563, 766);
             matchingDatasheetGroupBox.TabIndex = 1;
             matchingDatasheetGroupBox.TabStop = false;
             matchingDatasheetGroupBox.Text = "Matching Datasheets";
@@ -1377,23 +1436,25 @@
             matchingDatasheetList.Dock = DockStyle.Fill;
             matchingDatasheetList.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             matchingDatasheetList.FormattingEnabled = true;
-            matchingDatasheetList.Location = new Point(3, 25);
+            matchingDatasheetList.Location = new Point(3, 31);
+            matchingDatasheetList.Margin = new Padding(3, 4, 3, 4);
             matchingDatasheetList.Name = "matchingDatasheetList";
-            matchingDatasheetList.Size = new Size(486, 545);
+            matchingDatasheetList.Size = new Size(557, 731);
             matchingDatasheetList.TabIndex = 0;
             // 
             // mainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1203, 664);
+            ClientSize = new Size(1375, 885);
             Controls.Add(datasheetsPane);
             Controls.Add(templatesPane);
             Controls.Add(folderPane);
             Controls.Add(infoPane);
             Controls.Add(controlGroup);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 700);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(1140, 918);
             Name = "mainForm";
             Text = "Project Assistant";
             projectPathBox.ResumeLayout(false);
