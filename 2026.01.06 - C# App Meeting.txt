@@ -1,0 +1,20 @@
+infoPane:
+full address: add note on how the address format should be
+scope of work: add pv, photometric, fire alarm (3 options). FP to be fire sprinkler
+trade developers: make it a drop-list with well defined names of teams
+state: show the 50 current states of USA
+new field 1: under state, add field for type of adopted code
+new field 2: under new field 1, add field for city of the selected state  
+
+folderpane:
+MP
+E
+Add Energy folder
+
+new pane: Calculations Sheets
+show available calculation sheets and let the user select the appropriate ones
+
+datasheetsPane:
+only show the equipment related to each category, and allow the user to copy multiple sheets.
+
+research: how to convert from json to csv
