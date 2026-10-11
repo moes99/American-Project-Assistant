@@ -17,18 +17,16 @@ namespace ProjectAssistant
         public string ProjectName { get; set; }
         public string Country { get; set; }
         public string State { get; set; }
+        public string City { get; set; }
         public string FullAddress { get; set; }
+        public string CodeType { get; set; }
         public string BuilidngType { get; set; }
         public string BuildingFunction { get; set; }
         public string BuildingCondition { get; set; }
 
+        public ProjectInfoJson() { }
 
-        public ProjectInfoJson()
-        {
-
-        }
-
-        public ProjectInfoJson(string client, string director, string manager, List<string> scopeOfWork, List<string> tradeDevelopers, string name, string country, string state, string fullAddress, string buildingType, string buildingFunction, string buildingCondition)
+        public ProjectInfoJson(string client, string director, string manager, List<string> scopeOfWork, List<string> tradeDevelopers, string name, string country, string state, string city,string fullAddress, string codeType, string buildingType, string buildingFunction, string buildingCondition)
         {
             Client = client;
             Director = director;
@@ -38,7 +36,9 @@ namespace ProjectAssistant
             ProjectName = name;
             Country = country;
             State = state;
+            City = city;
             FullAddress = fullAddress;
+            CodeType = codeType;
             BuilidngType = buildingType;
             BuildingFunction = buildingFunction;
             BuildingCondition = buildingCondition;
