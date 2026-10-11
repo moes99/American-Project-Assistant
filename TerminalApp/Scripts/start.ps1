@@ -92,13 +92,13 @@ if ($projectLeaf -eq "1-Projects In Hand") {
     $nextProjectNbFile = Get-Content -Path (Join-Path -Path $managementFolder -ChildPath "nextProjectNb.json") | ConvertFrom-Json
     $nextProjectNbTable = ConvertTo-Hashtable -inputObject $nextProjectNbFile
     $newProjectIndex = $nextProjectNbTable[$projectInfo.Country][0]
-    $newProjectSubNb = $nextProjectNbTable[$projectInfo.Country][1]
+    $newProjectSubNb = [math]::Max($nextProjectNbTable[$projectInfo.Country][1], (& "$scriptsFolder/currentNbGetter.ps1" -searchPath $PWD.Path.Trim('"') -countryIndex $newProjectIndex) + 1)
     $newProjectNb = "$newProjectIndex.$newProjectSubNb"
     Write-Host "The new project number is $newProjectNb"
     $projectInfo["ProjectNumber"] = $newProjectNb
 
     # Update nextProjectNb.json file
-    $nextProjectNbTable[$projectInfo.Country][1]++
+    $nextProjectNbTable[$projectInfo.Country][1] = $newProjectSubNb + 1
     $nextProjectNbTable | ConvertTo-Json | Set-Content -Path (Join-Path -Path $managementFolder -ChildPath "nextProjectNb.json")
 
     # Create master folder for the new project
@@ -127,7 +127,7 @@ else {
 }
 
 # Check if folder structure has already been setup
-if (-Not (Test-Path -Path "$projectPath/Working Folder/MP")) {
+if (-Not (Test-Path -Path "$projectPath/Working Folder/MP") -And -Not (Test-Path -Path "$projectPath/Working Folder/Elec")) {
     # Create folder structure if not already created
     Write-Host "Let's start by creating the folders for this project."
     & "$scriptsFolder/folderMaker.ps1" -projectPath $projectPath
@@ -139,20 +139,20 @@ else {
 # Copy cad template if MP-DD.dwg does not exist
 if (-Not (Test-Path -Path "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg")) {
     # Copy the appropriate CAD template
-    Write-Host "Now, let's copy the appropriate CAD template to the DWGs folder."
+    Write-Host "Now, let's copy the appropriate MP CAD template to the DWGs folder."
     if ($projectInfo.Country -ne "USA") {
-        Write-Host "Sorry, I don't have CAD templates for countries other than USA yet. Please copy the appropriate template manually."
+        Write-Host "Sorry, I don't have MP CAD templates for countries other than USA yet. Please copy the appropriate template manually."
     }
     else {
         if ($projectInfo.State -eq "California") {
             $cadTemplatePath = Join-Path $resourcesFolder "Templates\CA-MP-DD.dwg"
             Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
-            Write-Host "The California CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+            Write-Host "The California MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
         }
         elseif ($projectInfo.State -eq "Florida") {
             $cadTemplatePath = Join-Path $resourcesFolder "Templates\FL-MP-DD.dwg"
             Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
-            Write-Host "The Florida CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+            Write-Host "The Florida MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
         }
         else {
             Write-Host "Does this project use International or Uniform codes? (I/U)"
@@ -163,18 +163,60 @@ if (-Not (Test-Path -Path "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg")) {
             if ($codeOption -eq "I") {
                 $cadTemplatePath = Join-Path $resourcesFolder "Templates\INT-MP-DD.dwg"
                 Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
-                Write-Host "The International CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+                Write-Host "The International MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
             }
             else {
                 $cadTemplatePath = Join-Path $resourcesFolder "Templates\UNI-MP-DD.dwg"
                 Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
-                Write-Host "The Uniform CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+                Write-Host "The Uniform MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
             }
         }
     }
 }
 else {
-    Write-Host "A CAD template already exists in the DWGs folder."
+    Write-Host "A MP CAD template already exists in the DWGs folder."
+}
+
+# Copy cad template if E-DD.dwg does not exist
+if (-Not (Test-Path -Path "$projectPath/Working Folder/Elec/DWGs/E-DD.dwg")) {
+    # Copy the appropriate CAD template
+    Write-Host "Now, let's copy the appropriate Elec CAD template to the DWGs folder."
+    if ($projectInfo.Country -ne "USA") {
+        Write-Host "Sorry, I don't have Elec CAD templates for countries other than USA yet. Please copy the appropriate template manually."
+    }
+    else {
+        if ($projectInfo.State -eq "California") {
+            $cadTemplatePath = Join-Path $resourcesFolder "Templates\CA-E-DD.dwg"
+            Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/Elec/DWGs/E-DD.dwg"
+            Write-Host "The California Elec CAD template has been copied to the DWGs folder under the name 'E-DD.dwg'."
+        }
+        <# elseif ($projectInfo.State -eq "Florida") {
+            $cadTemplatePath = Join-Path $resourcesFolder "Templates\FL-MP-DD.dwg"
+            Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
+            Write-Host "The Florida MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+        }#>
+        else {
+            <#Write-Host "Does this project use International or Uniform codes? (I/U)"
+            $codeOption = Read-Host "Enter I for International or U for Uniform"
+            while ($codeOption -ne "I" -and $codeOption -ne "U") {
+                $codeOption = Read-Host "Invalid option. Please enter I for International or U for Uniform"
+            }
+            if ($codeOption -eq "I") {
+                $cadTemplatePath = Join-Path $resourcesFolder "Templates\INT-MP-DD.dwg"
+                Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
+                Write-Host "The International MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+            }
+            else {
+                $cadTemplatePath = Join-Path $resourcesFolder "Templates\UNI-MP-DD.dwg"
+                Copy-Item -Path $cadTemplatePath -Destination "$projectPath/Working Folder/MP/DWGs/MP-DD.dwg"
+                Write-Host "The Uniform MP CAD template has been copied to the DWGs folder under the name 'MP-DD.dwg'."
+            }#>
+            Write-Host "Sorry, I don't have Elec CAD templates for states other than California yet."
+        }
+    }
+}
+else {
+    Write-Host "An Elec CAD template already exists in the DWGs folder."
 }
 
 # Keep on looping until user exits

@@ -41,12 +41,16 @@ namespace ProjectAssistant
             //Get the list of functions from the JSON file and populate the functionList ComboBox
             functionJsonData = JsonFileHandler.readJson(managementFolder + "buildingFunction.json");
 
+            //Get the list of developers and populate the developersTable TableLayoutPanel
+            JsonElement developersJsonData = JsonFileHandler.readJson(managementFolder + "listOfDevelopers.json");
+
             //Add labels and textboxes for each scope of work dynamically
             developersTable.RowCount = scopeList.Items.Count;
             developersTable.RowStyles.Clear();
             for (int i = 0; i < scopeList.Items.Count; i++)
             {
-                developersTable.RowStyles.Add(new RowStyle(SizeType.Percent));
+                developersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100 / developersTable.RowCount));
+
                 Label scopeLabel = new Label
                 {
                     AutoSize = true,
@@ -57,17 +61,18 @@ namespace ProjectAssistant
                     Text = scopeList.Items[i].ToString() + ":",
                     Name = scopeList.Items[i].ToString().ToLower() + "DevLabel",
                 };
-                TextBox scopeTBox = new TextBox
+                ComboBox devList = new ComboBox
                 {
                     Dock = DockStyle.Fill,
                     Enabled = false,
                     Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                    Multiline = true,
-                    Name = scopeList.Items[i].ToString().ToLower() + "DevTBox",
-                    PlaceholderText = scopeList.Items[i].ToString() + " Developer(s)"
+                    Name = scopeList.Items[i].ToString().ToLower() + "DevList",
+                    DropDownStyle = ComboBoxStyle.DropDownList
                 };
+                UIHandler.populateListFromJsonElement(devList, developersJsonData, "ListOfDevelopers");
+                devList.SelectedIndex = 0;
                 developersTable.Controls.Add(scopeLabel, 0, i);
-                developersTable.Controls.Add(scopeTBox, 1, i);
+                developersTable.Controls.Add(devList, 1, i);
             }
 
             typeList.SelectedIndex = 0;
@@ -148,18 +153,22 @@ namespace ProjectAssistant
                         directorTBox.Text = projectInfoJson.Director;
                         managerTBox.Text = projectInfoJson.Manager;
                         //Scope of Work
-                        for (int i = 0; i < scopeList.Items.Count; i++)
+                        foreach(string scope in projectInfoJson.ScopeOfWork)
                         {
-                            string itemText = scopeList.Items[i].ToString();
-                            if (projectInfoJson.ScopeOfWork.Contains(itemText))
+                            int index = scopeList.Items.IndexOf(scope);
+                            if (index != -1)
                             {
-                                scopeList.SetItemChecked(i, true);
-                                Control[] controls = developersTable.Controls.Find(itemText.ToLower() + "DevTBox", true);
-                                foreach (string tradeDev in projectInfoJson.TradeDevelopers)
+                                scopeList.SetItemChecked(index, true);
+                                Control[] controls = developersTable.Controls.Find(scope.ToLower() + "DevList", true);
+                                ComboBox comboBox = (ComboBox)controls[0];
+                                string developerEntry = projectInfoJson.TradeDevelopers.Find(dev => dev.StartsWith(scope + ":"));
+                                if (developerEntry != null)
                                 {
-                                    if (tradeDev.StartsWith(itemText + ":"))
+                                    string developerName = developerEntry.Substring(scope.Length + 2).Trim();
+                                    int devIndex = comboBox.Items.IndexOf(developerName);
+                                    if (devIndex != -1)
                                     {
-                                        controls[0].Text = tradeDev.Substring(tradeDev.IndexOf(":") + 1).Trim();
+                                        comboBox.SelectedIndex = devIndex;
                                     }
                                 }
                             }
@@ -171,12 +180,18 @@ namespace ProjectAssistant
                             stateList.Enabled = true;
                             stateList.SelectedItem = projectInfoJson.State;
                         }
+                        cityTBox.Text = projectInfoJson.City;
                         fullAddressTBox.Text = projectInfoJson.FullAddress;
+                        codeTypeList.SelectedItem = projectInfoJson.CodeType;
                         typeList.SelectedItem = projectInfoJson.BuilidngType;
                         functionList.SelectedItem = projectInfoJson.BuildingFunction;
                         conditionList.SelectedItem = projectInfoJson.BuildingCondition;
                         saveInfoButton.Enabled = true;
                         resetInfoButton.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Project info file is not valid or missing!\nPlease enter the project's information again.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -193,13 +208,13 @@ namespace ProjectAssistant
             string itemText = scopeList.Items[e.Index].ToString().ToLower();
             Control[] controls = developersTable.Controls.Find(itemText + "DevLabel", true);
             controls[0].Enabled = e.NewValue == CheckState.Checked;
-            controls = developersTable.Controls.Find(itemText + "DevTBox", true);
+            controls = developersTable.Controls.Find(itemText + "DevList", true);
             controls[0].Enabled = e.NewValue == CheckState.Checked;
         }
 
         private void countryList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(countryList.SelectedItem.ToString() == "Not Selected")
+            if (countryList.SelectedItem.ToString() == "Not Selected")
             {
                 stateList.Enabled = false;
                 stateList.SelectedIndex = -1;
@@ -212,6 +227,8 @@ namespace ProjectAssistant
             {
                 stateList.Enabled = true;
                 stateList.SelectedIndex = 0;
+                codeTypeList.Enabled = true;
+                codeTypeList.SelectedIndex = 0;
             }
             else
             {
@@ -222,6 +239,12 @@ namespace ProjectAssistant
                 codeTypeList.SelectedIndex = 0;
             }
         }
+
+        private void stateList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void resetInfoButton_Click(object sender, EventArgs e)
         {
             UIHandler.resetFields(projectInfoTable);
@@ -239,13 +262,16 @@ namespace ProjectAssistant
                 List<string> tradeDevelopers = new List<string>();
                 foreach (string scope in scopeOfWork)
                 {
-                    Control[] controls = developersTable.Controls.Find(scope.ToLower() + "DevTBox", true);
-                    tradeDevelopers.Add($"{scope}: {controls[0].Text}");
+                    Control[] controls = developersTable.Controls.Find(scope.ToLower() + "DevList", true);
+                    ComboBox comboBox = (ComboBox)controls[0];
+                    tradeDevelopers.Add($"{scope}: {comboBox.SelectedItem.ToString()}");
                 }
                 string projectName = projectNameTBox.Text;
                 string country = countryList.SelectedItem.ToString();
                 string state = stateList.Enabled ? stateList.SelectedItem.ToString() : "N/A";
+                string city = cityTBox.Text;
                 string fullAddress = fullAddressTBox.Text;
+                string codeType = codeTypeList.SelectedItem.ToString();
                 string buildingType = typeList.SelectedItem.ToString();
                 string buildingFunction = functionList.SelectedItem.ToString();
                 string buildingCondition = conditionList.SelectedItem.ToString();
@@ -273,7 +299,7 @@ namespace ProjectAssistant
                 {
                     projectPath = projectPathTBox.Text;
                 }
-                projectInfoJson = new ProjectInfoJson(client, director, manager, scopeOfWork, tradeDevelopers, projectName, country, state, fullAddress, buildingType, buildingFunction, buildingCondition);
+                projectInfoJson = new ProjectInfoJson(client, director, manager, scopeOfWork, tradeDevelopers, projectName, country, state, city, fullAddress, codeType, buildingType, buildingFunction, buildingCondition);
                 bool writeResult = JsonFileHandler.writeJson(projectPath, "projectInfo.json", projectInfoJson);
                 if (writeResult)
                 {
@@ -505,5 +531,7 @@ namespace ProjectAssistant
                 return "Definition not found";
             }
         }
+
+        
     }
 }

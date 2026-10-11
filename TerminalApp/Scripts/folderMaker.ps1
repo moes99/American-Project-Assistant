@@ -53,8 +53,38 @@ if (-not [string]::IsNullOrEmpty($workingFolderPath)) {
         Write-Host "MP folder path is invalid. Stopping child folder creation."
     }
 
-    
+    # Create child folder of name Elec inside "Working Folder"
+    $elecPath = New-Folder -Parent $workingFolderPath -Child "Elec"
+
+    if (-not [string]::IsNullOrEmpty($elecPath)) {
+        # Child folders of Elec
+        $childFoldersToCreate = @(
+            "DWGs",
+            "PDFs",
+            "Calculations"
+        )
+
+        # Loop through each folder and create it
+        foreach ($folder in $childFoldersToCreate) {
+            New-Folder -Parent $elecPath -Child $folder
+        }
+    }
+    else {
+        Write-Host "Elec folder path is invalid. Stopping child folder creation."
+    }
 }
 else {
     Write-Host "Working Folder path is invalid. Stopping folder creation."
+}
+
+# Create parent folder of name Received
+$receivedFolderPath = New-Folder -Parent $projectPath -Child "Received"
+
+if (-not [string]::IsNullOrEmpty($receivedFolderPath)) {
+    # Create child folder of name "YYYY.MM.DD - First Info" inside "Received"
+    $currentDate = Get-Date -Format "yyyy.MM.dd"
+    New-Folder -Parent $receivedFolderPath -Child "$currentDate - First Info"
+}
+else {
+    Write-Host "Received folder path is invalid. Stopping child folder creation."
 }
