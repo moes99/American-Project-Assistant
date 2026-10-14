@@ -1,0 +1,491 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fmodern\fprq1\fcharset0 Courier New;}}
+{\*\generator Msftedit 5.41.21.2507;}\viewkind4\uc1\pard\f0\fs20 FIRE README.TXT \par
+\par
+\par
+======================================================\par
+Contents\par
+--------\par
+I.\tab Obtaining Minor Updates\par
+II. \tab Network installations\par
+III. \tab New features/bug fixes\par
+IV. \tab Attention Canon Bubblejet Printer Owners.\par
+V. \tab Attention HP Laserjet series 5 Printer Owners.\par
+======================================================\par
+\par
+\par
+I.  OBTAINING MINOR UPDATES\par
+Minor updates to FIRE are currently available on our World Wide Web site at:  \par
+\tab\par
+\tab http://www.elitesoft.com\par
+\par
+\par
+II. NETWORK INSTALLATIONS:\par
+\par
+The FIRE program is not specifically designed to run on a network.  It is only intended to be run on the same computer on which it was installed.  However various program directories can be located on a network.  This procedure enables the setting of these directories immediately prior to program installation.\par
+\par
+If you want to install FIRE with different than default directories, open a command prompt and type:\par
+\par
+\tab [your floppy drive name]:SETUP /M\par
+\par
+to install FIRE.  This will enable you to specify the locations of your WINDOWS, SYSTEM and TEMP directories.\par
+\par
+\par
+III. NEW FEATURES/BUG FIXES:\par
+\par
+Version 6.0.244 12/22/10\par
+1. Fixed an error on the General Project Data report that occurred with metric projects.\par
+\par
+Version 6.0.243 11/17/10\par
+1. Added an option to print a fitting legend on the Pipe Input and Pipe Output reports.\par
+\par
+Version 6.0.242 10/21/10\par
+1. Modified the file handling features (such as opening or closing or saving a project) so that they conform with new company standards.\par
+\par
+Version 6.0.241 9/21/10\par
+1. Made pipe sorting faster on the Edit Pipe Data window.\par
+\par
+2. Made scrolling and data modification faster on the Edit Node Data window.\par
+\par
+3. Fixed a problem with the Overall Pipe Output Data report.  The water velocity and a few other pipe characteristics were not being printed on this report for some projects.\par
+\par
+Version 6.0.239 7/22/10\par
+1. Changed the way the program handles some calculations. If the initial damping factor is less than 99 and divergence occurs during calculations, the calculations will be restarted automatically using an initial damping factor of 99.\par
+\par
+Version 6.0.238 6/21/10\par
+1. Fixed a problem that prevented calculations from finishing when a large number of inactive pipes was present in a valid pipe network.\par
+\par
+2. Clarified the warning message that appears when divergence occurs during calculations.\par
+\par
+3. Changed the way the program handles some calculations.  If residual pressure estimates are used and divergence occurs during calculations, the calculations will be restarted automatically without using residual pressure estimates.\par
+\par
+Version 6.0.237 4/26/10\par
+1. Made it so if Supply mode is selected, the automatic peaking check box is unchecked and grayed out.\par
+\par
+2. Fixed a problem that made the program crash when a new metric project was started and the Edit Pipe Data window was opened.\par
+\par
+Version 6.0.236 4/8/10\par
+1. Fixed a problem with the metric conversion of the pipe friction loss per foot.\par
+\par
+2. Made it so the supply pressure at the inflow node can have two decimal places.\par
+\par
+Version 6.0.235 3/18/10\par
+1. In the Node Input Data report added information used in combined K-factor calculations for sprinklers on branch lines.\par
+\par
+2. In the Overall Pipe Output Data report added the q value (added flow) of each pipe and replaced velocity pressure with total pressure.\par
+\par
+Version 6.0.234 2/3/10\par
+1. Made it so Fire links with AutoCAD MEP 2010.\par
+\par
+Version 6.0.233 1/22/10\par
+1. Fixed a problem with the Auto Save feature.\par
+\par
+2. Made it so a warning appears if you enter hydrant test data and the static pressure is equal to the residual pressure.\par
+\par
+3. Fixed a problem with tree and grid creation.  If you indicate that you want to delete existing pipes before creating a tree or grid, all of the existing pipes will now be deleted.\par
+\par
+4. Made it so you can use the arrow keys to navigate in the Enter/Edit Node Data window.\par
+\par
+Version 6.0.232 7/10/09\par
+1. Fixed a metric conversion problem.  When a project's units were changed from English to metric, the values on the General Project Data window were not converted.\par
+\par
+2. Fixed a problem that made the K-Factor Calculators unusable when the program units were metric.\par
+\par
+Version 6.0.231 6/18/09\par
+1. Fixed an error on the Overall Pipe Output Data report.  The displayed pressure loss or gain was the same for all constant pressure loss devices and pumps.\par
+\par
+Version 6.0.229 6/8/09\par
+1. Made it so the user can choose whether or not the pump curve will be shown on the hydraulic graph.  This choice will affect the calculated demand pressure as well.\par
+\par
+2. Corrected the pipe system water volume.  This result was sometimes wrong for projects with autosized pipes.\par
+\par
+3. Corrected the calculated excess available pressure at demand flow when the pump boost is 0 at demand flow.\par
+\par
+Version 6.0.228 5/8/09\par
+1. Fixed a problem with the demand curve on the hydraulic graph that happened when the Calculate button was clicked in the Print Preview window.\par
+\par
+Version 6.0.227 5/4/09\par
+1. On the hydraulic graph, made it so the pressure required for the first sprinkler to flow accounts for the pump boost, if any.\par
+\par
+Version 6.0.226 4/16/09\par
+1. Fixed a problem that made the program crash when printing reports.  The problem had to do with reading pump curve input data incorrectly.\par
+\par
+2. Fixed a problem with the demand pressure and demand flow calculations.  The program botched the calculations when a fire pump was present.\par
+\par
+Version 6.0.225 4/8/09\par
+1. Fixed a problem with the demand curve on the hydraulic graph.\par
+\par
+Version 6.0.224 4/7/09\par
+1. Made it so the static pressure, test residual pressure, and test flow rate that you enter in the General Project Data window must be measured without an exterior hose flowing.\par
+\par
+2. Added the exterior hose flow to the demand curve on the hydraulic supply/demand graph.\par
+\par
+3. Added the fire pump curve and the combined fire pump/public water supply curve to the hydraulic supply/demand graph.\par
+\par
+4. Eliminated the Pump Curve Input Data report and moved the pump curve input data below the hydraulic supply/demand graph.\par
+\par
+5. When "New Projects Copy AUTOLOAD.FIW" is checked in the Options window, Fire will look for AUTOLOAD.FIW in the current project folder and the original (default) project folder.\par
+\par
+6. Converted the program's help file to HTML Help.\par
+\par
+Version 6.0.223 2/13/09\par
+1. Fixed a problem that caused the pipe lengths and elevations to be incorrect when an AutoCAD MEP drawing with drawing units set to millimeters was imported into Fire.\par
+\par
+Version 6.0.222 12/19/08\par
+1. Fixed a data loss problem.  When you click the Open Selected Project button in the Exploring window while a modified project is open, you will now be asked if you want to save the open project.\par
+\par
+2. Fixed a problem that caused a certain pipe section to be printed multiple times on the Pipe Input Data report.\par
+\par
+3. Made it so Fire will not calculate results when all K-Factors are zero and the project is in Demand mode.\par
+\par
+4. Made it so high water velocity warnings for non-autosized pipes can be turned off without erasing any autosizing constraints.\par
+\par
+5. Made it so a warning will be displayed when multiple pipes are connected to the fire pump inlet or when multiple pipes are connected to the fire pump outlet.\par
+\par
+Version 6.0.221 10/31/08\par
+1. Fixed a problem that prevented reports from being printed if there was a percent sign (%) in the project name.\par
+\par
+2. Made it so the adjusted hydrant data and excess available pressure are not printed under the hydraulic graph if there is no hydrant test data.\par
+\par
+3. Fixed an error that caused the program to print incorrect data on the reports under certain circumstances.\par
+\par
+Version 6.0.219 6/27/08\par
+1. Added a new pipe material, Aquatherm PP-R, to the Pipe Database.\par
+\par
+Version 6.0.218 5/28/08\par
+1. Made it so Fire can import data from an AutoCAD MEP 2009 drawing and export data back to the drawing.\par
+\par
+Version 6.0.217 4/24/08\par
+1. Made it so the Select AutoCAD MEP Version window does not require you to click a version name that is already highlighted.\par
+\par
+Version 6.0.216 3/10/08\par
+1. Made it so dynamic link library files that don't need to be registered are not registered during installation.\par
+\par
+Version 6.0.215 3/7/08\par
+1. Made it so each of the system files installed by Fire is compatible with the Windows systems that the program is designed to run on. If you installed Fire version 6.0.214 and you don't use Windows Vista, you should uninstall Fire before installing version 6.0.215.\par
+\par
+Version 6.0.214 3/3/08\par
+1. Added a report that displays pump curve data.  If you entered a pump and it has a pump curve, the flow and pressure at each point on the curve will be displayed on the report.\par
+\par
+2. Fixed a problem that caused the program to lock up when pipe 1 was inactive or blank.\par
+\par
+Version 6.0.213 2/15/08\par
+1. Made it so each of the system files installed by Fire has the correct version number.\par
+\par
+Version 6.0.212 1/11/08\par
+1. Added "Start a new project upon opening program" to the Options window.\par
+\par
+2. Fixed the "Show Project Explorer at Startup" option and the "Show Tips at Startup" option.\par
+\par
+3. Made it so all of Fire's dynamic link library files will be registered during the installation.\par
+\par
+Version 6.0.211 12/4/07\par
+1. Added a note to the Hydraulic Supply/Demand Graph that displays the pressure at the bottom of the demand curve.\par
+\par
+Version 6.0.209 11/16/07\par
+1. Fixed a problem that caused error 9 to appear after Quick Preview Reports was clicked.\par
+\par
+Version 6.0.208 11/9/07\par
+1. Fixed a problem with the AutoCAD MEP drawing import.  If you have both ABS 2007 and AutoCAD MEP 2008 on your computer and you import a drawing saved in one of those programs, Fire will always open the program you selected (ABS 2007 or AutoCAD MEP 2008).\par
+\par
+2. Made changes that should enable Fire to run on a computer with a high resolution monitor.\par
+\par
+Version 6.0.207 10/29/07\par
+1. Fixed a problem that prevented an AutoCAD MEP drawing from being imported when the drawing had more than one possible inflow pipe.\par
+\par
+Version 6.0.206 10/29/07\par
+1. Made the description of standpipe analysis more specific on the FAQ page.\par
+\par
+Version 6.0.205 10/4/07\par
+1. Fixed a division by zero error that happened when the program printed reports.\par
+\par
+Version 6.0.204 9/28/07\par
+1. Fixed a problem that caused the program to crash when the Sprinkler K-Factor icon in the toolbar was clicked.\par
+\par
+2. Fixed a problem that made the K-Factor Calculators unusable when the program units were metric.\par
+\par
+3. Added an option to remove the filename from the footer on the reports.\par
+\par
+Version 6.0.203 8/6/07\par
+1. Fixed a problem that sometimes caused Fire to open the wrong version of ABS or AutoCAD MEP during a drawing import.\par
+\par
+Version 6.0.199 7/24/07\par
+1. Corrected some invalid results that appeared on the reports after the last update.\par
+\par
+Version 6.0.198 7/20/07\par
+1. Made it so Fire will calculate results when a pump is present and the demand pressure is negative.\par
+\par
+2. Made it so a sprinkler or hose can be assigned to multiple area groups.\par
+\par
+Version 6.0.197 7/10/07\par
+1. Made it so Fire can import data from an AutoCAD MEP 2008 drawing and export data back to the drawing.\par
+\par
+2. Made it so the Sprinkler K-Factor Calculator will calculate the K-Factor, residual pressure, or flow rate of a sprinkler.\par
+\par
+3. Added a Duplicate button to the Global Editor tab of the Enter/Edit Pipe Data window that will duplicate multiple pipes or nodes.\par
+\par
+4. Made it so the Overall Pipe Output Data report will show all the data for a pipe on one page rather than two pages.\par
+\par
+Version 6.0.196 6/28/07\par
+1. Added buttons on the main toolbar that open each K-Factor Calculator.\par
+\par
+2. Made Fire compatible with Windows Vista.\par
+\par
+Version 6.0.195 6/26/07\par
+1. Added a Branch Line K-Factor Calculator that calculates the K-Factor for a branch line with a sprinkler at the end.\par
+\par
+2. Fixed a problem with the Hydraulic Graph report.  The program chose the wrong graph limits for the report in some cases.\par
+\par
+3. Fixed another problem with the Global Editor.  The program was still not changing all the values it was supposed to change.\par
+\par
+Version 6.0.194 4/19/07\par
+1. Proprietary changes.\par
+\par
+Version 6.0.193 3/27/07\par
+1. Made it so the Minimum Desired Density has no effect on the results when calculating in Supply mode.\par
+\par
+2. Fixed a problem with the Global Editor because it was not changing all the values that were supposed to change.\par
+\par
+3. Added a button to the Global Editor tab of the Enter/Edit Pipe Data window that will delete multiple pipes or nodes.\par
+\par
+Version 6.0.192  2/12/07\par
+1. Modified the link with Autodesk Building Systems so that it works with version 2006 and version 2007. During the import process the program asks you which version you want to link with for the drawing you are importing.\par
+\par
+2. Fixed an error that prevented the results from being calculated in some projects.\par
+\par
+3. Fixed an error that caused some results on the Overall Sprinkler Output Data report to be in English units when they were supposed to be in metric units.\par
+\par
+4. Fixed an error that changed the density in the Calculation window when the units were switched from metric to English and back to metric.\par
+\par
+5. Made it so the default projects folder at startup will be the folder containing the last project that was opened.\par
+\par
+6. Added a Browse for Projects Folder button to the Project Explorer.\par
+\par
+7. Made it so the items in the Edit menu and the Window menu are enabled and disabled at the right times.\par
+\par
+8. Added a list of all the open windows to the Windows menu.\par
+\par
+9. Made it so the Print Setup dialog will appear after Quick Print Reports is clicked.\par
+\par
+10. Improved the appearance of the report headers.\par
+\par
+Version 6.0.189  9/7/06\par
+1. Added interface with Autodesk Building Systems (ABS) 2007, which supercedes ABS 2006. Note that Fire version 6.0.188 or earlier must be used if ABS 2006 is still being run on your computer; version 6.0.189 and later will not work with ABS 2006. A link will remain on the Elite Software website for a reasonable amount of time to download an update patch for the last version of Fire to work with ABS 2006.\par
+\par
+2. Fixed rare problem that caused calculations to stop for a project using a density requirement and Automatic Peaking.\par
+\par
+Version 6.0.188  8/30/06\par
+1. Fixed problem with reading some ABS drawings, with grids or loops that have more than one fitting (e.g. transitions, reducers etc.) at the closing loop junction.  Previously a closing loop junction was only recognized with a single fitting, e.g. tee, cross or Y fitting.\par
+\par
+2. Made top caption of the Enter/Edit Pipe Data window update the number of active pipes as they are entered.  Previously the total number of pipes would only be updated if you clicked away from this window.  Now an accurate pipe count is always shown.\par
+\par
+3. Fixed problem introduced by item 4 in the previous update to set pipes to Autosizing.  Some pipes were set to Autosize even with non-zero manually entered diameters, but now this problem no longer occurs.\par
+\par
+4. Fixed problem that occured with some ABS drawings that did not number certain pipe nodes correctly.  Now unique node numbers are assigned as intended.\par
+\par
+Version 6.0.187 7/24/06\par
+1. Fixed problem that was fairly recently introduced which caused the text cursor to move to the beginning of a number when typing elevation, non-sprinkler flow, etc. in the Enter/Edit Pipe Data window using Metric units.  Now all these numbers can be typed normally.\par
+\par
+2. Fixed bug which did not check for all isolated pipes with a project with multiple Inactive pipes near the top of the pipe list in the Enter/Edit Pipe Data window.\par
+\par
+3. Made the Hydraulic Graph display supply curve test data entered in the Hose Flow column if that was the only test data entered, and no data was entered in the right column (for no hose flow).  Previously if only one set of test data was entered, it had to be the no hose flow test to calculate available pressure in this report.  Now either test is allowable.\par
+\par
+4. Fixed rare problem where a project was saved with one or more 0 diameter values but Autosizing was not indicated.  Now even if a project is saved like this, the program automatically sets it to Autosize these pipes.\par
+\par
+5. Made it so the two calculated values in the General Project Data window, System Data tab display two significant digits after calculations.  Previously more digits were shown until the GPD window was refreshed, so now these numbers are shown with limited digits, more consistently with corresponding numbers in other windows.\par
+\par
+6. Fixed problem that in some cases would resize pipe diameters incorrectly when trying to prevent increasing sizes in downstream pipes.\par
+\par
+7. Made a correction to pipe water volume calculation.\par
+\par
+8. Technical updates.\par
+\par
+Version 6.0.186 3/31/06\par
+1.  Fixed recently introduced bug that would cause pipes to be read incorrectly if running calculations without first opening the Enter/Edit Pipe Data window.  Now this is no longer a problem, although note that this Pipe Data window opens automatically during calculations if not already open.\par
+\par
+2.  Fixed problem that in some projects would show an incorrect value for average and maximum flow imbalance in the Fire Sprinkler Output Summary page of the reports.\par
+\par
+3.  Technical updates.\par
+\par
+Version 6.0.185 3/17/06\par
+1.  Made it so the Copy feature in the Pipe Database is active for all pipes.  This allows you to copy pipe data from one pipe to another existing pipe. Previously, pipe data could only be copied to a blank pipe entry.\par
+\par
+2.  Fixed bug that incorrectly positioned the cursor in the Enter/Edit Pipe Data window, Pipe Data tab when global units are changed.\par
+\par
+3.  Fixed bug that caused pipe and node data to be read incorrectly if the first or last pipes in the Pipe Data were set to Inactive.\par
+\par
+4.  Fixed problem that would sometimes cause a position error in the Enter/Edit Pipe Data window if a helptext window is opened, then another row of pipe data is clicked.  Now this problem no longer occurs.\par
+\par
+5.  Technical updates.\par
+\par
+Version 6.0.184 2/23/06\par
+1.  Fixed problems with using the Tree and Grid Builder to create pipes with metric units.\par
+\par
+2.  Added check for pipes with same beginning and end node number before calculations are run.  Normally the Fire program prevents this input, but if a project is imported from a CAD drawing file or other method, this additional check is needed.\par
+\par
+3.  Technical updates, mainly with the ABS import and other Tree and Grid Builder issues.\par
+\par
+Version 6.0.183 2/6/06\par
+1.  Fixed bug which had reset a few items to 0 that are saved with the reports.  Now once again, if reports are printed or previewed and the project is saved, you can open the project later, go directly to print or preview, and you will see the same numbers in all of the reports.\par
+\par
+2.  Added check that data row has not changed after K-Factor Calculator or Additional Fitting Length Calculator is opened.  This prevents a K-Factor or pipe equivalent length to be copied to a different pipe than originally selected.\par
+\par
+3.  Made it so when the Clear Pipe button is selected, all pipes currently shown in the Enter/Edit Pipe Data window are immediately cleared from view.\par
+\par
+4.  Added button to the Options window that resets all calculated Autosized diameters to fixed sizes.  This is useful if calculations are running but not converging using Autosizing.  Resetting diameters to fixed sizes makes calculations run and converge faster.\par
+\par
+5.  Technical updates.\par
+\par
+Previous updates:\par
+Added feature to allow importing of Pipe Type Group from an ABS 2006 drawing.  This data is entered similarly to other optional data like the Area Group letter or non-sprinkler flow, except that unlike those options, no selection is made in the ABS Import dialog box to activate this import.  Instead, simply enter the letters "PT" followed by the group number in the ABS pipe object General field.  Note that this entry can be made to the General field in addition to the pipe non-standard fitting length.\par
+\par
+Added Check for Update utility.  This utility, used by all Elite Software programs, can automatically check for updates and prompt you with the option to download an update from the Elite Software website before proceeding.\par
+\par
+Added FireDemoABS.dwg to the install files for Fire.  Users who install the Fire demo version on a computer with ABS 2006 already installed can import this sample drawing with the demo version of Fire to try out the ABS interface.\par
+\par
+Made it so the program will run properly on foreign versions of Windows that use the Double Byte Character Set, such as Korean, Chinese and Japanese versions.\par
+\par
+Added interface with Autodesk Building Systems 2005 [now 2007].  This interface is significantly improved from the ABS 2004 interface.  First, all features are accessed from the File menu, rather than using manual methods and macros in ABS.  The two items in the File menu are File|Read Data From ABS Autodesk Drawing (used to import the sprinkler system .dwg file) and File|Assign Calculated Data to ABS Drawing.  Once you import and run calculations in Fire, select the latter option to assign the results to the drawing.  The calculated results appear in the Properties list for piping and sprinkler objects in the drawing.  You can also resize the pipes in the drawing based on Autosizing at this point by selecting System Resize from the Mechanical|Engineering Analysis palette in ABS.  NOTE: Node numbers are placed on the drawing automatically during an Fire import, but ONLY if the drawing has been saved with the EliteFireTagsTemplate.dwt template included in this installation.\par
+\par
+Added Demand Curve to Hydraulic Graph.  The Demand Curve connects the Demand Point to a point on the y-axis at the elevation pressure of the first sprinkler in the system.\par
+\par
+Added a "Copy License File" button to the About Fire box. Clicking this button displays a Browse for Folder dialog that lets you select the floppy drive or any other location from which you want to copy the program's license file.\par
+\par
+Added pipe material type PEX to pipe material database.  Note that you have to manually select to overwrite your existing pipe material database when installing Fire.  Otherwise this new data will not be installed.\par
+\par
+Added ability for Autodesk ABS interface with Fire to recognize pipe material from an ABS piping drawing if the name is similar.  Previously unless the material name matched the Fire pipe material name exactly, a default material was assigned.\par
+\par
+Added Node Editor window to the Fire program.  This window shows the same data that is shown in the Enter/Edit Pipe Data window, arranged by node number instead of pipes.  The node data can be edited like in the Enter/Edit Pipe Data window.  Editing the data by node may be easier or more intuitive than by pipes in some cases.  For example it is easy to see which nodes are sprinklers in the Node Editor window based on which rows have numbers in the K-Factor column.  Note that the node numbers themselves cannot be edited here;  node numbers must be entered in the Enter/Edit Pipe Data window first.\par
+\par
+Added feature to print node numbers on an AutoCAD/Autodesk piping drawing corresponding to the node numbers used in Fire based on that imported drawing.  For tags to be added automatically, you must save the drawing with the new EliteFireTagsTemplate.dwt template included in the installation for Fire.\par
+\par
+Compiled Fire with Autodesk Building Systems 2005 (ABS 2005), the latest Autodesk product.\par
+\par
+Added Ending Page No. to the Report Options window that can be used in conjunction with the Starting Page No. to print a range of pages in the reports.  If the Ending Page No. is left blank or 0 it will be ignored.\par
+\par
+Compiled Fire with Autodesk Building Systems, so that pipe drawings made with ABS can be read in by the Fire program.  Drawings made in previous versions of AutoCAD or ABS can still be read by Fire, but it is better to save them in the current ABS first.  Otherwise an extra message may appear during the import to Fire that mentions converting the file format, but which is not relevant to the import itself.\par
+\par
+Added K-Factor Calculator to allow an estimate of K-Factor based on pressure and flow through a sprinkler or hose nozzle.  This calculator is accessed through the pop-up help window for the inputs for K-Factor in the General Project Data and Enter/Edit Pipe Data windows.\par
+\par
+Added calculation of the volume of water in the pipe system.  This is shown in the Fire Sprinkler Output Summary report, Overall Network Summary section as Pipe System Water Volume.\par
+\par
+Added non-sprinkler flow to sprinkler flow in the Overall Pipe Output Data report.  This better represents all the discharge flows in a project in that part of the reports.\par
+\par
+Added "Primary Type of Discharge" input in the General Project Data window, System Data tab.  This allows the terminology in the program to refer to sprinklers as "hoses" since certain fire suppression systems primarily use hose outlets instead of sprinklers.\par
+\par
+Added warning indicating if maximum friction loss or maximum velocity criteria have been exceeded in any pipe sections.  The warning is not printed if these criteria are set to 0.\par
+\par
+Added EliteFireInterface.dvb file to the program installation.  This file can be copied to your AutoCAD directory where macros are stored, and this macro can be run with a drawing created using AutoCAD 2002 (or later) with the Building Systems 2 (or later) add-on.  This macro creates an .fra file based on the sprinkler piping drawing, and the .fra file is read in the same way as with the original AutoCAD link in the Fire program.\par
+\par
+Added "Read Data From AutoCAD Drawing" menu item to File menu.  This allows you to read information from a sprinkler drawing .dwg file saved in AutoCAD directly into Fire.  This feature only works with AutoCAD 2002 (or later) with the Building Systems 2 (or later) add-on installed on the same computer running Fire.\par
+\par
+Added second column of flow test data to allow input of a second set of hydrant test/supply curve data.  If entered, this second curve will be printed on the Hydraulic Graph, and the data in the General Project Data report.  This data corresponds to a test with an external hose flowing, and this hose flow is entered above the new test data column.  The column to the right is for a test with no external hose flowing, and corresponds to the default test data in previously saved projects.\par
+\par
+Added feature which informs you that if you have made any changes to inputs after running calculations, the reports may not reflect those changes in the inputs and their effect, if any, on the calculated results.  Messages to this effect appear on screen when you try to preview or print and are printed in the reports.\par
+\par
+Updated check for negative pressures upstream of a pump.  Now an error only occurs if negative pressure occurs at the inflow node.  This allows for more pumps to be used, but in some cases negative pressure will be calculated and shown in pipes upstream of the pump.\par
+\par
+Added CPLD menu item to Enter/Edit Pipe Data window.  CPLD stands for Constant Pressure Loss Device.  This item opens a window where you can change the names indicated for item "A" in the pipe material list, which is the Alternative CPLD.  The default name is an Alarm Check Valve.  Whatever names and abbreviations are specified here are shown in the reports and program output for this project.\par
+\par
+Added an option to the Additional Fitting Length Calculator to input roughness in inches or with a pipe C-Value.\par
+\par
+The "Stringer" device has been replaced by an "Alarm Check Valve" or ACV device.  This was requested since stringer devices are not as commonly used anymore.  Any projects previously saved with a Stringer will now display that device as an ACV with the same pressure loss.\par
+\par
+Made Dry system results more clear.  For a Dry system, you should multiply your total sprinkler area by 1.3 and adjust your sprinkler areas so they add up to the adjusted total.  But the program should not adjust individual sprinkler areas, since they can be different from each other and should be adjusted manually.  So the Dry results show Adjusted values for total area and density, which you can compare against the total of your actual sprinkler areas and densities.\par
+\par
+Added Sprinkler Area to the Global Editor, as well as a "Total Sprk Area" label to this window.  This duplicates the primary functions of the Sprinkler Area Assignments screen in Fire for DOS.\par
+\par
+Major improvement made to matrix solution method.  Now projects should converge much faster than before.\par
+\par
+Added Clear Pipe button to Enter/Edit Pipe Data window.  This allows you to clear all existing pipes from the current project.\par
+\par
+Added note to inform the you if you are trying to import a DOS Fire project file version 4 or earlier.  You can only import DOS version 5 files.  Contact us if you would like to import DOS version 4 or earlier files.\par
+\par
+Added tree and grid network layout diagram.  This is a separate form that has been added as an option to view after the user chooses the Display Network button of the Tree or Grid Builder.  This new diagram should be more legible than the diagram used until now, especially when the tree or grid diagram contains many nodes.  This new diagram can be printed directly to the default printer.  Note that this tree and grid print feature is separate from all other print options in the Fire program.  It is meant to be a quick reference tool, not a primary output of the program.  Note that the tree diagram is limited to 20 sprinklers per branch and 15 branches total, while the grid diagram is limited to 15 branches and 40 sprinklers per branch.  The Display Network window closes when this diagram is closed.\par
+\par
+Now a pump curve is allowed to be run in Supply mode.  In this case, the calculations are run iteratively.  First pressures and flows are determined, and the flow at the pump is used with the pump curve to obtain a corresponding pressure boost.  Then calculations are run again with this equivalent pressure boost.  The system flows and pressures will adjust after the second run with the pressure boost included (this can be confirmed with a Supply run with and without a constant pump boost).  Calculations are then run again to see if the adjustment is small enough.  This process will repeat until the adjustment is fairly small.  This should indicate fairly well how the pump will behave according to the pump curve in Supply mode.\par
+\par
+Made update to allow printing or previewing to show input pipe and node data even if calculations have not yet been run for a project.\par
+\par
+Added a checkbox to the Imbalances section of the Calculation window.  This checkbox instructs the program to continue if calculated flow imbalance is greater than 0.01 gpm.  This will converge a project to sufficient accuracy in most cases.  Previously the user needed to check their printout imbalances after every run to make sure flow imbalance was small enough, but using this checkbox will make the program perform this check automatically and continue calculations until this condition is met.  Note that some jobs may take a long time to run using this check, so it should not always be used, especially for large systems.\par
+\par
+Added calculation alert message that blank pipe rows are not allowed.  Previously calculations could stop without clarification if a project contained blank pipe rows.\par
+\par
+Made significant updates to the Displaying window, accessible via the Display button in the Calculation window.  Calculations run a bit faster if the Displaying window is closed, but the Displaying window allows almost real-time monitoring of calculation progress.  Also useful is the addition of inputs for Initial Damping Factor, Minimum Damping Factor, and Maximum Iterations to the Displaying window.  These are the currently used values in the calculations.  You can type in new values here at any time, and the calculations will immediately start using the new values.  This feature can sometimes be useful if the calculations are not converging;  sometimes a smaller or larger minimum damping factor may improve progress.\par
+\par
+Added feature to generate a DXF graph file of the hydraulic curve.  A DXF file can be viewed and used within Autocad.  The Save DXF Graph feature has been added to the Reports menu.\par
+\par
+Added feature to show percent completion of calculations in meeting imbalance criteria.  On large or complex jobs which take a long time to converge, having a percentage monitor can be helpful.\par
+\par
+Added more automatic increments to the Hydraulic Graph, so that the x-axis maximum will be the closest multiple of 1000 up to 10000.  For example if the water supply curve intersects the x-axis between 2000 and 3000 gpm, the x-axis maximum will be 3000.  Now the only reason that you will not see your data on the graph with reasonable clarity (i.e. without the point or curve pushed up against an axis) is if there is a data input problem such as incomplete test data or test data flowrate off by a factor of 10 or more from the calculated flowrate.\par
+\par
+Enabled the zoom level or page number to be typed directly into the preview window entry if the user wants to see a certain zoom level or page.  Also Pg Up/Dn can be used to scroll one page at a time through the preview reports.\par
+\par
+Added Metric conversion feature.  Now calculations can be entered and run using metric (SI) units.  Also by clicking on the unit shown for a given entry, individual inputs can be adjusted to the desired unit.  So for instance pressure can be entered in psi or bars or Pa, regardless of whether the main calculations are in US or SI units.  However, the printouts will show units in either all US or all SI units.\par
+\par
+Added a panel in the bottom Status Bar to display the Units of a given field in addition to the allowable Range of inputs.\par
+\par
+Added additional fitting length calculator.  The user has to enter equivalent length of any non-standard fittings in the Enter/Edit Pipe Data window, but manufacturer data may only provide pressure drop information, not equivalent length.  This calculator allows the equivalent length of a fitting to be calculated based on pressure drop, flow, and fluid characteristics.\par
+\par
+Fixed bug which sometimes stopped calculations if there was a blank row in the pipe data.  Now blank pipe data rows are sometimes allowed, but not recommended.  They are deleted automatically if pipes are sorted.\par
+\par
+Modified program to allow use with any system Regional Settings other than English (American).  Many European and similar settings use a comma in place of a period in numbers, and such settings can now be used with Fire.\par
+\par
+Added feature to make better initial guesses on residual pressures in the system if Use Residual Pressure Estimates is _not_ checked.  This decreases the likelihood of a project getting stuck oscillating between nodes.  In addition, if oscillation is detected, the residual pressures are boosted again.  Once these initial guesses become large enough, the system will stop oscillating.  This should eliminate the oscillation problem (when Use Residual Pressure Estimates is unchecked), and in many jobs it eliminates the need to use the Use Residual Pressure Estimates button unless fine tuning of imbalances in an additional run is desired.  The method of running in Supply mode and then running in Demand mode using those pressure estimates is still valid, but in many cases is no longer necessary.  Convergence is now possible with a single run in many jobs.\par
+\par
+Updated install script to accommodate installation on Windows 2000 and Windows XP.\par
+\par
+By popular demand, now the table captions are included across the top of every page of the printout reports.\par
+\par
+In fire pump database, added an additional check to distinguish between blank pump data points and a point deliberately entered as (0,0).  You may want to delete the last (0,0) row of the "Taco" sample pump data, since it was not deliberately entered, and save it to take advantage of this new feature.\par
+\par
+Made Nodal Pressure Imbalance more sensitive to user inputs.  Now the Nodal Pressure Imbalance is the determining factor for calculations to converge.  When calculations finish, it is at the discretion of the user to check the pressure AND flow imbalances to determine whether another more stringent calculation should be made.  The imbalance information is summarized on the last page of the report before the Hydraulic Graph.  NOTE: JUST BECAUSE CALCULATIONS FINISH DOES NOT MEAN THE SYSTEM WILL BEHAVE AS SPECIFIED.  THE IMBALANCES MUST BE REASONABLY LOW AS WELL.  A REASONABLE FLOW IMBALANCE IS 0.01 GPM OR LOWER.\par
+\par
+Made an adjustment to place the blinking cursor in Enter/Edit Pipe Data into a field after the help drop down box is selected for it.  Not only is this convenient and gives a more intuitive feel for the user, but it also avoids a bug where the program could lose its place if a help drop down box is selected in another row.\par
+\par
+Added feature to allow users to type in the pipe material type or number directly in Enter/Edit Pipe Data.  The user can type in a number from 1 to 50, or M, S, B, or P for constant pressure loss devices or a pump.  Note that if "P" is typed, a window immediately opens giving the option to use a pump curve.\par
+\par
+Fixed Enter/Edit Pipe Data screen code to allow users to specify Dflt, Inact, None, or Value for the K-Factor of a node.  Now this specification at each node is saved with the project file.  The most obvious benefit is that now users can select "Dflt" either by choosing it in the help drop down help box or by placing their cursor in the K-Factor box and pressing "D".  The K-Factor for each node selected as default will now be set by the Default K-Factor in the System Data tab of the General Project Data window.  A single change there will affect all the default K-factors in the Enter/Edit Pipe Data screen, as could be done in Fire for DOS.\par
+\par
+Fixed bug which caused program to crash if user specified in the Fire program installation that the Fire projects directory was not a subdirectory of the Fire program directory.  Now these two directories can be specified independent of each other.  They can even be located on different drives on your computer.\par
+\par
+Updated pipe data for Sch. 10 Wet Steel.  This data had been virtually identical to Sch. 40 Wet Steel in previous versions.  Note that if you have manually changed your own pipe database, installing version 6.0.32 or higher and choosing to install the latest pipe database will overwrite your pipe database file.  If you want to use our updated pipe data and your manually changed data too, you must save your Pipe.dat file separately for use when needed or reenter your manual changes into the new pipe database after installation of this program version.\par
+\par
+Added the capability to include a fire pump in the system.  Currently a fire pump may only be added at or near the inflow node, upstream of any sprinkler heads.  A fire pump can be selected as a pipe material type, in the same fashion that a meter can be selected.  Like with a meter, a constant pressure value can be entered for a pump.  This is the pressure boost to the system given by the fire pump.  This constant pressure rise is independent of flow.  Alternatively, pump curve data can be entered, which gives a pressure rise as a function of water flow rate at the pump inflow node.  Currently a pump curve can be used for a Demand mode calculation, and in a limited capacity in Supply mode.  A constant pump boost can be used in virtually all projects in both Supply and Demand modes.  Pump information can be saved in the pump database (via the Project menu or the toolbar) as well as to your individual project file.\par
+\par
+Added feature to export data to a Fire for DOS file.\par
+\par
+Added feature to allow user to update their copy of Fire by inserting their license diskette in the A: drive, going to the Help menu in the program, choosing About Fire, and pressing [Shift]+[Ctrl]+L.  This will bring up a dialog instruction box allowing you to copy the license file from the diskette and update your copy of Fire.  This is a simple way to update the program from the Demo to the Active version.\par
+\par
+\par
+IV.  ATTENTION CANON BUBBLEJET PRINTER OWNERS:\par
+\par
+If you have a Canon Bubblejet printer, you may not be able to preview reports in the current version of FIRE while your default printer is set to the Canon Bubblejet.  Contact Canon to obtain their newest driver for your printer.  Installing the new driver should hopefully fix this problem, but until you are able to obtain the new driver, here is a workaround:\par
+\par
+Windows 95 users:\par
+1.  From the Start menu, select Settings, then Control Panel.\par
+2.  Right-click on Printers, then select Open.\par
+3.  Right-click on Add Printer, then select Open.\par
+4.  Use the Add Printer Wizard to add an HP Laserjet 4 printer, and name it "Preview Only" (or whatever you want to call it).\par
+5.  Whenever you want to preview in FIRE, set your default printer to this new "Preview Only" printer.  Don't click the Print Current Page button on the Print Preview window.  Whenever you want to print to your Canon bubblejet, click the Print button from the Reports/Options window.\par
+\par
+Windows 3.x users:\par
+1.  From the "Main" Program Manager group, double-click the Control Panel icon.\par
+2.  Double-click the Printers icon in Control Panel.\par
+3.  Click the Add>> button.\par
+4.  Select HP Laserjet 4/4M, then click the Install button.\par
+5.  Whenever you want to preview in FIRE, set your default printer to this new printer.  Don't click the Print Current Page button on the Print Preview window.  Whenever you want to print to your Canon bubblejet, click the Print button from the Reports/Options window.\par
+\par
+\par
+V.  ATTENTION HP LASERJET SERIES 5 PRINTER OWNERS:\par
+\par
+There is apparently a bug in the drivers for the HP Laserjet 5 printers for Windows 3.1x, or at least there is some degree of incompatability between these drivers and the printing and previewing tool which is used in FIRE.  If you encounter any problems such as GPF's (General Protection Faults) when either previewing or printing using the Laserjet 5 driver, try setting up your printer with a series 4 driver instead:\par
+\par
+1.  Open Control Panel.\par
+2.  Double-click Printers.\par
+3.  Click Add>>.\par
+4.  Select HP Laserjet 4/4M.\par
+5.  Click Install.\par
+6.  Insert Windows disk(s) if prompted to do so.\par
+7.  Click Set As Default Printer.\par
+}
+ 
